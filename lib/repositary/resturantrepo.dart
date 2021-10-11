@@ -1,0 +1,58 @@
+import 'package:frontend/models/resturantmodel.dart';
+
+List<ResturantModel> resturant = const [
+  ResturantModel(
+      name: 'Sweet Soup',
+      image: 'asset/images/resturant/res5.jpg',
+      adress: '123 Avenue street',
+      startRating: 4.5,
+      discount: 60,
+      time: 60,
+      distance: 6,
+      revieCount: 202),
+  ResturantModel(
+      name: 'Sunshine',
+      image: 'asset/images/resturant/res2.jpg',
+      adress: '126 Avenue street',
+      startRating: 4.8,
+      discount: 45,
+      time: 56,
+      distance: 6,
+      revieCount: 103),
+  ResturantModel(
+      name: 'The Taj',
+      image: 'asset/images/resturant/res3.jpg',
+      adress: '123 Avenue street',
+      startRating: 5,
+      discount: 30,
+      time: 35,
+      distance: 2,
+      revieCount: 826),
+  ResturantModel(
+      name: 'The Fern',
+      image: 'asset/images/resturant/res2.jpg',
+      adress: '123 Avenue street',
+      startRating: 4.3,
+      discount: 30,
+      time: 24,
+      distance: 3,
+      revieCount: 303),
+  ResturantModel(
+      name: 'Lords Bhopal',
+      image: 'asset/images/resturant/res5.jpg',
+      adress: '123 Avenue street',
+      startRating: 4,
+      discount: 60,
+      time: 34,
+      distance: 1.8,
+      revieCount: 512),
+  ResturantModel(
+      name: 'The Bhopal',
+      image: 'asset/images/resturant/res2.jpg',
+      adress: '123 Avenue street',
+      startRating: 4.5,
+      discount: 60,
+      time: 60,
+      distance: 6,
+      revieCount: 202),
+];

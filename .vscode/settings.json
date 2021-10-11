@@ -1,0 +1,15 @@
+{
+    "spellright.language": [
+        "en"
+    ],
+    "spellright.documentTypes": [
+        "markdown",
+        "latex",
+        "plaintext",
+        "dart"
+    ],
+    "cSpell.language": "en,en-GB,en-US",
+    "cSpell.enableFiletypes": [
+        // "dart"
+    ]
+}
