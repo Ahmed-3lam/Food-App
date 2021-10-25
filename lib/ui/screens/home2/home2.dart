@@ -1,227 +1,263 @@
+import 'dart:async';
+
+import 'package:carousel_slider/carousel_slider.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 import 'package:frontend/Helpers/childspacer.dart';
 import 'package:frontend/Helpers/mlib.dart';
-import 'package:frontend/repositary/dishes.dart';
 import 'package:frontend/repositary/resturantrepo.dart';
+import 'package:frontend/ui/screens/details/details.dart';
 
-import 'package:frontend/ui/screens/Details-choose_desert/details_choose_desert.dart';
-import 'package:frontend/ui/screens/HomeMasterHome/compo/yourrecentwidget.dart';
-import 'package:frontend/ui/screens/Location-choose_city/locationchoosecity.dart';
-import 'package:frontend/ui/screens/profile/profilescren.dart';
+import 'package:frontend/ui/screens/home2/home2compo/categorie.dart';
+import 'package:frontend/ui/screens/home2/home2compo/yourrecentvisits.dart';
+import 'package:frontend/ui/screens/searchCopy/searchcopy.dart';
+
+import 'home2compo/homeadresszone.dart';
 
 class Home2 extends StatefulWidget {
-  const Home2({
-    Key? key,
-  }) : super(key: key);
+  const Home2({Key? key}) : super(key: key);
 
   @override
-  State<Home2> createState() => _Home2State();
+  _Home2State createState() => _Home2State();
 }
 
 class _Home2State extends State<Home2> with SingleTickerProviderStateMixin {
+  bool isLoading = false;
+
+  _loadingHandeler() {
+    isLoading = false;
+    setState(() {});
+  }
+
+  late TabController _tabcontroller;
+  @override
+  void initState() {
+    super.initState();
+    _tabcontroller = TabController(length: 4, vsync: this);
+  }
+
+  List<String> image = [
+    "asset/images/home/banner.png",
+    'asset/images/home/homeoffers.png'
+  ];
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: SafeArea(
-        child: SingleChildScrollView(
-          child: Column(
-            children: [
-              Padding(
-                padding: kpaddinghor20,
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    ksv20,
-                    Row(children: [
-                      SizedBox(
-                        height: 35,
-                        child: MaterialButton(
-                          padding: EdgeInsets.zero,
-                          onPressed: () {
-                            RouteX.sliderRighToLeft(
-                                context, const LocationChooseCity());
-                          },
-                          child: Row(
-                            children: const [
-                              Icon(
-                                MyFlutterApp.location,
-                                color: kctxtcolor,
-                              ),
-                              ksh12,
-                              FoodText.ktsAvenir(
-                                "Zone II",
-                                fonsize: 18,
-                                weight: FontWeight.w700,
-                              ),
-                            ],
-                          ),
-                        ),
+        body: CustomScrollView(
+      cacheExtent: 1000,
+      slivers: [
+        const SliverSafeArea(
+          sliver: SliverToBoxAdapter(
+            child: Padding(
+              padding: EdgeInsets.symmetric(horizontal: 15),
+              child: HomeAdressZone(),
+            ),
+          ),
+        ),
+        const SliverToBoxAdapter(
+          child: SizedBox(
+            height: 10,
+          ),
+        ),
+        SliverToBoxAdapter(
+          child: Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 15),
+            child: GestureDetector(
+              onTap: () {
+                RouteX.sliderRighToLeft(context, const SearchCopy());
+              },
+              child: SizedBox(
+                child: AbsorbPointer(
+                  child: TxtField(
+                    hint: "Find your favourite one",
+                    filledColor: kcgrey2,
+                    prefix: Container(
+                      padding: const EdgeInsets.all(13),
+                      child: SvgPicture.asset(
+                        'asset/images/payments/2.svg',
+                        height: 20,
+                        width: 20,
                       ),
-                      const Spacer(),
-                      SizedBox(
-                        width: 35,
-                        height: 35,
-                        child: MaterialButton(
-                          padding: EdgeInsets.zero,
-                          onPressed: () {
-                            RouteX.sliderRighToLeft(
-                                context, const ProfileScreen());
-                          },
-                          child: const Icon(
-                            MyFlutterApp.bolduser,
-                            color: kctxtcolor,
-                          ),
-                        ),
-                      ),
-                    ]),
-                    ksv12,
-                    const FoodText.ktsAnsemi("123 Avenue Street "),
-                    const Divider(
-                      color: kcdivider,
-                      thickness: 2,
                     ),
-                    ksv16,
-                    TxtField(
-                      hint: "Find your favourite one",
-                      filledColor: kcgrey2,
-                      prefix: const Icon(MyFlutterApp.search),
-                    ),
-                    ksv16,
-                    const FoodText.ktsAnsemi(
-                      "Eat what makes you happy",
-                      fonsize: 16,
-                    ),
-                    ksv16,
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      children: const [
-                        HomeImageCategories(
-                          name: "Healthy",
-                          path: "asset/images/homecategories/healthy.jpg",
-                        ),
-                        HomeImageCategories(
-                          name: "Home Style",
-                          path: "asset/images/homecategories/home.png",
-                        ),
-                        HomeImageCategories(
-                          name: "Rolls",
-                          path: "asset/images/homecategories/Rolls.jpg",
-                        ),
-                        HomeImageCategories(
-                          name: "Thali",
-                          path: "asset/images/homecategories/x.png",
-                        ),
-                      ],
-                    ),
-                    const SizedBox(height: 15),
-                    ksv16,
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      children: const [
-                        HomeImageCategories(
-                          name: "Biryani",
-                          path: "asset/images/homecategories/Biryani.jpeg",
-                        ),
-                        HomeImageCategories(
-                          name: "Pizza",
-                          path: "asset/images/homecategories/pizza.jpg",
-                        ),
-                        HomeImageCategories(
-                          name: "Panner",
-                          path: "asset/images/homecategories/panner.png",
-                        ),
-                        HomeImageCategories(
-                          name: "Burger",
-                          path: "asset/images/homecategories/burg.png",
-                        ),
-                      ],
-                    ),
-                    const SizedBox(height: 15),
-                    const Divider(
-                      color: kcdivider,
-                      thickness: 2,
-                    ),
-                  ],
-                ),
-              ),
-              SizedBox(
-                height: 200,
-                child: Center(
-                  child: SizedBox(
-                    height: 200,
-                    child: ListView.builder(
-                        physics: const PageScrollPhysics(),
-                        itemCount: 3,
-                        scrollDirection: Axis.horizontal,
-                        itemBuilder: (context, i) => const Padding(
-                              padding: EdgeInsets.symmetric(
-                                  vertical: 20, horizontal: 20),
-                              child: HomeServiceBanner(),
-                            )),
                   ),
                 ),
               ),
-              Padding(
-                padding: kpaddinghor20,
-                child: Row(
-                  children: [
-                    const FoodText.ktsAnreg(
-                      "Your recent visits",
-                      fonsize: 22,
-                    ),
-                    const Spacer(),
-                    SizedBox(
-                      width: 90,
-                      height: 30,
-                      child: FlatButton(
-                          padding: EdgeInsets.zero,
-                          color: kcred.withOpacity(.25),
-                          onPressed: () {},
-                          child: Container(
-                            padding: const EdgeInsets.all(2),
-                            child: const FoodText.ktsAnreg(
-                              "Show All",
-                              color: kcred,
-                            ),
-                          )),
-                    )
-                  ],
-                ),
-              ),
-              const SizedBox(
-                height: 8,
-              ),
-              const HomeYourRecentVisiArea(),
-              const SizedBox(
-                height: 8,
-              ),
-              ////HERE WE ARE GOING TO ADD THE DIVIDER
-              const SizedBox(
-                height: 18,
-              ),
-              Container(
-                decoration: BoxDecoration(
-                    borderRadius:
-                        const BorderRadius.vertical(top: Radius.circular(22)),
-                    color: kclightpurpel.withOpacity(.08)),
-                height: 483,
-                child: const ClipRRect(
-                    borderRadius:
-                        BorderRadius.vertical(top: Radius.circular(22)),
-                    child: HomeTabBarView()),
-              ),
-              // const SizedBox(height: 60)
-            ],
+            ),
           ),
         ),
-      ),
-    );
+        SliverList(
+            delegate: SliverChildListDelegate([
+          const Padding(
+            padding: EdgeInsets.symmetric(horizontal: 15),
+            child: Categories(),
+          ),
+          CarouselOfOffers(image: image),
+          //////////////////////////
+          const YourRecentVisits(),
+        ])),
+        const SliverToBoxAdapter(
+          child: SizedBox(height: 0),
+        ),
+        SliverAppBar(
+          toolbarHeight: 0,
+          backgroundColor: kcwhite,
+          pinned: true,
+          bottom: PreferredSize(
+              child: SizedBox(
+                width: MediaQuery.of(context).size.width,
+                height: 50,
+                child: TabBar(
+                    onTap: (i) async {
+                      isLoading = true;
+                      setState(() {});
+                      Timer(
+                          const Duration(milliseconds: 700), _loadingHandeler);
+                    },
+                    indicatorPadding: EdgeInsets.zero,
+                    isScrollable: true,
+                    padding: const EdgeInsets.symmetric(horizontal: 15),
+                    controller: _tabcontroller,
+                    indicatorSize: TabBarIndicatorSize.label,
+                    indicatorWeight: 03,
+                    labelColor: kcred,
+                    unselectedLabelColor: kcblack,
+                    labelStyle: ktsAvenirDemi.copyWith(fontSize: 14),
+                    unselectedLabelStyle: ktsAnreg.copyWith(color: kcgrey5),
+                    tabs: const [
+                      Tab(
+                        text: "Near You",
+                      ),
+                      Tab(text: "Newest"),
+                      Tab(
+                        text: "Best Rated",
+                      ),
+                      Tab(
+                        text: "Trending",
+                      )
+                    ]),
+              ),
+              preferredSize: const Size.fromHeight(50)),
+        ),
+        const SliverToBoxAdapter(
+          child: SizedBox(
+            height: 20,
+          ),
+        ),
+        isLoading
+            ? SliverToBoxAdapter(
+                child: SizedBox(
+                  height: MediaQuery.of(context).size.height * .8,
+                  width: MediaQuery.of(context).size.width,
+                  child: const Center(
+                    child: CircularProgressIndicator(),
+                  ),
+                ),
+              )
+            : SliverList(
+                delegate: SliverChildListDelegate(List.generate(
+                    resturant.length,
+                    (index) => GestureDetector(
+                        onTap: () {
+                          RouteX.sliderRighToLeft(
+                              context, Details(image: resturant[index].image));
+                        },
+                        child: FoodTile(
+                            image: resturant[index].image,
+                            name: resturant[index].name,
+                            adress: resturant[index].adress,
+                            startRating: resturant[index].startRating,
+                            discount: resturant[index].discount,
+                            time: resturant[index].time,
+                            distance: resturant[index].distance,
+                            revieCount:
+                                resturant[index].revieCount))).toList()))
+      ],
+    ));
   }
 }
+
+// class Home2 extends StatefulWidget {
+//   const Home2({
+//     Key? key,
+//   }) : super(key: key);
+
+//   @override
+//   State<Home2> createState() => _Home2State();
+// }
+
+// class _Home2State extends State<Home2> with SingleTickerProviderStateMixin {
+//   @override
+//   Widget build(BuildContext context) {
+//     return Scaffold(
+//       body: SafeArea(
+//         child: SingleChildScrollView(
+//           child: Column(
+//             children: [
+//               Padding(
+//                 padding: kpaddinghor20,
+//                 child: Column(
+//                   crossAxisAlignment: CrossAxisAlignment.start,
+//                   children: [
+//                     const HomeAdressZone(),
+//                     ksv16,
+//                     TxtField(
+//                       hint: "Find your favourite one",
+//                       filledColor: kcgrey2,
+//                       prefix: const Icon(MyFlutterApp.search),
+//                     ),
+//                     const Categories(),
+//                   ],
+//                 ),
+//               ),
+//               SizedBox(
+//                 height: 200,
+//                 child: Center(
+//                   child: SizedBox(
+//                     height: 200,
+//                     child: ListView.builder(
+//                         physics: const PageScrollPhysics(),
+//                         itemCount: 3,
+//                         scrollDirection: Axis.horizontal,
+//                         itemBuilder: (context, i) => const Padding(
+//                               padding: EdgeInsets.symmetric(
+//                                   vertical: 20, horizontal: 20),
+//                               child: HomeServiceBanner(),
+//                             )),
+//                   ),
+//                 ),
+//               ),
+//               const YourRecentVisits(),
+//               const SizedBox(
+//                 height: 8,
+//               ),
+//               const SizedBox(
+//                 height: 18,
+//               ),
+//               Container(
+//                 decoration: BoxDecoration(
+//                     borderRadius:
+//                         const BorderRadius.vertical(top: Radius.circular(22)),
+//                     color: kclightpurpel.withOpacity(.08)),
+//                 height: 483,
+//                 child: const ClipRRect(
+//                     borderRadius:
+//                         BorderRadius.vertical(top: Radius.circular(22)),
+//                     child: HomeTabBarView()),
+//               ),
+//             ],
+//           ),
+//         ),
+//       ),
+//     );
+//   }
+// }
 
 class HomeServiceBanner extends StatelessWidget {
   const HomeServiceBanner({
     Key? key,
+    required this.image,
   }) : super(key: key);
+  final String image;
 
   @override
   Widget build(BuildContext context) {
@@ -239,56 +275,11 @@ class HomeServiceBanner extends StatelessWidget {
       child: ClipRRect(
         borderRadius: BorderRadius.circular(15),
         child: Image.asset(
-          "asset/images/home/banner.png",
+          image,
           fit: BoxFit.cover,
         ),
       ),
     );
-  }
-}
-
-class HomeImageCategories extends StatelessWidget {
-  const HomeImageCategories({
-    Key? key,
-    required this.path,
-    required this.name,
-  }) : super(key: key);
-
-  final String path, name;
-  @override
-  Widget build(BuildContext context) {
-    return GestureDetector(
-        onTap: () {
-          RouteX.sliderRighToLeft(context, const DetailsChooseDesert());
-        },
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.center,
-          children: [
-            Container(
-              height: 70,
-              width: 70,
-              decoration: BoxDecoration(
-                  color: kcwhite,
-                  shape: BoxShape.circle,
-                  boxShadow: [
-                    BoxShadow(
-                        color: Colors.transparent.withOpacity(.35),
-                        offset: const Offset(0, 4),
-                        spreadRadius: 0,
-                        blurRadius: 10),
-                  ]),
-              child: ClipRRect(
-                  borderRadius: BorderRadius.circular(32.5),
-                  child: Image.asset(path)),
-            ),
-            ksv6,
-            FoodText.ktsAnreg(
-              name,
-              color: Colors.black,
-              weight: FontWeight.w500,
-            )
-          ],
-        ));
   }
 }
 
@@ -378,7 +369,7 @@ class _FoodTileTabPageState extends State<FoodTileTabPage>
         child: Column(
           children: childSpacer([
             const SizedBox(
-              height: 10,
+              height: 15,
             ),
             ...List<FoodTile>.generate(
                 resturant.length,
@@ -395,6 +386,33 @@ class _FoodTileTabPageState extends State<FoodTileTabPage>
               height: 0,
             )
           ], 0),
+        ),
+      ),
+    );
+  }
+}
+
+class CarouselOfOffers extends StatelessWidget {
+  const CarouselOfOffers({
+    Key? key,
+    required this.image,
+  }) : super(key: key);
+
+  final List<String> image;
+
+  @override
+  Widget build(BuildContext context) {
+    return SizedBox(
+      height: 200,
+      child: CarouselSlider.builder(
+        itemCount: image.length,
+        options:
+            CarouselOptions(height: 200, autoPlay: true, viewportFraction: 1),
+        itemBuilder: (context, i, i2) => Padding(
+          padding: const EdgeInsets.all(20),
+          child: HomeServiceBanner(
+            image: image[i],
+          ),
         ),
       ),
     );

@@ -1,10 +1,9 @@
 import 'dart:async';
 
+import 'package:carousel_slider/carousel_slider.dart';
 import 'package:frontend/Helpers/mlib.dart';
-import 'package:frontend/repositary/dishes.dart';
 import 'package:frontend/repositary/resturantrepo.dart';
 
-import 'package:frontend/services/my_flutter_app_icons.dart';
 import 'package:frontend/ui/screens/details/details.dart';
 import 'package:frontend/ui/screens/homemasterhome/compo/yourrecentwidget.dart';
 import 'compo/header.dart';
@@ -30,105 +29,10 @@ class _HomeMasterHomeState extends State<HomeMasterHome>
     _tabcontroller = TabController(length: 4, vsync: this);
   }
 
-  Widget _buildcategories() {
-    return Padding(
-      padding: kpaddinghor20,
-      child: Column(
-        children: [
-          const SizedBox(height: 20),
-          SizedBox(
-            height: 95,
-            child: Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: const [
-                HomeSelctCategorytile(
-                  iconData: MyFlutterApp.zinga,
-                  image: 'Seafood',
-                ),
-                HomeSelctCategorytile(
-                  iconData: MyFlutterApp.pizaa,
-                  image: 'American',
-                ),
-                HomeSelctCategorytile(
-                  iconData: MyFlutterApp.burger,
-                  image: 'Burger',
-                ),
-                HomeSelctCategorytile(
-                  iconData: MyFlutterApp.desert,
-                  image: 'Dessert',
-                )
-              ],
-            ),
-          ),
-          ksv16,
-          const SizedBox(
-            height: 15,
-          ),
-          const Divider(
-            color: kcdivider,
-            thickness: 2,
-          ),
-        ],
-      ),
-    );
-  }
-
-  Widget _homeTop() {
-    return Container(
-      width: MediaQuery.of(context).size.width,
-      decoration: const BoxDecoration(),
-      child: Stack(
-        children: [
-          Container(
-            height: 403,
-            decoration: const BoxDecoration(
-              color: kcred,
-              borderRadius: BorderRadius.vertical(
-                bottom: Radius.circular(
-                  50,
-                ),
-              ),
-            ),
-          ),
-          Column(
-            children: const [
-              HomeHeader(),
-              SizedBox(
-                height: 20,
-              ),
-              HomeCarousel(),
-            ],
-          )
-        ],
-      ),
-    );
-  }
-
-  Widget _banners() {
-    List<String> image = [
-      "asset/images/home/banner.png",
-      'asset/images/home/homeoffers.png'
-    ];
-    return SizedBox(
-      height: 200,
-      child: Center(
-        child: SizedBox(
-          height: 200,
-          child: PageView.builder(
-            physics: const PageScrollPhysics(),
-            itemCount: image.length,
-            scrollDirection: Axis.horizontal,
-            itemBuilder: (context, i) => Padding(
-              padding: const EdgeInsets.all(20),
-              child: HomeServiceBanner(
-                image: image[i],
-              ),
-            ),
-          ),
-        ),
-      ),
-    );
-  }
+  List<String> image = [
+    "asset/images/home/banner.png",
+    'asset/images/home/homeoffers.png'
+  ];
 
   Widget _recentsearch() {
     return Padding(
@@ -162,25 +66,27 @@ class _HomeMasterHomeState extends State<HomeMasterHome>
   Widget build(BuildContext context) {
     Size size = MediaQuery.of(context).size;
     return Scaffold(
-      body: CustomScrollView(slivers: [
+      body: CustomScrollView(cacheExtent: 1000, slivers: [
         SliverSafeArea(
           sliver: SliverList(
               delegate: SliverChildListDelegate(
             [
-              _homeTop(),
-              _buildcategories(),
-              _banners(),
+              const HomeTop(),
+              const BuildCategories(),
+              CarouselOfOffers(image: image),
               _recentsearch(),
               ksv8,
               const HomeYourRecentVisiArea(),
-              ksv24,
             ],
           )),
         ),
         SliverAppBar(
-          toolbarHeight: 0,
+          // flexibleSpace: Placeholder(),
+
+          toolbarHeight: 0.0,
           backgroundColor: kcwhite,
           pinned: true,
+          floating: true,
           bottom: PreferredSize(
               child: SizedBox(
                 width: MediaQuery.of(context).size.width,
@@ -233,11 +139,16 @@ class _HomeMasterHomeState extends State<HomeMasterHome>
                 ),
               )
             : SliverList(
+                key: const ValueKey('value'),
                 delegate: SliverChildListDelegate(List.generate(
                         resturant.length,
                         (index) => GestureDetector(
                             onTap: () {
-                              RouteX.sliderRighToLeft(context, const Details());
+                              RouteX.sliderRighToLeft(
+                                  context,
+                                  Details(
+                                    image: resturant[index].image,
+                                  ));
                             },
                             child: FoodTile(
                                 image: resturant[index].image,
@@ -251,5 +162,102 @@ class _HomeMasterHomeState extends State<HomeMasterHome>
                     .toList()))
       ]),
     );
+  }
+}
+
+class CarouselOfOffers extends StatelessWidget {
+  const CarouselOfOffers({
+    Key? key,
+    required this.image,
+  }) : super(key: key);
+
+  final List<String> image;
+
+  @override
+  Widget build(BuildContext context) {
+    return SizedBox(
+      height: 200,
+      child: CarouselSlider.builder(
+        itemCount: image.length,
+        options:
+            CarouselOptions(height: 200, autoPlay: true, viewportFraction: 1),
+        itemBuilder: (context, i, i2) => Padding(
+          padding: const EdgeInsets.all(20),
+          child: HomeServiceBanner(
+            image: image[i],
+          ),
+        ),
+      ),
+    );
+  }
+}
+
+class BuildCategories extends StatelessWidget {
+  const BuildCategories({
+    Key? key,
+  }) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return Column(
+      children: [
+        SizedBox(
+          height: 145,
+          child: ListView.builder(
+            physics: const BouncingScrollPhysics(),
+            scrollDirection: Axis.horizontal,
+            itemCount: 28,
+            itemBuilder: (context, int index) => Padding(
+              padding: const EdgeInsets.only(top: 20, bottom: 15, left: 18),
+              child: HomeSelctCategorytile(
+                iconData: 'asset/images/categoried/${index + 1}.svg',
+                image: names[index],
+              ),
+            ),
+          ),
+        ),
+        const Divider(
+          color: kcdivider,
+          thickness: 2,
+        ),
+      ],
+    );
+  }
+}
+
+class HomeTop extends StatelessWidget {
+  const HomeTop({Key? key}) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      width: MediaQuery.of(context).size.width,
+      decoration: const BoxDecoration(),
+      child: Stack(
+        children: [
+          Container(
+            height: 403,
+            decoration: const BoxDecoration(
+              color: kcred,
+              borderRadius: BorderRadius.vertical(
+                bottom: Radius.circular(
+                  50,
+                ),
+              ),
+            ),
+          ),
+          Column(
+            children: const [
+              HomeHeader(),
+              SizedBox(
+                height: 20,
+              ),
+              HomeCarousel(),
+            ],
+          )
+        ],
+      ),
+    );
+    ;
   }
 }

@@ -1,9 +1,9 @@
-import 'dart:ffi';
-
 import 'package:frontend/Helpers/mlib.dart';
 import 'package:frontend/ui/screens/Addpromotioncode/addpromotioncode.dart';
+import 'package:frontend/ui/screens/Faqs/faqs.dart';
 import 'package:frontend/ui/screens/choosepayment/payment/payment.dart';
 import 'package:frontend/ui/screens/editprofileinformation/editprofileinformation.dart';
+import 'package:frontend/ui/screens/terms/terms.dart';
 
 class ProfileScreen extends StatelessWidget {
   const ProfileScreen({Key? key}) : super(key: key);
@@ -40,7 +40,7 @@ class ProfileScreen extends StatelessWidget {
                           color: kcwhite,
                         ),
                         FoodText(
-                          "743.862.856 | Avenue street",
+                          "2565820 | Avenue street",
                           color: kcwhite,
                           fonsize: 12,
                         )
@@ -55,7 +55,7 @@ class ProfileScreen extends StatelessWidget {
                 ),
               ),
             ),
-            ksv24,
+            ksv16,
             ProfielTiel(
               name: "My voucher",
               data: MyFlutterApp.tag,
@@ -63,7 +63,6 @@ class ProfileScreen extends StatelessWidget {
                 RouteX.sliderRighToLeft(context, const AddPromotionCode());
               },
             ),
-            ksv12,
             ProfielTiel(
               name: "Payment",
               data: MyFlutterApp.rect,
@@ -71,23 +70,26 @@ class ProfileScreen extends StatelessWidget {
                 RouteX.sliderRighToLeft(context, const Payment());
               },
             ),
-            ksv24,
+            ksv16,
             const Divider(
               color: kcdivider,
               thickness: 7,
               height: 1,
             ),
-            ksv24,
+            ksv16,
             ProfielTiel(
-              name: "User policy",
-              data: MyFlutterApp.user,
-              tap: () {},
+              name: "Faqs",
+              data: Icons.question_answer,
+              tap: () {
+                RouteX.sliderRighToLeft(context, const Faqs());
+              },
             ),
-            ksv12,
             ProfielTiel(
-              name: "Settings",
-              data: MyFlutterApp.settings,
-              tap: () {},
+              name: "Terms and condition",
+              data: Icons.padding,
+              tap: () {
+                RouteX.sliderRighToLeft(context, const TermsCondition());
+              },
             ),
             ksv24,
           ],
@@ -110,31 +112,35 @@ class ProfielTiel extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return GestureDetector(
-      onTap: tap,
-      child: SizedBox(
-        child: Padding(
-          padding: kpaddinghor17,
-          child: Row(
-            children: [
-              Icon(
-                data,
-                color: kcicon,
-              ),
-              ksh12,
-              FoodText.ktsAnreg(
-                name,
-                fonsize: 16,
-              ),
-              const Spacer(),
-              const RotatedBox(
-                  quarterTurns: 2,
-                  child: Icon(
-                    Icons.arrow_back_ios_new,
-                    size: 18,
-                    // color: kcicon,
-                  ))
-            ],
+    return SizedBox(
+      height: 40,
+      child: MaterialButton(
+        padding: const EdgeInsets.symmetric(vertical: 10),
+        onPressed: tap,
+        child: SizedBox(
+          child: Padding(
+            padding: kpaddinghor17,
+            child: Row(
+              children: [
+                Icon(
+                  data,
+                  color: kcicon,
+                ),
+                ksh12,
+                FoodText.ktsAnreg(
+                  name,
+                  fonsize: 16,
+                ),
+                const Spacer(),
+                const RotatedBox(
+                    quarterTurns: 2,
+                    child: Icon(
+                      Icons.arrow_back_ios_new,
+                      size: 18,
+                      // color: kcicon,
+                    ))
+              ],
+            ),
           ),
         ),
       ),

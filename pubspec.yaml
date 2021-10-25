@@ -27,13 +27,14 @@ environment:
 # the latest version available on pub.dev. To see which dependencies have newer
 # versions available, run `flutter pub outdated`.
 dependencies:
-  carousel_slider: ^3.0.0-nullsafety.1
+  carousel_slider: ^4.0.0
   cupertino_icons: ^1.0.2
   flutter:
     sdk: flutter
   flutter_calendar_carousel: ^2.0.3
   flutter_rating_bar: ^4.0.0
   flutter_svg: ^0.22.0
+  google_maps_flutter: ^2.0.10
   http: ^0.13.3
   intl: ^0.17.0
   like_button: ^2.0.3
@@ -41,6 +42,7 @@ dependencies:
   persistent_bottom_nav_bar: ^4.0.2
   pixel_perfect: ^1.1.0
   provider: ^5.0.0
+  rating_dialog: ^2.0.1
   stacked: ^2.2.3
   syncfusion_flutter_datepicker: ^19.2.60
   tutorial_coach_mark: ^1.1.1
@@ -73,6 +75,8 @@ flutter:
     - asset/images/payment/
     - asset/images/checkout/
     - asset/images/tablebooking/
+    - asset/images/categoried/
+    - asset/images/location/
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware.
   # For details regarding adding assets from package dependencies, see
@@ -86,8 +90,11 @@ flutter:
     - family: icons
       fonts:
         - asset: asset/fonts/icons.ttf
-    #       - asset: fonts/Schyler-Italic.ttf
-    #         style: italic
+
+    - family: theIcons
+      fonts:
+        - asset: asset/fonts/theicons.ttf
+
     - family: Avenir
       fonts:
         - asset: asset/fonts/Avenir.ttf
@@ -119,7 +126,5 @@ flutter:
         - asset: asset/fonts/Anreg.ttf
         - asset: asset/fonts/Ansemi.ttf
         - asset: asset/fonts/Anlight.ttf
-    
-               
   # For details regarding fonts from package dependencies,
   # see https://flutter.dev/custom-fonts/#from-packages

@@ -52,6 +52,7 @@ class _TimeGridState extends State<TimeGrid> {
               ),
               ksv18,
               GridView.builder(
+                physics: const NeverScrollableScrollPhysics(),
                 shrinkWrap: true,
                 gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
                     crossAxisCount: 3,

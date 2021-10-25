@@ -1,11 +1,54 @@
+import 'package:flutter_svg/flutter_svg.dart';
 import 'package:frontend/Helpers/mlib.dart';
+import 'package:google_maps_flutter/google_maps_flutter.dart';
 
-class LocationAddress extends StatelessWidget {
+var x0 = const LatLng(36.169814362090236, -115.13886921107769);
+var x1 = const LatLng(36.16926546409543, -115.13927288353443);
+var x2 = const LatLng(36.1692895528948, -115.13781309127806);
+var x3 = const LatLng(36.16869084930472, -115.13815138489008);
+var x4 = const LatLng(36.16902890627915, -115.13848900794983);
+var initialP = const LatLng(36.168956639618536, -115.13863518834114);
+
+class LocationAddress extends StatefulWidget {
   const LocationAddress({Key? key}) : super(key: key);
+
+  @override
+  State<LocationAddress> createState() => _LocationAddressState();
+}
+
+class _LocationAddressState extends State<LocationAddress> {
+  late GoogleMapController _controller;
+  late LatLng initial;
+  late PageController _pageController;
+
+  @override
+  void initState() {
+    _pageController = PageController();
+    initial = initialP;
+
+    super.initState();
+  }
+
+  @override
+  void dispose() {
+    _controller.dispose();
+    _pageController.dispose();
+
+    super.dispose();
+  }
+
+  List<LatLng> markers = [x0, x1, x2, x3, x4];
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      extendBody: true,
+      extendBodyBehindAppBar: true,
+      appBar: AppBar(
+          title: const Text(
+        'Find Adress',
+        style: TextStyle(fontFamily: 'Ansemi'),
+      )),
       body: Stack(
         alignment: Alignment.bottomCenter,
         children: [
@@ -16,39 +59,29 @@ class LocationAddress extends StatelessWidget {
                   height: MediaQuery.of(context).size.height,
                   width: MediaQuery.of(context).size.width,
                   child: Builder(builder: (context) {
-                    return GestureDetector(
-                      onTap: () {
-                        // Navigator.push(
-                        //     context,
-                        //     PageRouteBuilder(
-                        //         transitionDuration: const Duration(milliseconds: 500),
-                        //         reverseTransitionDuration:
-                        //             const Duration(milliseconds: 500),
-                        //         pageBuilder: (context, Animation<double> _ami1,
-                        //                 Animation<double> _anim2) =>
-                        //             SlideTransition(
-                        //               position: Tween<Offset>(
-                        //                       begin: const Offset(0, .5),
-                        //                       end: const Offset(0, 0))
-                        //                   .animate(CurvedAnimation(
-                        //                       parent: _ami1, curve: Curves.decelerate)),
-                        //               child: const LocationAdressDialouge(
-                        //                 totalitemcount: 1,
-                        //               ),
-                        //             ),
-                        //         opaque: false,
-                        //         barrierDismissible: true,
-                        //         barrierColor: Colors.black54));
-                      },
-                      child: SizedBox(
-                        height: MediaQuery.of(context).size.height,
-                        width: MediaQuery.of(context).size.width,
-                        child: Image.asset(
-                          "asset/images/home/bitmap.png",
-                          fit: BoxFit.fill,
-                        ),
-                      ),
-                    );
+                    return GoogleMap(
+                        onMapCreated: (GoogleMapController controller) {
+                          _controller = controller;
+                        },
+                        onTap: (LatLng x) {},
+                        markers: {
+                          ...List<Marker>.generate(
+                              markers.length,
+                              (index) => Marker(
+                                  onTap: () {
+                                    print(index);
+                                    _pageController.animateToPage(index,
+                                        duration:
+                                            const Duration(milliseconds: 500),
+                                        curve: Curves.decelerate);
+                                  },
+                                  markerId: MarkerId(index.toString()),
+                                  position: markers[index])).toList()
+                        },
+                        initialCameraPosition: CameraPosition(
+                          zoom: 18,
+                          target: initial,
+                        ));
                   }),
                 ),
               ],
@@ -75,9 +108,12 @@ class LocationAddress extends StatelessWidget {
                           hint: "Search location",
                           hintstyle: const TextStyle(
                               color: kcgrey5, fontFamily: "Anreg"),
-                          prefix: const Icon(
-                            MyFlutterApp.search,
-                            color: kcgrey5,
+                          prefix: Padding(
+                            padding: const EdgeInsets.all(10.0),
+                            child: SvgPicture.asset(
+                              'asset/images/payments/2.svg',
+                              color: kcgrey5,
+                            ),
                           ),
                           filledColor: kcgrey3),
                       ksv20,
@@ -91,7 +127,11 @@ class LocationAddress extends StatelessWidget {
                           ),
                           filledColor: kcgrey3),
                       ksv20,
-                      MasterButton(name: "Confirm", onTap: () {})
+                      MasterButton(
+                          name: "Confirm",
+                          onTap: () {
+                            Navigator.pop(context);
+                          })
                     ],
                   ),
                 ),
@@ -155,7 +195,11 @@ class _LocationAdressDialougeState extends State<LocationAdressDialouge> {
                       ),
                       filledColor: kcgrey3),
                   ksv20,
-                  MasterButton(name: "Confirm", onTap: () {})
+                  MasterButton(
+                      name: "Confirm",
+                      onTap: () {
+                        Navigator.pop(context);
+                      })
                 ],
               ),
             ),
@@ -165,12 +209,3 @@ class _LocationAdressDialougeState extends State<LocationAdressDialouge> {
     );
   }
 }
-
-
-
-
-//  Column(
-//                         children: [
-//                          
-//                         ],
-//                       ),

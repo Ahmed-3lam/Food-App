@@ -11,6 +11,7 @@ class DetailsInfoPage extends StatelessWidget {
       child: Padding(
         padding: kpadding,
         child: Column(
+          mainAxisSize: MainAxisSize.min,
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             const SizedBox(height: 24),

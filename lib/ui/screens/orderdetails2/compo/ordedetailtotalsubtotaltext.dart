@@ -1,3 +1,4 @@
+import 'package:flutter/cupertino.dart';
 import 'package:frontend/Helpers/mlib.dart';
 
 class OrdeDetailsTotalSubtotal extends StatelessWidget {
@@ -18,7 +19,9 @@ class OrdeDetailsTotalSubtotal extends StatelessWidget {
               children: const [
                 FoodText("Subtotal (1 item)"),
                 Spacer(),
-                FoodText("\$150")
+                FoodText(
+                  "\$150",
+                )
               ],
             ),
             ksv10,
@@ -43,10 +46,12 @@ class OrdeDetailsTotalSubtotal extends StatelessWidget {
                 FoodText.ktsAnsemi(
                   "Total",
                   fonsize: 22,
+                  weight: FontWeight.w600,
                 ),
                 Spacer(),
                 FoodText(
                   "\$150",
+                  weight: FontWeight.w600,
                   color: kcred,
                   fonsize: 22,
                 )

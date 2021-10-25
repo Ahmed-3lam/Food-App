@@ -74,10 +74,10 @@ class _DetailsDeliveryAddToCartDialougeState
                       ),
                       DetailsSearchResultTile(
                         count: widget.totalitemcount,
-                        i: (int i) {
+                        increment: (int i) {
                           count = i;
                         },
-                        d: (int i) {
+                        decrement: (int i) {
                           count = i;
                         },
                         image: dishes[0].image,

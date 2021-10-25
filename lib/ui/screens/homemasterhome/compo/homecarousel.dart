@@ -1,5 +1,8 @@
+import 'package:carousel_slider/carousel_slider.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:frontend/Helpers/mlib.dart';
+import 'package:frontend/repositary/dishes.dart';
 import 'package:frontend/ui/screens/details/details.dart';
 
 import 'carouselwidget.dart';
@@ -29,23 +32,41 @@ class _HomeCarouselState extends State<HomeCarousel> {
   }
 
   @override
+  void didChangeDependencies() {
+    super.didChangeDependencies();
+  }
+
+  @override
   Widget build(BuildContext context) {
     return Column(
       children: [
         SizedBox(
+          width: MediaQuery.of(context).size.width,
           height: 350 * .85,
-          child: PageView.builder(
-            onPageChanged: (indexer) {
-              curentIndex = indexer;
-              setState(() {});
-            },
-            itemCount: 3,
-            controller: carouselController,
-            itemBuilder: (context, int index) => GestureDetector(
+          child: CarouselSlider.builder(
+            itemCount: dishes.length,
+            options: CarouselOptions(
+                viewportFraction: .90,
+                height: 350 * .85,
+                pageViewKey: const PageStorageKey('The page storage key'),
+                autoPlay: true,
+                onPageChanged: (index, reason) {
+                  curentIndex = index;
+                  setState(() {});
+                }),
+            itemBuilder: (context, int index, i) => GestureDetector(
                 onTap: () {
-                  RouteX.sliderRighToLeft(context, const Details());
+                  RouteX.sliderRighToLeft(
+                      context,
+                      Details(
+                        image: dishes[index].image,
+                      ));
                 },
-                child: HomeCarouselItem(pageChanged: index == curentIndex)),
+                child: HomeCarouselItem(
+                  key: ValueKey(dishes[index].image),
+                  pageChanged: index == curentIndex,
+                  image: dishes[index].image,
+                )),
           ),
         ),
         Indicator(carouselIndex: curentIndex),

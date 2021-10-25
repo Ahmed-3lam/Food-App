@@ -1,4 +1,6 @@
-class DishModel {
+import 'package:flutter/material.dart';
+
+class DishModel extends ChangeNotifier {
   DishModel({
     required this.resturantName,
     required this.name,

@@ -90,7 +90,8 @@ class DesertPage extends StatelessWidget {
               itemBuilder: (BuildContext context, int index) {
                 return GestureDetector(
                     onTap: () {
-                      RouteX.sliderRighToLeft(context, const Details());
+                      RouteX.sliderRighToLeft(
+                          context, Details(image: resturant[index].image));
                     },
                     child: FoodTile(
                         image: resturant[index].image,

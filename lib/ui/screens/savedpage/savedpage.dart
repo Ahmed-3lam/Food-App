@@ -20,11 +20,11 @@ class SavedPage extends StatelessWidget {
                 Padding(
                   padding: kpadding,
                   child: const FoodText.ktsAnreg(
-                    "Latest",
+                    "Recent",
                     fonsize: 22,
                   ),
                 ),
-                ksv10,
+                ksv16,
                 ...List<FoodTile>.generate(
                     3,
                     (index) => FoodTile(

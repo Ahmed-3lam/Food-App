@@ -1,4 +1,5 @@
 import 'package:frontend/Helpers/mlib.dart';
+import 'package:frontend/ui/screens/Dialogs/commondialog.dart';
 
 class AddPromotionCode extends StatelessWidget {
   const AddPromotionCode({Key? key}) : super(key: key);
@@ -24,7 +25,26 @@ class AddPromotionCode extends StatelessWidget {
             ),
             ksv18,
             PromotionToggelButton(
-              tap: () {},
+              tap: () {
+                showDialog(
+                    context: context,
+                    builder: (context) => Dialog(
+                          backgroundColor: kcTransparent,
+                          child: CommonDialog(
+                              tittle: 'Applied Successfully',
+                              subTittle:
+                                  'Your code is validated successfully now you can avail to benefits of the offer ',
+                              buttonText: 'Submit',
+                              dialogThemeColor: const Color(0xff22A45D),
+                              avatarChild: const Icon(
+                                Icons.done_all,
+                                color: Colors.white,
+                              ),
+                              onTap: () {
+                                Navigator.pop(context);
+                              }),
+                        ));
+              },
             ),
             ksv30,
             const FoodText.ktsAnreg(

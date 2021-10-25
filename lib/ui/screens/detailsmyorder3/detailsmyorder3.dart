@@ -1,4 +1,6 @@
 import 'package:frontend/Helpers/mlib.dart';
+import 'package:frontend/ui/screens/driverreviewdialouge/driverreviewdialouge.dart';
+import 'package:frontend/ui/screens/hometabbar/hometabar.dart';
 
 class Detailsmyorder3 extends StatefulWidget {
   const Detailsmyorder3({
@@ -48,14 +50,27 @@ class _Detailsmyorder3State extends State<Detailsmyorder3> {
                     fonsize: 16,
                   ),
                   const Spacer(),
-                  MasterButton(name: "Rate us", onTap: () {}),
+                  MasterButton(
+                      name: "Rate us",
+                      onTap: () {
+                        showDialog(
+                            context: context,
+                            builder: (context) => Dialog(
+                                  insetPadding: const EdgeInsets.symmetric(
+                                      horizontal: 10),
+                                  backgroundColor: kcTransparent,
+                                  child: DriverReviewDialogue(),
+                                ));
+                      }),
 
                   ///
                   const SizedBox(
                     height: 10,
                   ),
                   TextButton(
-                      onPressed: () {},
+                      onPressed: () {
+                        RouteX.sliderRighToLeft(context, const MainHome());
+                      },
                       child: const FoodText("Maybe next time")),
                   ksv12,
                 ],

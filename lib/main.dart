@@ -2,6 +2,7 @@ import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/painting.dart';
 import 'package:flutter/services.dart';
+import 'package:frontend/ui/screens/Dialogs/commondialog.dart';
 import 'package:frontend/ui/screens/intro/intro.dart';
 
 import 'Helpers/mlib.dart';
@@ -39,7 +40,6 @@ class MyBooking extends StatelessWidget {
     return Scaffold(
         body: SafeArea(
             child: Column(children: [
-      ksv12,
       Padding(
         padding: const EdgeInsets.all(8.0),
         child: MyBookingTiel(
@@ -216,6 +216,7 @@ class MyBookingTiel extends StatelessWidget {
                       ksv12,
                     ],
                   ),
+                  ksv12,
                   Row(
                     children: [
                       const Spacer(),
@@ -233,7 +234,7 @@ class MyBookingTiel extends StatelessWidget {
                                   buttonColor: kcpurpel),
                             ),
                       const SizedBox(
-                        width: 4,
+                        width: 10,
                       ),
                       SizedBox(
                         child: MasterButton(
@@ -241,7 +242,26 @@ class MyBookingTiel extends StatelessWidget {
                           textcolor: kcred,
                           isOutlined: true,
                           name: "Cancel",
-                          onTap: () {},
+                          onTap: () {
+                            showDialog(
+                                context: context,
+                                builder: (context) => Dialog(
+                                      backgroundColor: kcTransparent,
+                                      child: CommonDialog(
+                                          tittle: 'Are you sure ?',
+                                          subTittle:
+                                              'On tap cancel your order will be cancelled and it will not reflect in mybooking',
+                                          buttonText: 'Cancel',
+                                          dialogThemeColor: kcred,
+                                          avatarChild: const Icon(
+                                            Icons.close,
+                                            color: kcwhite,
+                                          ),
+                                          onTap: () {
+                                            Navigator.pop(context);
+                                          }),
+                                    ));
+                          },
                           height: 30,
                         ),
                       ),

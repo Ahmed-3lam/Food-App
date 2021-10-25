@@ -1,4 +1,5 @@
 import 'package:flutter/cupertino.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 import 'package:frontend/Helpers/mlib.dart';
 import 'package:frontend/ui/screens/locationadress/locationadress.dart';
 import 'package:frontend/ui/widgets/appbar.dart';
@@ -24,7 +25,7 @@ class _LocationChooseCityState extends State<LocationChooseCity> {
           child: Padding(
             padding: kpaddinghor20,
             child: MasterButton(
-                name: "Confirm",
+                name: "Search",
                 onTap: () {
                   RouteX.sliderRighToLeft(context, const LocationAddress());
                 }),
@@ -45,9 +46,12 @@ class _LocationChooseCityState extends State<LocationChooseCity> {
                   filledColor: kcgrey3,
                   hint: "Search",
                   hintstyle: const TextStyle(color: kcgrey5),
-                  prefix: const Icon(
-                    MyFlutterApp.search,
-                    color: kcgrey5,
+                  prefix: Container(
+                    padding: const EdgeInsets.all(13),
+                    child: SvgPicture.asset(
+                      'asset/images/payments/2.svg',
+                      color: kcblack,
+                    ),
                   ),
                 ),
               ),

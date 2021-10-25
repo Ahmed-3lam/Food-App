@@ -11,10 +11,18 @@ class MessageScreen extends StatefulWidget {
 class _MessageScreenState extends State<MessageScreen> {
   late ScrollController controller;
   late TextEditingController textEditingController;
+  late FocusNode _node;
   @override
   void initState() {
-    controller = ScrollController()..addListener(() {});
-
+    controller = ScrollController();
+    _node = FocusNode()
+      ..addListener(() {
+        if (_node.hasFocus) {
+          controller.animateTo(controller.position.maxScrollExtent,
+              duration: const Duration(milliseconds: 500),
+              curve: Curves.decelerate);
+        }
+      });
     super.initState();
   }
 
@@ -89,6 +97,7 @@ class _MessageScreenState extends State<MessageScreen> {
                   ksh18,
                   Expanded(
                       child: TextField(
+                    focusNode: _node,
                     onTap: () {
                       controller.animateTo(controller.position.maxScrollExtent,
                           duration: const Duration(milliseconds: 500),
@@ -104,7 +113,9 @@ class _MessageScreenState extends State<MessageScreen> {
                       width: 40,
                       child: MaterialButton(
                         padding: EdgeInsets.zero,
-                        onPressed: () {},
+                        onPressed: () {
+                          FocusScope.of(context).requestFocus(FocusNode());
+                        },
                         child: const FoodText.ktsAnsemi(
                           "Send",
                           color: kcred,

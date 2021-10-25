@@ -3,7 +3,6 @@ import 'package:frontend/ui/screens/NewTable/confirmpopup/confirmpopup.dart';
 import 'package:frontend/ui/screens/NewTable/tablereservaion/tablecomponents/timegrid.dart';
 import 'package:intl/intl.dart';
 
-import '../../../../main.dart';
 import 'tablecomponents/guestcount.dart';
 
 class DayAndNumber {
@@ -64,168 +63,172 @@ class _ReserveTableState extends State<ReserveTable>
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: comanAppBar(context, 'Reserve Table'),
-      body: SizedBox(
-          height: MediaQuery.of(context).size.height,
-          width: MediaQuery.of(context).size.width,
-          child: Stack(
-            children: [
-              Column(
-                mainAxisSize: MainAxisSize.min,
-                children: [
-                  ksv30,
-                  SizedBox(
-                    height: 47,
-                    width: 55,
-                    child: Image.asset(
-                      'asset/images/tablebooking/dinner_table.png',
+      body: SingleChildScrollView(
+        child: SizedBox(
+            height: MediaQuery.of(context).size.height -
+                (kToolbarHeight + MediaQuery.of(context).padding.top - 10),
+            width: MediaQuery.of(context).size.width,
+            child: Stack(
+              children: [
+                Column(
+                  mainAxisSize: MainAxisSize.min,
+                  children: [
+                    ksv30,
+                    SizedBox(
                       height: 47,
-                    ),
-                  ),
-                  ksv30,
-                  SizedBox(
-                    height: 64,
-                    child: Stack(
-                      alignment: Alignment.bottomCenter,
-                      children: [
-                        const Padding(
-                          padding: EdgeInsets.only(bottom: .75),
-                          child: Divider(
-                            thickness: 1,
-                            height: 1,
-                            color: kcgrey3,
-                          ),
-                        ),
-                        TabBar(
-                            onTap: (int index) {
-                              selectedIndex = index;
-                              setState(() {});
-                            },
-                            indicatorWeight: 2.5,
-                            indicatorSize: TabBarIndicatorSize.label,
-                            labelColor: kcred,
-                            unselectedLabelColor: kcNestedTabcolor,
-                            unselectedLabelStyle: ktsAnreg.copyWith(
-                                color: kcred,
-                                fontSize: 14,
-                                fontWeight: FontWeight.w600,
-                                fontFamily: 'Master'),
-                            labelStyle: ktsAnreg.copyWith(
-                                color: kcred,
-                                fontSize: 14,
-                                fontWeight: FontWeight.w600,
-                                fontFamily: 'Master'),
-                            isScrollable: true,
-                            controller: _controller,
-                            tabs: _formatedDays
-                                .map((e) => Tab(
-                                      iconMargin:
-                                          const EdgeInsets.only(bottom: 8),
-                                      text: selectedIndex == e.index
-                                          ? e.day
-                                          : e.dayWithMonth.toUpperCase(),
-                                      icon: TabIcon(
-                                        isSelcted: e.index == selectedIndex,
-                                      ),
-                                    ))
-                                .toList()),
-                      ],
-                    ),
-                  ),
-                  Expanded(
-                    child: SizedBox(
-                      child: NestedTab(
-                        tap: () {
-                          setState(() {});
-                        },
-                        tabTIme: (String tabtime) {},
-                        indexer: (int guestCount) {
-                          guest = guestCount;
-                        },
-                        stringify: (String t) {
-                          time = t;
-                        },
+                      width: 55,
+                      child: Image.asset(
+                        'asset/images/tablebooking/dinner_table.png',
+                        height: 47,
                       ),
                     ),
-                  )
-                ],
-              ),
-              Container(
-                  alignment: Alignment.center,
-                  padding: const EdgeInsets.symmetric(horizontal: 24),
-                  height: 85,
-                  decoration: const BoxDecoration(
-                    color: kcred,
-                    borderRadius: BorderRadius.vertical(
-                      top: Radius.circular(20),
-                    ),
-                  ),
-                  child: Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      children: [
-                        Column(
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          mainAxisSize: MainAxisSize.min,
-                          children: [
-                            Text(
-                              '$guest guest',
-                              style: nestedBaseStyle.copyWith(
-                                  color: kcwhite, fontSize: 12),
-                            ),
-                            Text(
-                              time == ''
-                                  ? "_ _ _"
-                                  : '${_formatedDays[selectedIndex].dayWithMonth},${time.toUpperCase()}',
-                              style: nestedBaseStyle.copyWith(
-                                color: kcwhite,
-                              ),
-                            )
-                          ],
-                        ),
-                        GestureDetector(
-                          onTap: () {
-                            Navigator.push(
-                                context,
-                                PageRouteBuilder(
-                                    maintainState: false,
-                                    transitionDuration:
-                                        const Duration(milliseconds: 500),
-                                    reverseTransitionDuration:
-                                        const Duration(milliseconds: 500),
-                                    pageBuilder: (context,
-                                            Animation<double> _ami1,
-                                            Animation<double> _anim2) =>
-                                        SlideTransition(
-                                          position: Tween<Offset>(
-                                                  begin: const Offset(0, .5),
-                                                  end: const Offset(0, 0))
-                                              .animate(CurvedAnimation(
-                                                  parent: _ami1,
-                                                  curve: Curves.decelerate)),
-                                          child: const ConfirmPopUp(),
-                                        ),
-                                    opaque: false,
-                                    barrierDismissible: true,
-                                    barrierColor: Colors.black54));
-                          },
-                          child: Container(
-                            padding: const EdgeInsets.symmetric(horizontal: 35),
-                            height: 48,
-                            decoration: BoxDecoration(
-                              borderRadius: BorderRadius.circular(24),
-                              color: kcwhite,
-                            ),
-                            child: const Center(
-                              child: Text(
-                                'RESERVE',
-                                style: nestedBaseStyle,
-                              ),
+                    ksv30,
+                    SizedBox(
+                      height: 64,
+                      child: Stack(
+                        alignment: Alignment.bottomCenter,
+                        children: [
+                          const Padding(
+                            padding: EdgeInsets.only(bottom: .75),
+                            child: Divider(
+                              thickness: 1,
+                              height: 1,
+                              color: kcgrey3,
                             ),
                           ),
-                        )
-                      ]))
-            ],
-            alignment: Alignment.bottomCenter,
-          )),
+                          TabBar(
+                              onTap: (int index) {
+                                selectedIndex = index;
+                                setState(() {});
+                              },
+                              indicatorWeight: 2.5,
+                              indicatorSize: TabBarIndicatorSize.label,
+                              labelColor: kcred,
+                              unselectedLabelColor: kcNestedTabcolor,
+                              unselectedLabelStyle: ktsAnreg.copyWith(
+                                  color: kcred,
+                                  fontSize: 14,
+                                  fontWeight: FontWeight.w600,
+                                  fontFamily: 'Master'),
+                              labelStyle: ktsAnreg.copyWith(
+                                  color: kcred,
+                                  fontSize: 14,
+                                  fontWeight: FontWeight.w600,
+                                  fontFamily: 'Master'),
+                              isScrollable: true,
+                              controller: _controller,
+                              tabs: _formatedDays
+                                  .map((e) => Tab(
+                                        iconMargin:
+                                            const EdgeInsets.only(bottom: 8),
+                                        text: selectedIndex == e.index
+                                            ? e.day
+                                            : e.dayWithMonth.toUpperCase(),
+                                        icon: TabIcon(
+                                          isSelcted: e.index == selectedIndex,
+                                        ),
+                                      ))
+                                  .toList()),
+                        ],
+                      ),
+                    ),
+                    Expanded(
+                      child: SizedBox(
+                        child: NestedTab(
+                          tap: () {
+                            setState(() {});
+                          },
+                          tabTIme: (String tabtime) {},
+                          indexer: (int guestCount) {
+                            guest = guestCount;
+                          },
+                          stringify: (String t) {
+                            time = t;
+                          },
+                        ),
+                      ),
+                    )
+                  ],
+                ),
+                Container(
+                    alignment: Alignment.center,
+                    padding: const EdgeInsets.symmetric(horizontal: 24),
+                    height: 85,
+                    decoration: const BoxDecoration(
+                      color: kcred,
+                      borderRadius: BorderRadius.vertical(
+                        top: Radius.circular(20),
+                      ),
+                    ),
+                    child: Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        children: [
+                          Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            mainAxisSize: MainAxisSize.min,
+                            children: [
+                              Text(
+                                '$guest guest',
+                                style: nestedBaseStyle.copyWith(
+                                    color: kcwhite, fontSize: 12),
+                              ),
+                              Text(
+                                time == ''
+                                    ? "_ _ _"
+                                    : '${_formatedDays[selectedIndex].dayWithMonth},${time.toUpperCase()}',
+                                style: nestedBaseStyle.copyWith(
+                                  color: kcwhite,
+                                ),
+                              )
+                            ],
+                          ),
+                          GestureDetector(
+                            onTap: () {
+                              Navigator.push(
+                                  context,
+                                  PageRouteBuilder(
+                                      maintainState: false,
+                                      transitionDuration:
+                                          const Duration(milliseconds: 500),
+                                      reverseTransitionDuration:
+                                          const Duration(milliseconds: 500),
+                                      pageBuilder: (context,
+                                              Animation<double> _ami1,
+                                              Animation<double> _anim2) =>
+                                          SlideTransition(
+                                            position: Tween<Offset>(
+                                                    begin: const Offset(0, .5),
+                                                    end: const Offset(0, 0))
+                                                .animate(CurvedAnimation(
+                                                    parent: _ami1,
+                                                    curve: Curves.decelerate)),
+                                            child: const ConfirmPopUp(),
+                                          ),
+                                      opaque: false,
+                                      barrierDismissible: true,
+                                      barrierColor: Colors.black54));
+                            },
+                            child: Container(
+                              padding:
+                                  const EdgeInsets.symmetric(horizontal: 35),
+                              height: 48,
+                              decoration: BoxDecoration(
+                                borderRadius: BorderRadius.circular(24),
+                                color: kcwhite,
+                              ),
+                              child: const Center(
+                                child: Text(
+                                  'RESERVE',
+                                  style: nestedBaseStyle,
+                                ),
+                              ),
+                            ),
+                          )
+                        ]))
+              ],
+              alignment: Alignment.bottomCenter,
+            )),
+      ),
     );
   }
 }
@@ -265,6 +268,22 @@ class _NestedTabState extends State<NestedTab>
     '10:00 am',
     '10:30 am',
     '11:00 am'
+  ];
+  List<String> noon = <String>[
+    '11:00 am',
+    '12:00 pm',
+    '01:00 pm',
+    '02:00 pm',
+    '03:00 pm',
+    '04:00 pm'
+  ];
+  List<String> evening = <String>[
+    '05:00 am',
+    '06:00 pm',
+    '07:00 pm',
+    '08:00 pm',
+    '09:00 pm',
+    '9:30 pm'
   ];
   int selectedtime = 0;
 
@@ -320,8 +339,8 @@ class _NestedTabState extends State<NestedTab>
             times: times,
             stringify: widget.stringify,
           ),
-          TimeGrid(tap: widget.tap, times: times, stringify: widget.stringify),
-          TimeGrid(tap: widget.tap, times: times, stringify: widget.stringify)
+          TimeGrid(tap: widget.tap, times: noon, stringify: widget.stringify),
+          TimeGrid(tap: widget.tap, times: evening, stringify: widget.stringify)
         ])),
         Expanded(
             child: Column(

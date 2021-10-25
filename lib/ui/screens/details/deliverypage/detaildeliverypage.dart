@@ -3,6 +3,8 @@ import 'package:frontend/repositary/dishes.dart';
 import 'package:frontend/ui/screens/NewTable/tablereservaion/tablereservaion.dart';
 import 'package:frontend/ui/screens/details/deliverypage/compo/detaildeliveryoffertile.dart';
 import 'package:frontend/ui/screens/details/deliverypage/compo/detailsdeliverysearchresulttile.dart';
+import 'package:frontend/ui/screens/details/detailmodel.dart';
+import 'package:provider/provider.dart';
 
 class DetailsDeliveyPage extends StatefulWidget {
   const DetailsDeliveyPage({
@@ -18,97 +20,114 @@ class _DetailsDeliveyPageState extends State<DetailsDeliveyPage> {
   bool dowehaveorders = true;
   @override
   Widget build(BuildContext context) {
-    return SizedBox(
-      child: Padding(
-        padding: kpaddinghor20,
-        child: SingleChildScrollView(
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              ksv30,
-              MasterButton(
-                textcolor: kcred,
-                name: "Book a Table",
-                onTap: () {
-                  RouteX.sliderRighToLeft(context, const ReserveTable());
-                },
-                isOutlined: true,
-              ),
-              const SizedBox(
-                height: 20,
-              ),
-              const DetailDeliveryOfferTile(
-                  color: kclightpurpel,
-                  data: MyFlutterApp.fastfood,
-                  offerdata: "Use code \"FREESHIP\" to get free delivery"),
-              const DetailDeliveryOfferTile(
-                  color: kcpurpel,
-                  data: MyFlutterApp.tag,
-                  offerdata: "Use code \"FREESHIP\" to get free delivery"),
-              const Divider(
-                color: kcdivider,
-                height: 3,
-                thickness: 2,
-              ),
-              Padding(
-                padding: const EdgeInsets.symmetric(vertical: 15),
-                child: SizedBox(
-                  child: Row(
-                    children: [
-                      const Icon(
-                        MyFlutterApp.cart,
-                        color: kcicon,
-                      ),
-                      const SizedBox(
-                        width: 18,
-                      ),
-                      Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: const [
-                          Text("Your last order - 1 item"),
-                          Text(
-                            "BBQ pork ribs",
-                            style: TextStyle(color: kctxtcolor, fontSize: 12),
+    return Stack(
+      children: [
+        SizedBox(
+          child: Padding(
+            padding: kpaddinghor20,
+            child: SingleChildScrollView(
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  ksv30,
+                  MasterButton(
+                    textcolor: kcred,
+                    name: "Book a Table",
+                    onTap: () {
+                      RouteX.sliderRighToLeft(context, const ReserveTable());
+                    },
+                    isOutlined: true,
+                  ),
+                  const SizedBox(
+                    height: 20,
+                  ),
+                  const DetailDeliveryOfferTile(
+                      color: kclightpurpel,
+                      data: MyFlutterApp.fastfood,
+                      offerdata: "Use code \"FREESHIP\" to get free delivery"),
+                  const DetailDeliveryOfferTile(
+                      color: kcpurpel,
+                      data: MyFlutterApp.tag,
+                      offerdata: "Use code \"FREESHIP\" to get free delivery"),
+                  const Divider(
+                    color: kcdivider,
+                    height: 3,
+                    thickness: 2,
+                  ),
+                  Padding(
+                    padding: const EdgeInsets.symmetric(vertical: 15),
+                    child: SizedBox(
+                      child: Row(
+                        children: [
+                          const Icon(
+                            MyFlutterApp.cart,
+                            color: kcicon,
                           ),
+                          const SizedBox(
+                            width: 18,
+                          ),
+                          Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: const [
+                              Text("Your last order - 1 item"),
+                              Text(
+                                "BBQ pork ribs",
+                                style:
+                                    TextStyle(color: kctxtcolor, fontSize: 12),
+                              ),
+                            ],
+                          ),
+                          const Spacer(),
+                          DropDownBox(
+                              option: '',
+                              width: 120,
+                              item: items,
+                              value: (value) {})
                         ],
                       ),
-                      const Spacer(),
-                      DropDownBox(
-                          option: '',
-                          width: 120,
-                          item: items,
-                          value: (value) {})
-                    ],
+                    ),
                   ),
-                ),
+                  const Divider(
+                    color: kcdivider,
+                    height: 3,
+                    thickness: 2,
+                  ),
+                  const SizedBox(height: 13),
+                  const Text(
+                    "Dishes And Menu",
+                    style: TextStyle(fontSize: 22),
+                  ),
+                  const SizedBox(height: 25),
+                  ...List.generate(
+                      dishes.length,
+                      (index) => Consumer<DetailsModel>(
+                            builder:
+                                (BuildContext context, model, Widget? child) =>
+                                    DetailsSearchResultTile(
+                              count: index,
+                              decrement: (int y) {
+                                model.removeProduct(
+                                  dishes[index],
+                                );
+                              },
+                              increment: (int x) {
+                                model.addProduct(
+                                  dishes[index],
+                                );
+                              },
+                              image: dishes[index].image,
+                              name: dishes[index].name,
+                            ),
+                          )).toList(),
+                  const SizedBox(
+                    height: 50,
+                  )
+                ],
               ),
-              const Divider(
-                color: kcdivider,
-                height: 3,
-                thickness: 2,
-              ),
-              const SizedBox(height: 13),
-              const Text(
-                "Photos & Video",
-                style: TextStyle(fontSize: 22),
-              ),
-              const SizedBox(height: 25),
-              ...List.generate(
-                  dishes.length,
-                  (index) => DetailsSearchResultTile(
-                        count: index,
-                        d: (int y) {},
-                        i: (int x) {},
-                        image: dishes[index].image,
-                        name: dishes[index].name,
-                      )).toList(),
-              const SizedBox(
-                height: 50,
-              )
-            ],
+            ),
           ),
         ),
-      ),
+      ],
     );
   }
 }
@@ -155,7 +174,7 @@ class _DropDownBoxState extends State<DropDownBox> {
           child: DropdownButton<String>(
             isExpanded: true,
             value: dropdownValue,
-            icon: Padding(
+            icon: const Padding(
                 padding: EdgeInsets.zero, child: Icon(Icons.arrow_drop_down)),
             iconSize: 30,
             elevation: 16,

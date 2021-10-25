@@ -31,7 +31,7 @@ class DialouGeTextFiel extends StatelessWidget {
         cursorColor: Colors.black,
         maxLines: maxLines,
         decoration: InputDecoration(
-            hintStyle: ktsAnsemi.copyWith(fontSize: 10),
+            hintStyle: ktsAnsemi.copyWith(fontSize: 11),
             fillColor: filledColor,
             filled: true,
             label: Text(hint),

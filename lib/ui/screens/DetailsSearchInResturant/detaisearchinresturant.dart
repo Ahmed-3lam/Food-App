@@ -1,4 +1,5 @@
 import 'package:frontend/Helpers/mlib.dart';
+import 'package:frontend/repositary/dishes.dart';
 import 'package:frontend/ui/screens/details/details.dart';
 
 import 'compo/detailsearchiresturanttile.dart';
@@ -56,13 +57,17 @@ class _DetailSearchInResturantState extends State<DetailSearchInResturant> {
             ListView.builder(
               shrinkWrap: true,
               physics: const ClampingScrollPhysics(),
-              itemCount: 10,
+              itemCount: dishes.length,
               itemBuilder: (BuildContext context, int index) {
                 return Padding(
                   padding: kpaddinghor20,
                   child: GestureDetector(
                     onTap: () {
-                      RouteX.sliderBottomToTop(context, const Details());
+                      RouteX.sliderBottomToTop(
+                          context,
+                          Details(
+                            image: dishes[index].image,
+                          ));
                     },
                     child: DetailsSearchResultTile(
                         count: 2, onIncrase: () {}, onDecrase: () {}),

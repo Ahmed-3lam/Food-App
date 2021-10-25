@@ -14,17 +14,22 @@ class HomeYourRecentVisiArea extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return GestureDetector(
-      onTap: () {
-        RouteX.sliderRighToLeft(context, const Details());
-      },
-      child: SizedBox(
-        height: 200,
-        child: ListView.builder(
-          scrollDirection: Axis.horizontal,
-          itemCount: dishes.length,
-          itemBuilder: (BuildContext context, int index) {
-            return Padding(
+    return SizedBox(
+      height: 200,
+      child: ListView.builder(
+        physics: const BouncingScrollPhysics(),
+        scrollDirection: Axis.horizontal,
+        itemCount: dishes.length,
+        itemBuilder: (BuildContext context, int index) {
+          return GestureDetector(
+            onTap: () {
+              RouteX.sliderRighToLeft(
+                  context,
+                  Details(
+                    image: dishes[index].image,
+                  ));
+            },
+            child: Padding(
               padding: index == dishes.length
                   ? const EdgeInsets.only(left: 0, right: 20)
                   : index == 0
@@ -95,9 +100,9 @@ class HomeYourRecentVisiArea extends StatelessWidget {
                   ],
                 ),
               ),
-            );
-          },
-        ),
+            ),
+          );
+        },
       ),
     );
   }

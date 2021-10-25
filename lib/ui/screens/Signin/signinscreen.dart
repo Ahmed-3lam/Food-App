@@ -3,9 +3,15 @@ import 'package:frontend/ui/screens/ForgotPassword/forgetpassword.dart';
 import 'package:frontend/ui/screens/hometabbar/hometabar.dart';
 import 'package:frontend/ui/screens/signup/signup.dart';
 
-class SignInPage extends StatelessWidget {
+class SignInPage extends StatefulWidget {
   const SignInPage({Key? key}) : super(key: key);
 
+  @override
+  State<SignInPage> createState() => _SignInPageState();
+}
+
+class _SignInPageState extends State<SignInPage> {
+  bool isBusy = false;
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -51,8 +57,16 @@ class SignInPage extends StatelessWidget {
                     ),
                     ks30,
                     MasterButton(
+                        isBusy: isBusy,
                         name: "Sign In",
-                        onTap: () {
+                        onTap: () async {
+                          isBusy = true;
+                          setState(() {});
+                          await Future.delayed(
+                              const Duration(milliseconds: 1000));
+                          isBusy = false;
+                          setState(() {});
+                          print('signin in');
                           RouteX.sliderBottomToTop(context, const MainHome());
                         }),
                     ks30,

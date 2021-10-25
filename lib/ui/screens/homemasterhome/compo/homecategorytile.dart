@@ -1,3 +1,4 @@
+import 'package:flutter_svg/flutter_svg.dart';
 import 'package:frontend/Helpers/mlib.dart';
 import 'package:frontend/ui/screens/Details-choose_desert/details_choose_desert.dart';
 
@@ -7,7 +8,7 @@ class HomeSelctCategorytile extends StatelessWidget {
     required this.iconData,
     required this.image,
   }) : super(key: key);
-  final IconData iconData;
+  final String iconData;
   final String image;
   @override
   Widget build(BuildContext context) {
@@ -20,6 +21,7 @@ class HomeSelctCategorytile extends StatelessWidget {
           Container(
               height: 65,
               width: 65,
+              padding: const EdgeInsets.all(10),
               decoration: BoxDecoration(
                   color: kcwhite,
                   shape: BoxShape.circle,
@@ -30,10 +32,9 @@ class HomeSelctCategorytile extends StatelessWidget {
                         spreadRadius: 0,
                         blurRadius: 10),
                   ]),
-              child: Icon(
+              child: SvgPicture.asset(
                 iconData,
                 color: kcred,
-                size: 30,
               )),
           ksv10,
           FoodText(
@@ -45,3 +46,34 @@ class HomeSelctCategorytile extends StatelessWidget {
     );
   }
 }
+
+List<String> names = [
+  'Gluten Free',
+  'Green Tea',
+  'Hot-Dog',
+  'Ice-Cream',
+  'Infysted-Water',
+  'Jelly',
+  'Juice',
+  'Kebab',
+  'Keto',
+  'Lamb',
+  'Lasagna',
+  'Lemon Tea',
+  'Lobster',
+  'Lolipop',
+  'Low Carb',
+  'Macaroni',
+  'Macroon',
+  'Margarita',
+  'Marshmallow',
+  'MeatBall',
+  'Mediteranian',
+  'Milk',
+  'Mineral Water',
+  'Mojito',
+  'Mushroom',
+  'Nachos',
+  'No Sugar',
+  'Noddle',
+];

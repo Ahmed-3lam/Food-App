@@ -1,10 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/svg.dart';
 import 'package:frontend/Helpers/mlib.dart';
 import 'package:frontend/services/my_flutter_app_icons.dart';
 import 'package:frontend/ui/constants/colors.dart';
 import 'package:frontend/ui/constants/textstyles.dart';
 import 'package:frontend/ui/screens/Location-choose_city/locationchoosecity.dart';
-import 'package:frontend/ui/screens/home2/home2.dart';
+import 'package:frontend/ui/screens/hometabbar/hometabar.dart';
 import 'package:frontend/ui/screens/searchCopy/searchcopy.dart';
 import 'package:frontend/ui/widgets/texfield.dart';
 
@@ -32,7 +33,7 @@ class HomeHeader extends StatelessWidget {
               ),
               GestureDetector(
                   onTap: () {
-                    RouteX.sliderRighToLeft(context, const Home2());
+                    RouteX.sliderRighToLeft(context, const CloneHome());
                   },
                   child: const Icon(Icons.arrow_right_alt_outlined,
                       color: kcwhite))
@@ -49,24 +50,21 @@ class HomeHeader extends StatelessWidget {
                 RouteX.sliderRighToLeft(context, const LocationChooseCity());
               },
               child: Row(
-                children: const [
-                  Icon(
-                    MyFlutterApp.location,
-                    color: Colors.white,
-                    size: 20,
+                children: [
+                  SvgPicture.asset('asset/images/payments/1.svg',
+                      color: kcwhite),
+                  const SizedBox(
+                    width: 7,
                   ),
-                  SizedBox(
-                    width: 5,
-                  ),
-                  FoodText.ktsAnsemi(
-                    "Avenue street",
+                  const FoodText.ktsAnsemi(
+                    " Avenue street",
                     color: kcwhite,
                     fonsize: 16,
                   ),
-                  SizedBox(
+                  const SizedBox(
                     width: 20,
                   ),
-                  Icon(
+                  const Icon(
                     Icons.edit,
                     color: Colors.white,
                     size: 20,
@@ -85,14 +83,14 @@ class HomeHeader extends StatelessWidget {
             child: SizedBox(
               child: AbsorbPointer(
                 child: TxtField(
-                  hint: "Search",
-                  hintstyle: ktsAnsemi.copyWith(color: kcicon),
+                  hint: "Find your favourite one",
                   filledColor: kcgrey3,
-                  prefix: const Icon(
-                    MyFlutterApp.search,
-                    color: kcicon,
-                    size: 30,
-                  ),
+                  prefix: Container(
+                      padding: const EdgeInsets.all(14),
+                      child: SvgPicture.asset(
+                        'asset/images/payments/2.svg',
+                        color: kcblack,
+                      )),
                 ),
               ),
             ),

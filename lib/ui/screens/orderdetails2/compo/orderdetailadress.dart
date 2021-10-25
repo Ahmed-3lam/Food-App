@@ -1,5 +1,6 @@
 import 'package:frontend/Helpers/mlib.dart';
 import 'package:frontend/ui/screens/MainAdress/mainadress.dart';
+import 'package:frontend/ui/screens/locationadress/locationadress.dart';
 
 class OrderDetailsAdressTile extends StatelessWidget {
   const OrderDetailsAdressTile({
@@ -36,13 +37,21 @@ class OrderDetailsAdressTile extends StatelessWidget {
           width: MediaQuery.of(context).size.width - 40,
           child: Row(
             children: [
-              SizedBox(
-                  height: 88,
-                  width: 88,
-                  child: Image.asset(
-                    "asset/images/home/smallbitmap.png",
-                    fit: BoxFit.fill,
-                  )),
+              ClipRRect(
+                borderRadius: BorderRadius.circular(10),
+                child: GestureDetector(
+                  onTap: () {
+                    RouteX.sliderRighToLeft(context, const LocationAddress());
+                  },
+                  child: SizedBox(
+                      height: 88,
+                      width: 88,
+                      child: Image.asset(
+                        "asset/images/location/smallbitmap.jpg",
+                        fit: BoxFit.fill,
+                      )),
+                ),
+              ),
               const SizedBox(
                 width: 20,
               ),

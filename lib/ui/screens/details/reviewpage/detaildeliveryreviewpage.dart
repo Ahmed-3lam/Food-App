@@ -1,5 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:frontend/repositary/dishes.dart';
 import 'package:frontend/ui/constants/colors.dart';
 import 'package:frontend/ui/constants/paddings.dart';
 import 'package:frontend/ui/constants/textstyles.dart';
@@ -34,16 +35,17 @@ class DetailReviewPage extends StatelessWidget {
             child: ListView.builder(
                 scrollDirection: Axis.horizontal,
                 itemCount: 5,
-                itemBuilder: (context, i) => ClipRRect(
-                    borderRadius: BorderRadius.circular(7),
-                    child: Padding(
+                itemBuilder: (context, i) => Padding(
                       padding:
                           EdgeInsets.only(right: 20, left: i == 0 ? 20 : 0),
                       child: SizedBox(
                           height: 101,
                           width: 101,
-                          child: Image.asset("asset/images/home/smrect.png")),
-                    ))),
+                          child: ClipRRect(
+                              borderRadius: BorderRadius.circular(7),
+                              child: Image.asset(dishes[i].image,
+                                  fit: BoxFit.cover))),
+                    )),
           ),
           Padding(
             padding: const EdgeInsets.all(8.0),

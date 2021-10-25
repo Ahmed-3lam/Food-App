@@ -1,4 +1,6 @@
 import 'package:frontend/Helpers/mlib.dart';
+import 'package:frontend/ui/screens/homemasterhome/homemasterhome.dart';
+import 'package:frontend/ui/screens/hometabbar/hometabar.dart';
 
 class BookingSuccess extends StatelessWidget {
   const BookingSuccess({Key? key}) : super(key: key);
@@ -14,7 +16,11 @@ class BookingSuccess extends StatelessWidget {
           left: 24,
           right: 24,
         ),
-        child: MasterButton(name: 'OKAY', onTap: () {}),
+        child: MasterButton(
+            name: 'OKAY',
+            onTap: () {
+              RouteX.sliderRighToLeft(context, const MainHome());
+            }),
       ),
       body: Column(
         mainAxisAlignment: MainAxisAlignment.center,
@@ -46,8 +52,12 @@ class BookingSuccess extends StatelessWidget {
           Row(
             mainAxisAlignment: MainAxisAlignment.center,
             children: const [
-              IconWithName(
-                  image: 'asset/images/tablebooking/icon_2.png', name: 'Call'),
+              Padding(
+                padding: EdgeInsets.only(left: 20),
+                child: IconWithName(
+                    image: 'asset/images/tablebooking/icon_2.png',
+                    name: 'Call'),
+              ),
               ksh30,
               IconWithName(
                   image: 'asset/images/tablebooking/icon_1.png',

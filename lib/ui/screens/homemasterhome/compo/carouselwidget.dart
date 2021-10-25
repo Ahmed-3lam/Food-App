@@ -1,13 +1,27 @@
 import 'package:flutter/material.dart';
+import 'package:frontend/repositary/dishes.dart';
 import 'package:frontend/ui/constants/colors.dart';
 import 'package:frontend/ui/widgets/infromationwidget.dart';
 
-class HomeCarouselItem extends StatelessWidget {
+class HomeCarouselItem extends StatefulWidget {
   const HomeCarouselItem({
     Key? key,
     required this.pageChanged,
+    required this.image,
   }) : super(key: key);
   final bool pageChanged;
+  final String image;
+
+  @override
+  State<HomeCarouselItem> createState() => _HomeCarouselItemState();
+}
+
+class _HomeCarouselItemState extends State<HomeCarouselItem> {
+  @override
+  void didChangeDependencies() {
+    precacheImage(AssetImage(widget.image), context);
+    super.didChangeDependencies();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -15,27 +29,40 @@ class HomeCarouselItem extends StatelessWidget {
       duration: const Duration(
         milliseconds: 500,
       ),
-      padding: pageChanged
+      padding: widget.pageChanged
           ? const EdgeInsets.only(bottom: 0)
           : const EdgeInsets.only(bottom: 20),
       child: Container(
         padding: const EdgeInsets.all(10),
-        child: Container(
-          padding: const EdgeInsets.symmetric(horizontal: 15, vertical: 15),
-          decoration: BoxDecoration(
-            borderRadius: BorderRadius.circular(15),
-            image: const DecorationImage(
-              fit: BoxFit.cover,
-              image: AssetImage("asset/images/home/pizza.png"),
+        child: Stack(
+          children: [
+            Container(
+              height: 350 * .85,
+              width: double.infinity,
+              decoration: BoxDecoration(
+                borderRadius: BorderRadius.circular(15),
+              ),
+              child: ClipRRect(
+                borderRadius: BorderRadius.circular(15),
+                child: Hero(
+                  tag: widget.image,
+                  child: Image.asset(
+                    widget.image,
+                    key: ValueKey(widget.image),
+                    fit: BoxFit.cover,
+                  ),
+                ),
+              ),
             ),
-          ),
-          child: Container(
-            alignment: Alignment.bottomCenter,
-            decoration: BoxDecoration(
-                color: Colors.transparent,
-                borderRadius: BorderRadius.circular(30)),
-            child: const InformationWidget(),
-          ),
+            Container(
+              margin: const EdgeInsets.symmetric(horizontal: 15, vertical: 15),
+              alignment: Alignment.bottomCenter,
+              decoration: BoxDecoration(
+                  color: Colors.transparent,
+                  borderRadius: BorderRadius.circular(30)),
+              child: const InformationWidget(),
+            )
+          ],
         ),
       ),
     );
@@ -81,17 +108,12 @@ class Indicator extends StatelessWidget {
       child: Row(
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
-          IndicatorWidget(
-            index: 0,
-            pageindex: carouselIndex,
-          ),
-          IndicatorWidget(
-            index: 1,
-            pageindex: carouselIndex,
-          ),
-          IndicatorWidget(
-            index: 2,
-            pageindex: carouselIndex,
+          ListView.builder(
+            shrinkWrap: true,
+            scrollDirection: Axis.horizontal,
+            itemCount: dishes.length,
+            itemBuilder: (context, i) =>
+                IndicatorWidget(index: i, pageindex: carouselIndex),
           ),
         ],
       ),

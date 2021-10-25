@@ -1,6 +1,7 @@
 import 'package:frontend/Helpers/mlib.dart';
 import 'package:frontend/services/my_flutter_app_icons.dart';
 import 'package:frontend/ui/screens/EditAdress/editadress.dart';
+import 'package:frontend/ui/screens/locationadress/locationadress.dart';
 
 import 'package:frontend/ui/widgets/appbar.dart';
 
@@ -36,13 +37,22 @@ class _MainAdressState extends State<MainAdress> {
                 width: MediaQuery.of(context).size.width - 40,
                 child: Row(
                   children: [
-                    SizedBox(
-                        height: 88,
-                        width: 88,
-                        child: Image.asset(
-                          "asset/images/home/smallbitmap.png",
-                          fit: BoxFit.fill,
-                        )),
+                    GestureDetector(
+                      onTap: () {
+                        RouteX.sliderRighToLeft(
+                            context, const LocationAddress());
+                      },
+                      child: SizedBox(
+                          height: 88,
+                          width: 88,
+                          child: ClipRRect(
+                            borderRadius: BorderRadius.circular(10),
+                            child: Image.asset(
+                              "asset/images/location/smallbitmap.jpg",
+                              fit: BoxFit.fill,
+                            ),
+                          )),
+                    ),
                     const SizedBox(
                       width: 20,
                     ),

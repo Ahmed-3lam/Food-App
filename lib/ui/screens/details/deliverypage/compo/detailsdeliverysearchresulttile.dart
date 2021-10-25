@@ -9,17 +9,17 @@ class DetailsSearchResultTile extends StatefulWidget {
   const DetailsSearchResultTile({
     Key? key,
     required this.count,
-    required this.d,
-    required this.i,
     required this.image,
     required this.name,
+    required this.decrement,
+    required this.increment,
   }) : super(key: key);
 
   final int count;
   final String image, name;
 
-  final Indexer d;
-  final Indexer i;
+  final Indexer decrement;
+  final Indexer increment;
 
   @override
   State<DetailsSearchResultTile> createState() =>
@@ -75,8 +75,9 @@ class _DetailsSearchResultTileState extends State<DetailsSearchResultTile> {
               onPressed: () {
                 if (i > 0) {
                   i--;
+
+                  widget.decrement(i);
                   setState(() {});
-                  widget.i(i);
                 }
               },
               child: Container(
@@ -109,8 +110,9 @@ class _DetailsSearchResultTileState extends State<DetailsSearchResultTile> {
               minWidth: 24,
               onPressed: () {
                 i++;
+
+                widget.increment(i);
                 setState(() {});
-                widget.d(i);
               },
               child: Container(
                 height: 30,

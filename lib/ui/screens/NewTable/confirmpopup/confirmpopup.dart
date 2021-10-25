@@ -54,12 +54,10 @@ class ConfirmPopUp extends StatelessWidget {
                       ksv20,
                       const MyTextField(
                         style: nestedBaseStyle,
-                        isObsecure: true,
                         titel: "Name",
                       ),
                       ksv20,
                       const MyTextField(
-                        isObsecure: true,
                         titel: "Mobile",
                       ),
                       ksv20,

@@ -16,7 +16,7 @@ class OrdeDetailBottomBar extends StatelessWidget {
           children: [
             Expanded(
               child: MasterButton(
-                name: "Submit - \$160",
+                name: "Submit - \$150",
                 onTap: () {
                   Navigator.push(
                       context,
