@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:frontend/Helpers/mlib.dart';
-import 'package:frontend/ui/screens/addcard/addcard.dart';
+import 'package:frontend/ui/screens/payment/addcard/addcard.dart';
 
 //note the My Card widget depends on the cards repo for the source of images so we can
 //modify the other but not image part from the cards repo

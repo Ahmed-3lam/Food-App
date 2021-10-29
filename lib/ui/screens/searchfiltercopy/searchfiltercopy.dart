@@ -1,3 +1,4 @@
+import 'package:flutter_svg/flutter_svg.dart';
 import 'package:frontend/Helpers/mlib.dart';
 import 'package:frontend/ui/screens/searchitempage/searchitempage.dart';
 
@@ -57,7 +58,7 @@ class _SearchFilterCopyState extends State<SearchFilterCopy> {
               ),
             ),
           ),
-          SizedBox(width: 20)
+          const SizedBox(width: 20)
         ],
         leadingWidth: 50,
         title: Padding(
@@ -66,12 +67,14 @@ class _SearchFilterCopyState extends State<SearchFilterCopy> {
             height: 48,
             child: TxtField(
               filledColor: kcgrey3,
-              hint: "Find Adress",
-              hintstyle: const TextStyle(color: kcgrey4),
-              prefix: const Icon(
-                MyFlutterApp.search,
-                color: kcgrey5,
-              ),
+              hint: "Find Address",
+              hintstyle: const TextStyle(color: kcBlack),
+              prefix: Container(
+                  padding: const EdgeInsets.all(14),
+                  child: SvgPicture.asset(
+                    'asset/images/payments/2.svg',
+                    color: kcblack,
+                  )),
             ),
           ),
         ),
@@ -231,7 +234,7 @@ class _SearchFilterCopyState extends State<SearchFilterCopy> {
                 ),
               ),
             )
-          : SizedBox(),
+          : const SizedBox(),
     );
   }
 }

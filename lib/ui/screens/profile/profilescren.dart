@@ -1,8 +1,11 @@
+import 'package:flutter/material.dart';
 import 'package:frontend/Helpers/mlib.dart';
 import 'package:frontend/ui/screens/Addpromotioncode/addpromotioncode.dart';
 import 'package:frontend/ui/screens/Faqs/faqs.dart';
-import 'package:frontend/ui/screens/choosepayment/payment/payment.dart';
 import 'package:frontend/ui/screens/editprofileinformation/editprofileinformation.dart';
+import 'package:frontend/ui/screens/notification/notification.dart';
+import 'package:frontend/ui/screens/payment/payment/payment.dart';
+import 'package:frontend/ui/screens/preauth/intro/intro.dart';
 import 'package:frontend/ui/screens/terms/terms.dart';
 
 class ProfileScreen extends StatelessWidget {
@@ -11,89 +14,104 @@ class ProfileScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: SafeArea(
-        child: Column(
-          children: [
-            GestureDetector(
-              onTap: () {
-                RouteX.sliderRighToLeft(
-                    context, const EditeprofielInformation());
-              },
-              child: Container(
-                padding: const EdgeInsets.symmetric(horizontal: 24),
-                alignment: Alignment.center,
-                height: 170,
-                decoration: const BoxDecoration(
-                  color: kcred,
-                  borderRadius:
-                      BorderRadius.vertical(bottom: Radius.circular(30)),
-                ),
-                child: Row(
-                  children: [
-                    Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      mainAxisSize: MainAxisSize.min,
-                      children: const [
-                        FoodText.ktsAnreg(
-                          "Moana Martilue",
-                          fonsize: 22,
-                          color: kcwhite,
-                        ),
-                        FoodText(
-                          "2565820 | Avenue street",
-                          color: kcwhite,
-                          fonsize: 12,
-                        )
-                      ],
-                    ),
-                    const Spacer(),
-                    Image.asset(
-                      "asset/images/home/oval.png",
-                      scale: 3,
-                    )
-                  ],
-                ),
+      body: Column(
+        children: [
+          GestureDetector(
+            onTap: () {
+              RouteX.sliderRighToLeft(context, const EditeprofielInformation());
+            },
+            child: Container(
+              padding: const EdgeInsets.only(left: 24, right: 24, top: 34),
+              alignment: Alignment.center,
+              height: 204,
+              decoration: const BoxDecoration(
+                color: kcred,
+                borderRadius:
+                    BorderRadius.vertical(bottom: Radius.circular(30)),
+              ),
+              child: Row(
+                children: [
+                  Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    mainAxisSize: MainAxisSize.min,
+                    children: const [
+                      FoodText.ktsAnreg(
+                        "Moana Martilue",
+                        fonsize: 22,
+                        color: kcwhite,
+                      ),
+                      FoodText(
+                        "2565820 | Avenue street",
+                        color: kcwhite,
+                        fonsize: 12,
+                      )
+                    ],
+                  ),
+                  const Spacer(),
+                  Image.asset(
+                    "asset/images/home/oval.png",
+                    scale: 3,
+                  )
+                ],
               ),
             ),
-            ksv16,
-            ProfielTiel(
-              name: "My voucher",
-              data: MyFlutterApp.tag,
-              tap: () {
-                RouteX.sliderRighToLeft(context, const AddPromotionCode());
+          ),
+          ksv16,
+          ProfielTiel(
+            name: "My voucher",
+            data: MyFlutterApp.tag,
+            tap: () {
+              RouteX.sliderRighToLeft(context, const AddPromotionCode());
+            },
+          ),
+          ProfielTiel(
+            name: "Payment",
+            data: Icons.payment,
+            tap: () {
+              RouteX.sliderRighToLeft(context, const Payment());
+            },
+          ),
+          ksv16,
+          const Divider(
+            color: kcdivider,
+            thickness: 7,
+            height: 1,
+          ),
+          ksv16,
+          ProfielTiel(
+            name: "Faqs",
+            data: Icons.question_answer,
+            tap: () {
+              RouteX.sliderRighToLeft(context, const Faqs());
+            },
+          ),
+          ProfielTiel(
+            name: "Terms and condition",
+            data: Icons.padding,
+            tap: () {
+              RouteX.sliderRighToLeft(context, const TermsCondition());
+            },
+          ),
+          ProfielTiel(
+            name: "Terms and condition",
+            data: Icons.notifications,
+            tap: () {
+              RouteX.sliderRighToLeft(context, const NotificationPage());
+            },
+          ),
+          ksv24,
+          Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 20),
+            child: MasterButton(
+              textcolor: kcred,
+              name: 'Log Out',
+              onTap: () {
+                RouteX.sliderRighToLeft(context, const Intro());
               },
+              isOutlined: true,
             ),
-            ProfielTiel(
-              name: "Payment",
-              data: MyFlutterApp.rect,
-              tap: () {
-                RouteX.sliderRighToLeft(context, const Payment());
-              },
-            ),
-            ksv16,
-            const Divider(
-              color: kcdivider,
-              thickness: 7,
-              height: 1,
-            ),
-            ksv16,
-            ProfielTiel(
-              name: "Faqs",
-              data: Icons.question_answer,
-              tap: () {
-                RouteX.sliderRighToLeft(context, const Faqs());
-              },
-            ),
-            ProfielTiel(
-              name: "Terms and condition",
-              data: Icons.padding,
-              tap: () {
-                RouteX.sliderRighToLeft(context, const TermsCondition());
-              },
-            ),
-            ksv24,
-          ],
-        ),
+          )
+        ],
       ),
     );
   }
@@ -124,7 +142,7 @@ class ProfielTiel extends StatelessWidget {
               children: [
                 Icon(
                   data,
-                  color: kcicon,
+                  color: kcblack.withOpacity(.70),
                 ),
                 ksh12,
                 FoodText.ktsAnreg(

@@ -32,11 +32,6 @@ class _HomeCarouselState extends State<HomeCarousel> {
   }
 
   @override
-  void didChangeDependencies() {
-    super.didChangeDependencies();
-  }
-
-  @override
   Widget build(BuildContext context) {
     return Column(
       children: [
@@ -46,6 +41,7 @@ class _HomeCarouselState extends State<HomeCarousel> {
           child: CarouselSlider.builder(
             itemCount: dishes.length,
             options: CarouselOptions(
+                initialPage: 2,
                 viewportFraction: .90,
                 height: 350 * .85,
                 pageViewKey: const PageStorageKey('The page storage key'),

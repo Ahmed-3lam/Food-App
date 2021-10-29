@@ -1,6 +1,6 @@
 import 'package:frontend/Helpers/mlib.dart';
-import 'package:frontend/ui/screens/addcard/addcard.dart';
-import 'package:frontend/ui/screens/choosepayment/payment/compo.dart/mycard.dart';
+import 'package:frontend/ui/screens/payment/addcard/addcard.dart';
+import 'package:frontend/ui/screens/payment/payment/compo.dart/mycard.dart';
 
 import 'compo/adresstile.dart';
 import 'compo/paymethod.dart';

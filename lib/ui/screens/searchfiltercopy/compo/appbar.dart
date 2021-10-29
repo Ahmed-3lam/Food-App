@@ -1,3 +1,4 @@
+import 'package:flutter_svg/svg.dart';
 import 'package:frontend/Helpers/mlib.dart';
 
 AppBar searchFilterCopyAppBar(BuildContext context, VoidCallback ontap) {
@@ -43,12 +44,14 @@ AppBar searchFilterCopyAppBar(BuildContext context, VoidCallback ontap) {
         height: 48,
         child: TxtField(
           filledColor: kcgrey3,
-          hint: "Find Adress",
+          hint: "Find Address",
           hintstyle: const TextStyle(color: kcgrey4),
-          prefix: const Icon(
-            MyFlutterApp.search,
-            color: kcgrey5,
-          ),
+          prefix: Container(
+              padding: const EdgeInsets.all(14),
+              child: SvgPicture.asset(
+                'asset/images/payments/2.svg',
+                color: kcblack,
+              )),
         ),
       ),
     ),

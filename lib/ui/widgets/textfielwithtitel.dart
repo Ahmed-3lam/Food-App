@@ -1,7 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:frontend/Helpers/mlib.dart';
-import 'package:frontend/ui/screens/ForgotPassword/forgetpassword.dart';
+import 'package:frontend/ui/screens/auth/ForgotPassword/forgetpassword.dart';
 
 class MyTextField extends StatelessWidget {
   const MyTextField({

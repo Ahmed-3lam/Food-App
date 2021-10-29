@@ -1,17 +1,18 @@
 import 'package:frontend/Helpers/mlib.dart';
-import 'package:frontend/ui/screens/Signin/signinscreen.dart';
+import 'package:frontend/ui/screens/auth/mobilenum/mobilenum.dart';
 
-import 'package:frontend/ui/screens/intro/compo/indicators.dart';
 import 'package:frontend/ui/widgets/button.dart';
 
-class Intor extends StatefulWidget {
-  const Intor({Key? key}) : super(key: key);
+import 'compo/indicators.dart';
+
+class Intro extends StatefulWidget {
+  const Intro({Key? key}) : super(key: key);
 
   @override
-  State<Intor> createState() => _IntorState();
+  State<Intro> createState() => _IntroState();
 }
 
-class _IntorState extends State<Intor> {
+class _IntroState extends State<Intro> {
   int index = 0;
   @override
   Widget build(BuildContext context) {
@@ -50,7 +51,7 @@ class _IntorState extends State<Intor> {
               child: MasterButton(
                   name: "Sign In",
                   onTap: () {
-                    RouteX.sliderBottomToTop(context, const SignInPage());
+                    RouteX.sliderBottomToTop(context, const MObileNumber());
                   }),
             ),
             ksv16,

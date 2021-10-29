@@ -1,9 +1,8 @@
 import 'package:flutter/material.dart';
-
 import 'package:frontend/ui/screens/homemasterhome/homemasterhome.dart';
 import 'package:frontend/ui/screens/hometabbar/hometabar.dart';
-import 'package:frontend/ui/screens/intro/intro.dart';
 import 'package:frontend/ui/screens/myorderpage/myorder.dart';
+import 'package:frontend/ui/screens/preauth/intro/intro.dart';
 import 'package:frontend/ui/screens/profile/profilescren.dart';
 import 'package:frontend/ui/screens/savedpage/savedpage.dart';
 import 'package:frontend/ui/screens/searchCopy/searchcopy.dart';
@@ -15,7 +14,7 @@ Map<String, WidgetBuilder> routes = {
   RoutesName.saved: (context) => const SavedPage(),
   RoutesName.myorder: (context) => const MyOrderPage(),
   // RoutesName.mytab: (context) => const Tabbing(),
-  RoutesName.intro: (context) => const Intor(),
+  RoutesName.intro: (context) => const Intro(),
   RoutesName.stackBar: (context) => const MainHome(),
   '/searchcopy': (context) => const SearchCopy(),
   '/searchfiltercopy': (context) => const SearchFilterCopy(),

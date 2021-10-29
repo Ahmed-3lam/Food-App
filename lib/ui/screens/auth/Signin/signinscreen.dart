@@ -1,7 +1,7 @@
 import 'package:frontend/Helpers/mlib.dart';
-import 'package:frontend/ui/screens/ForgotPassword/forgetpassword.dart';
+import 'package:frontend/ui/screens/auth/ForgotPassword/forgetpassword.dart';
+import 'package:frontend/ui/screens/auth/signup/signup.dart';
 import 'package:frontend/ui/screens/hometabbar/hometabar.dart';
-import 'package:frontend/ui/screens/signup/signup.dart';
 
 class SignInPage extends StatefulWidget {
   const SignInPage({Key? key}) : super(key: key);

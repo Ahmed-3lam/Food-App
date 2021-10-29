@@ -67,19 +67,17 @@ class _HomeMasterHomeState extends State<HomeMasterHome>
     Size size = MediaQuery.of(context).size;
     return Scaffold(
       body: CustomScrollView(cacheExtent: 1000, slivers: [
-        SliverSafeArea(
-          sliver: SliverList(
-              delegate: SliverChildListDelegate(
-            [
-              const HomeTop(),
-              const BuildCategories(),
-              CarouselOfOffers(image: image),
-              _recentsearch(),
-              ksv8,
-              const HomeYourRecentVisiArea(),
-            ],
-          )),
-        ),
+        SliverList(
+            delegate: SliverChildListDelegate(
+          [
+            const HomeTop(),
+            const BuildCategories(),
+            CarouselOfOffers(image: image),
+            _recentsearch(),
+            ksv8,
+            const HomeYourRecentVisiArea(),
+          ],
+        )),
         SliverAppBar(
           // flexibleSpace: Placeholder(),
 
@@ -236,18 +234,21 @@ class HomeTop extends StatelessWidget {
       child: Stack(
         children: [
           Container(
-            height: 403,
+            height: 427,
             decoration: const BoxDecoration(
               color: kcred,
               borderRadius: BorderRadius.vertical(
                 bottom: Radius.circular(
-                  50,
+                  65,
                 ),
               ),
             ),
           ),
           Column(
             children: const [
+              SizedBox(
+                height: 34,
+              ),
               HomeHeader(),
               SizedBox(
                 height: 20,

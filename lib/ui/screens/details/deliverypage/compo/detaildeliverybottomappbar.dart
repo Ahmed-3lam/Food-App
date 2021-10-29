@@ -49,50 +49,50 @@ class _DetailDeliveryBottomAppbarState
   Widget build(BuildContext context) {
     print('Builded this one');
     return Consumer<DetailsModel>(
-      builder: (BuildContext context, model, Widget? child) => Container(
-        height: 60,
-        color: kcred,
-        child: Center(
-          child: Padding(
-            padding: kpaddinghor20,
-            child: Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: [
-                Container(
-                  height: 32,
-                  width: 32,
-                  decoration: BoxDecoration(
-                    color: kclightred,
-                    borderRadius: BorderRadius.circular(6),
+      builder: (BuildContext context, model, Widget? child) => GestureDetector(
+        onTap: () {
+          _buildDialouge();
+        },
+        child: Container(
+          height: 60,
+          color: kcred,
+          child: Center(
+            child: Padding(
+              padding: kpaddinghor20,
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  Container(
+                    height: 32,
+                    width: 32,
+                    decoration: BoxDecoration(
+                      color: kclightred,
+                      borderRadius: BorderRadius.circular(6),
+                    ),
+                    child: Center(
+                        child: FoodText("${model.totaitem()}",
+                            color: Colors.white)),
                   ),
-                  child: Center(
-                      child:
-                          FoodText("${model.totaitem()}", color: Colors.white)),
-                ),
-                Builder(builder: (context) {
-                  return TextButton(
-                    onPressed: () {
-                      _buildDialouge();
-                    },
-                    child: const FoodText.ktsAnsemi(
+                  Builder(builder: (context) {
+                    return const FoodText.ktsAnsemi(
                       "View Order",
                       color: kcwhite,
                       fonsize: 18,
+                    );
+                  }),
+                  Container(
+                    height: 32,
+                    width: 62,
+                    decoration: BoxDecoration(
+                      border: Border.all(color: kclightred, width: 2),
+                      borderRadius: BorderRadius.circular(6),
                     ),
-                  );
-                }),
-                Container(
-                  height: 32,
-                  width: 62,
-                  decoration: BoxDecoration(
-                    border: Border.all(color: kclightred, width: 2),
-                    borderRadius: BorderRadius.circular(6),
+                    child: Center(
+                        child: FoodText("\$${150 * model.totaitem()}",
+                            color: kcwhite)),
                   ),
-                  child: Center(
-                      child: FoodText("\$${150 * model.totaitem()}",
-                          color: kcwhite)),
-                ),
-              ],
+                ],
+              ),
             ),
           ),
         ),

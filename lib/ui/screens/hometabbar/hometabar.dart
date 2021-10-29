@@ -1,5 +1,7 @@
+import 'package:fancy_bottom_navigation/fancy_bottom_navigation.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:frontend/Helpers/mlib.dart';
+import 'package:frontend/ui/screens/Dialogs/commondialog.dart';
 import 'package:frontend/ui/screens/home2/home2.dart';
 import 'package:frontend/ui/screens/homemasterhome/homemasterhome.dart';
 import 'package:frontend/ui/screens/myorderpage/myorder.dart';
@@ -11,12 +13,11 @@ class MainHome extends StatefulWidget {
   const MainHome({Key? key}) : super(key: key);
 
   @override
-  State<MainHome> createState() => _MainHomeState();
+  _MainHomeState createState() => _MainHomeState();
 }
 
 class _MainHomeState extends State<MainHome>
     with SingleTickerProviderStateMixin {
-  late TabController _controller;
   late OverlayEntry _entry;
 
   OverlayEntry initalLoad() {
@@ -39,17 +40,35 @@ class _MainHomeState extends State<MainHome>
             )));
   }
 
+  List<TabData> data = [
+    TabData(
+      iconData: MyIcons.home,
+      title: "Home",
+    ),
+    TabData(
+      iconData: MyIcons.myOrder,
+      title: "Order",
+    ),
+    TabData(
+      iconData: MyIcons.saved,
+      title: "Saved",
+    ),
+    TabData(
+      iconData: MyIcons.profile,
+      title: "User",
+    ),
+  ];
+
   entrySetter() async {
     _entry = initalLoad();
     Overlay.of(context)?.insert(_entry);
-    await Future.delayed(const Duration(seconds: 4));
+    await Future.delayed(const Duration(seconds: 2));
     _entry.remove();
   }
 
   @override
   void initState() {
     super.initState();
-    _controller = TabController(length: 4, vsync: this)..addListener(() {});
     WidgetsBinding.instance?.addPostFrameCallback((timeStamp) {
       entrySetter();
     });
@@ -64,72 +83,80 @@ class _MainHomeState extends State<MainHome>
     ];
   }
 
-  int tabIndex = 0;
-  List<Widget> _buildTabs() {
-    return [
-      const Tab(
-        iconMargin: EdgeInsets.only(bottom: 5),
-        icon: Icon(MyIcons.home),
-        text: "Home",
-      ),
-      const Tab(
-        iconMargin: EdgeInsets.only(bottom: 5),
-        icon: Icon(MyIcons.myOrder),
-        text: "Order",
-      ),
-      const Tab(
-        iconMargin: EdgeInsets.only(bottom: 5),
-        icon: Icon(MyIcons.saved),
-        text: "Saved",
-      ),
-      const Tab(
-        iconMargin: EdgeInsets.only(bottom: 5),
-        icon: Icon(MyIcons.profile),
-        text: "User",
-      ),
-    ];
-  }
+  GlobalKey<FancyBottomNavigationState> key =
+      GlobalKey<FancyBottomNavigationState>();
 
+  int tabIndex = 0;
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      bottomNavigationBar: SizedBox(
-        height: 60,
-        child: TabBar(
-          indicatorColor: kcTransparent,
-          labelColor: kcred,
-          unselectedLabelColor: kcicon,
-          tabs: _buildTabs(),
-          controller: _controller,
-          onTap: (i) {
-            tabIndex = i;
-            setState(() {});
-          },
+    return WillPopScope(
+      onWillPop: () async {
+        var v = await showDialog<bool?>(
+            context: context,
+            builder: (context) => Dialog(
+                  backgroundColor: kcTransparent,
+                  child: CommonDialog(
+                      tittle: 'Are you sure?',
+                      subTittle: 'On tap Quit application will closed',
+                      buttonText: 'Quit',
+                      dialogThemeColor: kcred,
+                      avatarChild: const Icon(Icons.close),
+                      onTap: () {
+                        Navigator.pop(context, true);
+                      }),
+                ));
+        return v ?? false;
+      },
+      child: Scaffold(
+        body: IndexedStack(
+          children: _buildPages(),
+          index: tabIndex,
         ),
-      ),
-      body: IndexedStack(
-        children: _buildPages(),
-        index: tabIndex,
+        bottomNavigationBar: FancyBottomNavigation(
+            key: key,
+            style: ktsAnsemi,
+            circleColor: kcred,
+            tabs: data,
+            onTabChangedListener: (i) {
+              tabIndex = i;
+              setState(() {});
+            }),
       ),
     );
   }
 }
 
+///HOME OPTION 2 FOR THE HOME
+
 class CloneHome extends StatefulWidget {
   const CloneHome({Key? key}) : super(key: key);
 
   @override
-  State<CloneHome> createState() => _CloneHomeState();
+  _CloneHomeState createState() => _CloneHomeState();
 }
 
 class _CloneHomeState extends State<CloneHome>
     with SingleTickerProviderStateMixin {
-  late TabController _controller;
-  @override
-  void initState() {
-    super.initState();
-    _controller = TabController(length: 4, vsync: this)..addListener(() {});
-  }
+  late OverlayEntry _entry;
+
+  List<TabData> data = [
+    TabData(
+      iconData: MyIcons.home,
+      title: "Home",
+    ),
+    TabData(
+      iconData: MyIcons.myOrder,
+      title: "Order",
+    ),
+    TabData(
+      iconData: MyIcons.saved,
+      title: "Saved",
+    ),
+    TabData(
+      iconData: MyIcons.profile,
+      title: "User",
+    ),
+  ];
 
   List<Widget> _buildPages() {
     return [
@@ -141,52 +168,21 @@ class _CloneHomeState extends State<CloneHome>
   }
 
   int tabIndex = 0;
-  List<Widget> _buildTabs() {
-    return [
-      const Tab(
-        iconMargin: EdgeInsets.only(bottom: 5),
-        icon: Icon(MyIcons.home),
-        text: "Home",
-      ),
-      const Tab(
-        iconMargin: EdgeInsets.only(bottom: 5),
-        icon: Icon(MyIcons.myOrder),
-        text: "Order",
-      ),
-      const Tab(
-        iconMargin: EdgeInsets.only(bottom: 5),
-        icon: Icon(MyIcons.saved),
-        text: "Saved",
-      ),
-      const Tab(
-        iconMargin: EdgeInsets.only(bottom: 5),
-        icon: Icon(MyIcons.profile),
-        text: "User",
-      ),
-    ];
-  }
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      bottomNavigationBar: SizedBox(
-        height: 60,
-        child: TabBar(
-          indicatorColor: kcTransparent,
-          labelColor: kcred,
-          unselectedLabelColor: kcicon,
-          tabs: _buildTabs(),
-          controller: _controller,
-          onTap: (i) {
-            tabIndex = i;
-            setState(() {});
-          },
-        ),
-      ),
       body: IndexedStack(
         children: _buildPages(),
         index: tabIndex,
       ),
+      bottomNavigationBar: FancyBottomNavigation(
+          style: ktsAnsemi.copyWith(color: kcred, fontWeight: FontWeight.w600),
+          circleColor: kcred,
+          tabs: data,
+          onTabChangedListener: (i) {
+            tabIndex = i;
+            setState(() {});
+          }),
     );
   }
 }

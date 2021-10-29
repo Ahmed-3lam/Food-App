@@ -1,7 +1,7 @@
 import 'package:frontend/Helpers/mlib.dart';
 import 'package:frontend/ui/screens/checkoutscreen/checkout.dart';
-import 'package:frontend/ui/screens/choosepayment/payment/compo.dart/mycard.dart';
 import 'package:frontend/ui/screens/comancontainerpage/comancontainerizedpage.dart';
+import 'package:frontend/ui/screens/payment/payment/compo.dart/mycard.dart';
 import 'package:frontend/ui/widgets/textfielwithtitel.dart';
 import 'package:stacked/stacked.dart';
 

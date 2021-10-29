@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:frontend/Helpers/mlib.dart';
-import 'package:frontend/ui/screens/addcard/addcard.dart';
+import 'package:frontend/ui/screens/payment/addcard/addcard.dart';
 import 'compo.dart/mycard.dart';
 import 'compo.dart/paymethodtile.dart';
 

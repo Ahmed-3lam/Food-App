@@ -1,3 +1,4 @@
+import 'package:flutter_svg/svg.dart';
 import 'package:frontend/Helpers/mlib.dart';
 
 AppBar searchCopyAppbar(BuildContext context,
@@ -27,11 +28,13 @@ AppBar searchCopyAppbar(BuildContext context,
           controller: controller,
           filledColor: kcgrey3,
           hint: "Bubble Tea",
-          hintstyle: const TextStyle(color: kcgrey4),
-          prefix: const Icon(
-            MyFlutterApp.search,
-            color: kcgrey5,
-          ),
+          hintstyle: const TextStyle(color: kcblack),
+          prefix: Container(
+              padding: const EdgeInsets.all(14),
+              child: SvgPicture.asset(
+                'asset/images/payments/2.svg',
+                color: kcblack,
+              )),
         ),
       ),
     ),

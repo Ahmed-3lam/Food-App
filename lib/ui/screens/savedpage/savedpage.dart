@@ -1,6 +1,7 @@
 import 'package:frontend/Helpers/mlib.dart';
 import 'package:frontend/repositary/dishes.dart';
 import 'package:frontend/repositary/resturantrepo.dart';
+import 'package:frontend/ui/screens/details/details.dart';
 import 'package:frontend/ui/screens/homemasterhome/compo/yourrecentwidget.dart';
 
 class SavedPage extends StatelessWidget {
@@ -25,17 +26,23 @@ class SavedPage extends StatelessWidget {
                   ),
                 ),
                 ksv16,
-                ...List<FoodTile>.generate(
+                ...List<Widget>.generate(
                     3,
-                    (index) => FoodTile(
-                        image: resturant[index].image,
-                        name: resturant[index].name,
-                        adress: resturant[index].adress,
-                        startRating: resturant[index].startRating,
-                        discount: resturant[index].discount,
-                        time: resturant[index].time,
-                        distance: resturant[index].distance,
-                        revieCount: resturant[index].revieCount)).toList(),
+                    (index) => GestureDetector(
+                          onTap: () {
+                            RouteX.sliderRighToLeft(context,
+                                Details(image: resturant[index].image));
+                          },
+                          child: FoodTile(
+                              image: resturant[index].image,
+                              name: resturant[index].name,
+                              adress: resturant[index].adress,
+                              startRating: resturant[index].startRating,
+                              discount: resturant[index].discount,
+                              time: resturant[index].time,
+                              distance: resturant[index].distance,
+                              revieCount: resturant[index].revieCount),
+                        )).toList(),
                 Padding(
                   padding: kpaddinghor20,
                   child: Row(

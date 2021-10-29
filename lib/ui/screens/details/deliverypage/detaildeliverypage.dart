@@ -6,6 +6,8 @@ import 'package:frontend/ui/screens/details/deliverypage/compo/detailsdeliveryse
 import 'package:frontend/ui/screens/details/detailmodel.dart';
 import 'package:provider/provider.dart';
 
+import 'compo/detailsdeliveryaddtocartdialouge.dart';
+
 class DetailsDeliveyPage extends StatefulWidget {
   const DetailsDeliveyPage({
     Key? key,
@@ -17,6 +19,29 @@ class DetailsDeliveyPage extends StatefulWidget {
 
 class _DetailsDeliveyPageState extends State<DetailsDeliveyPage> {
   List<String> items = ['Re-Order', 'Cancel'];
+  Future<dynamic> _buildDialouge() {
+    return Navigator.push(
+        context,
+        PageRouteBuilder(
+          opaque: false,
+          barrierDismissible: true,
+          barrierColor: Colors.black54,
+          transitionDuration: const Duration(milliseconds: 500),
+          reverseTransitionDuration: const Duration(milliseconds: 500),
+          pageBuilder:
+              (context, Animation<double> _ami1, Animation<double> _anim2) =>
+                  SlideTransition(
+            position: Tween<Offset>(
+                    begin: const Offset(0, .5), end: const Offset(0, 0))
+                .animate(
+                    CurvedAnimation(parent: _ami1, curve: Curves.decelerate)),
+            child: const DetailsDeliveryAddToCartDialouge(
+              totalitemcount: 1,
+            ),
+          ),
+        ));
+  }
+
   bool dowehaveorders = true;
   @override
   Widget build(BuildContext context) {
@@ -103,20 +128,25 @@ class _DetailsDeliveyPageState extends State<DetailsDeliveyPage> {
                       (index) => Consumer<DetailsModel>(
                             builder:
                                 (BuildContext context, model, Widget? child) =>
-                                    DetailsSearchResultTile(
-                              count: index,
-                              decrement: (int y) {
-                                model.removeProduct(
-                                  dishes[index],
-                                );
+                                    GestureDetector(
+                              onTap: () {
+                                _buildDialouge();
                               },
-                              increment: (int x) {
-                                model.addProduct(
-                                  dishes[index],
-                                );
-                              },
-                              image: dishes[index].image,
-                              name: dishes[index].name,
+                              child: DetailsSearchResultTile(
+                                count: index,
+                                decrement: (int y) {
+                                  model.removeProduct(
+                                    dishes[index],
+                                  );
+                                },
+                                increment: (int x) {
+                                  model.addProduct(
+                                    dishes[index],
+                                  );
+                                },
+                                image: dishes[index].image,
+                                name: dishes[index].name,
+                              ),
                             ),
                           )).toList(),
                   const SizedBox(

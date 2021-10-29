@@ -1,5 +1,5 @@
 import 'package:frontend/Helpers/mlib.dart';
-import 'package:frontend/ui/screens/Signin/signinscreen.dart';
+import 'package:frontend/ui/screens/auth/Signin/signinscreen.dart';
 import 'package:frontend/ui/screens/comancontainerpage/comancontainerizedpage.dart';
 import 'package:frontend/ui/widgets/textfielwithtitel.dart';
 
