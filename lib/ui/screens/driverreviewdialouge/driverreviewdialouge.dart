@@ -82,7 +82,7 @@ class DriverReviewDialogue extends StatelessWidget {
                         child: const FoodText("Submit",
                             color: kcOrange, weight: FontWeight.bold),
                         onPressed: () {
-                          RouteX.sliderRighToLeft(context, const MainHome());
+                          RouteX.popToTheTop(context);
                         }),
                   )
                 ],

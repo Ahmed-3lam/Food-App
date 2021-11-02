@@ -1,6 +1,7 @@
 import 'package:fancy_bottom_navigation/fancy_bottom_navigation.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:frontend/Helpers/mlib.dart';
+import 'package:frontend/customepackge/lazyindexedstack.dart';
 import 'package:frontend/ui/screens/Dialogs/commondialog.dart';
 import 'package:frontend/ui/screens/home2/home2.dart';
 import 'package:frontend/ui/screens/homemasterhome/homemasterhome.dart';
@@ -108,8 +109,13 @@ class _MainHomeState extends State<MainHome>
         return v ?? false;
       },
       child: Scaffold(
-        body: IndexedStack(
-          children: _buildPages(),
+        body: LazyIndexedStack(
+          children: const [
+            HomeMasterHome(),
+            MyOrderPage(),
+            SavedPage(),
+            ProfileScreen(),
+          ],
           index: tabIndex,
         ),
         bottomNavigationBar: FancyBottomNavigation(
@@ -137,8 +143,6 @@ class CloneHome extends StatefulWidget {
 
 class _CloneHomeState extends State<CloneHome>
     with SingleTickerProviderStateMixin {
-  late OverlayEntry _entry;
-
   List<TabData> data = [
     TabData(
       iconData: MyIcons.home,
@@ -158,21 +162,17 @@ class _CloneHomeState extends State<CloneHome>
     ),
   ];
 
-  List<Widget> _buildPages() {
-    return [
-      const Home2(),
-      const MyOrderPage(),
-      const SavedPage(),
-      const ProfileScreen(),
-    ];
-  }
-
   int tabIndex = 0;
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: IndexedStack(
-        children: _buildPages(),
+      body: LazyIndexedStack(
+        children: const [
+          Home2(),
+          MyOrderPage(),
+          SavedPage(),
+          ProfileScreen(),
+        ],
         index: tabIndex,
       ),
       bottomNavigationBar: FancyBottomNavigation(

@@ -1,17 +1,22 @@
-import 'package:flutter/material.dart';
-import 'package:flutter/rendering.dart';
-import 'package:flutter_svg/svg.dart';
 import 'package:frontend/Helpers/mlib.dart';
+//
+import 'package:frontend/ui/screens/details/deliverypage/detaildeliverypage.dart';
+import 'package:frontend/ui/screens/details/reviewpage/detaildeliveryreviewpage.dart';
+//
+import 'package:frontend/ui/screens/details/detailmodel.dart';
+//
 import 'package:frontend/ui/constants/colors.dart';
 import 'package:frontend/ui/constants/textstyles.dart';
-import 'package:frontend/ui/screens/details/deliverypage/detaildeliverypage.dart';
-import 'package:frontend/ui/screens/details/detailmodel.dart';
-import 'package:frontend/ui/screens/details/reviewpage/detaildeliveryreviewpage.dart';
-import 'package:frontend/ui/screens/details/compo/detailsinformationwidget.dart';
+import 'package:frontend/ui/screens/searchfiltercopy/searchfiltercopy.dart';
 import 'package:frontend/ui/utils/icons.dart';
+//
+import 'package:like_button/like_button.dart';
+import 'package:frontend/customepackge/lazyindexedstack.dart';
+import 'package:flutter_svg/svg.dart';
 import 'package:provider/provider.dart';
-
+//
 import 'deliverypage/compo/detaildeliverybottomappbar.dart';
+import 'package:frontend/ui/screens/details/compo/detailsinformationwidget.dart';
 import 'info/detailsinfopage.dart';
 
 class Details extends StatefulWidget {
@@ -25,10 +30,10 @@ class _DetailsState extends State<Details> with SingleTickerProviderStateMixin {
   late TabController tabController;
   late ScrollController _controller;
   int index = 0;
-  // bool toShowBar = false;
 
   @override
   void didChangeDependencies() {
+    ///WE CAN ALSO PROVIDE OTHER OBJECTS LIKE NETWORK IMAGE...
     precacheImage(AssetImage(widget.image), context);
     super.didChangeDependencies();
   }
@@ -36,26 +41,9 @@ class _DetailsState extends State<Details> with SingleTickerProviderStateMixin {
   @override
   void initState() {
     tabController = TabController(length: 3, vsync: this);
-    _controller = ScrollController()
-      ..addListener(() {
-        // _showBottomBar();
-      });
-
+    _controller = ScrollController();
     super.initState();
   }
-
-  ///To MANAGE APPERANCE OF BOTTOM APPBAR ON SCROLLING
-  // _showBottomBar() {
-  //   if (index == 0 && _controller.position.pixels > 360) {
-  //     if (!toShowBar) {
-  //       toShowBar = true;
-  //       setState(() {});
-  //     }
-  //   } else {
-  //     toShowBar = false;
-  //     setState(() {});
-  //   }
-  // }
 
   _buildAppBar() {
     return SliverAppBar(
@@ -76,9 +64,6 @@ class _DetailsState extends State<Details> with SingleTickerProviderStateMixin {
                     duration: const Duration(milliseconds: 200),
                     curve: Curves.decelerate);
                 index = x;
-
-                /// toShowBar = false;
-                /// toScrollInThirdPage = true;
                 setState(() {});
               },
               indicatorPadding: EdgeInsets.zero,
@@ -104,6 +89,18 @@ class _DetailsState extends State<Details> with SingleTickerProviderStateMixin {
         ),
       ),
     );
+  }
+
+  double symmetricStretcher() {
+    ///HERE 360 IS SIZE OF THE IMAGE AND 30 IS BASE PADDING AND WE ARE REMOVING
+    ///THE PADDING ON THE BASIS OF THE SCROLL OFFSET...
+    return _controller.position.pixels < 360
+        ? 30 -
+            30 *
+                ((_controller.position.pixels /
+                        MediaQuery.of(context).size.height)
+                    .clamp(0, 1))
+        : 0;
   }
 
   @override
@@ -132,7 +129,7 @@ class _DetailsState extends State<Details> with SingleTickerProviderStateMixin {
                         child: Stack(
                           alignment: Alignment.topLeft,
                           children: [
-                            Container(
+                            SizedBox(
                               height: 360,
                               width: MediaQuery.of(context).size.width,
                               child: Hero(
@@ -147,53 +144,78 @@ class _DetailsState extends State<Details> with SingleTickerProviderStateMixin {
                                 ),
                               ),
                             ),
-                            Padding(
-                              padding: const EdgeInsets.only(top: 8),
-                              child: Row(
-                                children: [
-                                  GestureDetector(
-                                    onTap: () {
-                                      Navigator.pop(context);
-                                    },
-                                    onTapDown: (TapDownDetails details) {},
-                                    child: const Padding(
-                                      padding: EdgeInsets.all(8.0),
-                                      child: Icon(
-                                        MyFlutterApp.arrowback,
-                                        color: kcwhite,
-                                        size: 25,
+
+                            ///THIS PORTION IS APP BAR LOCATED AT THE TOP...
+                            Align(
+                              alignment: Alignment.topCenter,
+                              child: Padding(
+                                padding: const EdgeInsets.only(top: 8),
+                                child: Row(
+                                  crossAxisAlignment: CrossAxisAlignment.start,
+                                  children: [
+                                    GestureDetector(
+                                      onTap: () {
+                                        Navigator.pop(context);
+                                      },
+                                      child: const Padding(
+                                        padding: EdgeInsets.all(8.0),
+                                        child: Icon(
+                                          MyFlutterApp.arrowback,
+                                          color: kcwhite,
+                                          size: 25,
+                                        ),
                                       ),
                                     ),
-                                  ),
-                                  const Spacer(),
-                                  CircleAvatar(
-                                    radius: 18,
-                                    backgroundColor: kcwhite,
-                                    child: Padding(
-                                      padding: const EdgeInsets.all(8.0),
-                                      child: SvgPicture.asset(
-                                        'asset/images/payments/2.svg',
-                                        color: kcBlack,
+                                    const Spacer(),
+                                    SizedBox(
+                                      height: 36,
+                                      width: 36,
+                                      child: GestureDetector(
+                                        onTap: () {
+                                          RouteX.sliderRighToLeft(context,
+                                              const SearchFilterCopy());
+                                        },
+                                        child: CircleAvatar(
+                                          radius: 18,
+                                          backgroundColor: kcwhite,
+                                          child: Padding(
+                                            padding: const EdgeInsets.all(8.0),
+                                            child: SvgPicture.asset(
+                                              'asset/images/payments/2.svg',
+                                              color: kcBlack,
+                                            ),
+                                          ),
+                                        ),
                                       ),
                                     ),
-                                  ),
-                                  ksh12,
-                                  const CircleAvatar(
-                                    radius: 18,
-                                    backgroundColor: kcwhite,
-                                    child: Padding(
-                                      padding: EdgeInsets.all(8.0),
-                                      child: Icon(
-                                        MyIcons.saved,
-                                        color: kcBlack,
-                                        size: 20,
+                                    ksh12,
+                                    SizedBox(
+                                      height: 40,
+                                      width: 40,
+                                      child: LikeButton(
+                                        size: 36,
+                                        likeBuilder: (bool b) => CircleAvatar(
+                                          radius: 18,
+                                          backgroundColor: !b ? kcwhite : kcred,
+                                          child: Padding(
+                                            padding: const EdgeInsets.only(
+                                                right: 3.0),
+                                            child: Icon(
+                                              MyIcons.saved,
+                                              color: !b ? kcBlack : kcwhite,
+                                              size: 20,
+                                            ),
+                                          ),
+                                        ),
                                       ),
                                     ),
-                                  ),
-                                  ksh12
-                                ],
+                                    ksh12
+                                  ],
+                                ),
                               ),
                             ),
+
+                            ///THIS IS RESTAURANT INFORMATION TILE....
                             Positioned(
                               bottom: 0,
                               child: AnimatedBuilder(
@@ -202,28 +224,8 @@ class _DetailsState extends State<Details> with SingleTickerProviderStateMixin {
                                     return Container(
                                       padding: EdgeInsets.only(
                                         bottom: 0,
-                                        left: _controller.position.pixels < 360
-                                            ? 30 -
-                                                30 *
-                                                    ((_controller.position
-                                                                .pixels /
-                                                            MediaQuery.of(
-                                                                    context)
-                                                                .size
-                                                                .height)
-                                                        .clamp(0, 1))
-                                            : 0,
-                                        right: _controller.position.pixels < 360
-                                            ? 30 -
-                                                30 *
-                                                    ((_controller.position
-                                                                .pixels /
-                                                            MediaQuery.of(
-                                                                    context)
-                                                                .size
-                                                                .height)
-                                                        .clamp(0, 1))
-                                            : 0,
+                                        left: symmetricStretcher(),
+                                        right: symmetricStretcher(),
                                       ),
                                       alignment: Alignment.bottomCenter,
                                       height: 100,
@@ -240,11 +242,13 @@ class _DetailsState extends State<Details> with SingleTickerProviderStateMixin {
                         ),
                       ),
                     ),
+
+                    ///THIS IS STICKY HEADER ...
                     _buildAppBar(),
                     SliverToBoxAdapter(
                       child: SizedBox(
                         height: index == 2 ? 395 : null,
-                        child: IndexedStack(
+                        child: LazyIndexedStack(
                           children: const [
                             DetailsDeliveyPage(),
                             DetailReviewPage(),
@@ -257,19 +261,7 @@ class _DetailsState extends State<Details> with SingleTickerProviderStateMixin {
                   ],
                 ),
               ),
-              Consumer<DetailsModel>(
-                  builder: (BuildContext context, model, Widget? child) {
-                return AnimatedContainer(
-                    height: model.getProduct.isNotEmpty ? 60 : 0,
-                    duration: const Duration(milliseconds: 200),
-                    child: Wrap(
-                      children: [
-                        DetailDeliveryBottomAppbar(
-                          totalItemCount: model.value,
-                        ),
-                      ],
-                    ));
-              }),
+              const DetailDeliveryBottomAppBar(),
             ],
           ),
         ),

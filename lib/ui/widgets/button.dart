@@ -33,71 +33,69 @@ class MasterButton extends StatefulWidget {
 class _MasterButtonState extends State<MasterButton> {
   @override
   Widget build(BuildContext context) {
-    return ClipRRect(
-      borderRadius: BorderRadius.circular(widget.radii!),
-      child: Container(
-        height: widget.height,
-        decoration: !widget.isOutlined!
-            ? BoxDecoration(
-                color: widget.buttonColor,
-                borderRadius: BorderRadius.circular(widget.radii!),
-              )
-            : BoxDecoration(
-                // color: buttonColor,
-                borderRadius: BorderRadius.circular(widget.radii!),
-                border: Border.all(
-                  width: 1,
-                  color: widget.buttonColor!,
-                )),
-        child: MaterialButton(
-          padding: EdgeInsets.zero,
-          onPressed: () {
-            setState(() {});
-            widget.onTap();
-          },
-          child: widget.isBusy!
-              ? const Center(
-                  child: CircularProgressIndicator(
-                    color: kcwhite,
-                  ),
-                )
-              : Center(
-                  child: (widget.preFix != null)
-                      ? Row(
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          children: [
-                            widget.preFix!,
-                            const SizedBox(
-                              width: 25,
-                            ),
-                            Text(widget.name,
-                                style: TextStyle(
-                                    color:
-                                        widget.isOutlined! ? kcblack : kcwhite))
-                          ],
-                        )
-                      : Padding(
-                          padding: const EdgeInsets.symmetric(
-                              horizontal: 16, vertical: 6),
-                          child: widget.isOutlined!
-                              ? Text(
-                                  widget.name,
-                                  style: const TextStyle(color: kcred).copyWith(
-                                      color: widget.textcolor, fontSize: 14),
-                                )
-                              : Text(
-                                  widget.name,
-                                  style: TextStyle(
-                                      fontSize: 14,
-                                      color: widget.isOutlined!
-                                          ? widget.textcolor
-                                          : widget.isBusy!
-                                              ? kcBlack
-                                              : kcwhite),
-                                ),
-                        ),
+    return Container(
+      height: widget.height,
+      decoration: !widget.isOutlined!
+          ? BoxDecoration(
+              color: widget.buttonColor,
+              borderRadius: BorderRadius.circular(widget.radii!),
+            )
+          : BoxDecoration(
+              borderRadius: BorderRadius.circular(widget.radii!),
+              border: Border.all(
+                width: 1,
+                color: widget.buttonColor!,
+              )),
+      child: MaterialButton(
+        shape: RoundedRectangleBorder(
+            borderRadius: BorderRadius.circular(widget.radii!)),
+        padding: EdgeInsets.zero,
+        onPressed: () {
+          setState(() {});
+          widget.onTap();
+        },
+        child: widget.isBusy!
+            ? const Center(
+                child: CircularProgressIndicator(
+                  color: kcwhite,
                 ),
-        ),
+              )
+            : Center(
+                child: (widget.preFix != null)
+                    ? Row(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          widget.preFix!,
+                          const SizedBox(
+                            width: 25,
+                          ),
+                          Text(widget.name,
+                              style: TextStyle(
+                                  color:
+                                      widget.isOutlined! ? kcblack : kcwhite))
+                        ],
+                      )
+                    : Padding(
+                        padding: const EdgeInsets.symmetric(
+                            horizontal: 16, vertical: 6),
+                        child: widget.isOutlined!
+                            ? Text(
+                                widget.name,
+                                style: const TextStyle(color: kcred).copyWith(
+                                    color: widget.textcolor, fontSize: 14),
+                              )
+                            : Text(
+                                widget.name,
+                                style: TextStyle(
+                                    fontSize: 14,
+                                    color: widget.isOutlined!
+                                        ? widget.textcolor
+                                        : widget.isBusy!
+                                            ? kcBlack
+                                            : kcwhite),
+                              ),
+                      ),
+              ),
       ),
     );
   }

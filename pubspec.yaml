@@ -34,17 +34,18 @@ dependencies:
     sdk: flutter
   flutter_calendar_carousel: ^2.0.3
   flutter_rating_bar: ^4.0.0
+  flutter_staggered_animations: ^1.0.0
   flutter_svg: ^0.22.0
   geolocator: ^7.7.1
   google_maps_flutter: ^2.0.10
   http: ^0.13.3
   intl: ^0.17.0
   like_button: ^2.0.3
-  percent_indicator: ^3.0.1
+  percent_indicator: ^3.4.0
   persistent_bottom_nav_bar: ^4.0.2
+  pin_code_fields: ^7.3.0
   pixel_perfect: ^1.1.0
   provider: ^5.0.0
-  pin_code_fields: ^7.3.0
   rating_dialog: ^2.0.1
   stacked: ^2.2.3
   syncfusion_flutter_datepicker: ^19.2.60

@@ -1,6 +1,7 @@
 import 'package:frontend/Helpers/mlib.dart';
 import 'package:frontend/ui/screens/driverreviewdialouge/driverreviewdialouge.dart';
 import 'package:frontend/ui/screens/hometabbar/hometabar.dart';
+import 'package:frontend/ui/utils/textutlities.dart';
 
 class Detailsmyorder3 extends StatefulWidget {
   const Detailsmyorder3({
@@ -35,13 +36,14 @@ class _Detailsmyorder3State extends State<Detailsmyorder3> {
                 children: [
                   ksv20,
                   Image.asset(
-                    "asset/images/dialouge/group_2.png",
+                    "asset/images/illustration/illustration.png",
                     scale: 3,
                   ),
                   const Spacer(),
-                  const FoodText(
+                  Text(
                     "Thank you\nfor your order",
-                    fonsize: 26,
+                    style: FontStyleUtilities.h3(fontWeight: FWT.semiBold),
+                    textAlign: TextAlign.center,
                   ),
                   ksv16,
                   const FoodText(
@@ -69,7 +71,7 @@ class _Detailsmyorder3State extends State<Detailsmyorder3> {
                   ),
                   TextButton(
                       onPressed: () {
-                        RouteX.sliderRighToLeft(context, const MainHome());
+                        RouteX.popToTheTop(context);
                       },
                       child: const FoodText("Maybe next time")),
                   ksv12,

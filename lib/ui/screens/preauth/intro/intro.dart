@@ -1,9 +1,11 @@
 import 'package:frontend/Helpers/mlib.dart';
 import 'package:frontend/ui/screens/auth/mobilenum/mobilenum.dart';
+import 'package:frontend/ui/screens/preauth/goal/goal.dart';
+import 'package:frontend/ui/screens/preauth/intro/compo/data.dart';
 
-import 'package:frontend/ui/widgets/button.dart';
+import 'package:percent_indicator/circular_percent_indicator.dart';
 
-import 'compo/indicators.dart';
+import 'compo/commonpage.dart';
 
 class Intro extends StatefulWidget {
   const Intro({Key? key}) : super(key: key);
@@ -13,54 +15,95 @@ class Intro extends StatefulWidget {
 }
 
 class _IntroState extends State<Intro> {
+  late PageController _pageController;
+
+  @override
+  void initState() {
+    _pageController = PageController();
+    super.initState();
+  }
+
   int index = 0;
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      // backgroundColor: kcred,
       body: SafeArea(
         child: Column(
           children: [
             ksv16,
-            SizedBox(
-              height: MediaQuery.of(context).size.height * .5,
-              width: MediaQuery.of(context).size.width,
-              child: PageView.builder(
-                  itemCount: 3,
+            Expanded(
+              child: SizedBox(
+                child: PageView(
+                  physics: const BouncingScrollPhysics(),
+                  controller: _pageController,
                   onPageChanged: (i) {
                     index = i;
-                    setState(() {});
+
+                    ///WE ARE AVOIDING TO CALL THE SET STATE METHOD IN THE PLACE
+                    ///OF THIS WE ARE WRAPPING THE CIRCULAR PROGRESS INDICATOR
+                    ///IN ANIMATED BUILDER SO IN THE PLACE OF BUILDING COMPLETE
+                    ///PAGE AGAIN IT WILL BE CALLED IN JUST THAT PORTION...
+                    // setState(() {};
                   },
-                  itemBuilder: (context, i) => Image.asset(
-                        "asset/images/illustration/illu.png",
-                        scale: 3,
-                      )),
+                  children: [
+                    CommonIntoPage(
+                      model: intros[0],
+                    ),
+                    CommonIntoPage(
+                      model: intros[1],
+                    ),
+                    CommonIntoPage(
+                      model: intros[2],
+                    ),
+                  ],
+                ),
+              ),
             ),
-            ksv18,
-            IndicatorsOfIntro(index: index),
+            ksv30,
+            AnimatedBuilder(
+              animation: _pageController,
+              builder: (context, child) => CircularPercentIndicator(
+                lineWidth: 6,
+                circularStrokeCap: CircularStrokeCap.round,
+                center: Padding(
+                  padding: const EdgeInsets.all(8.0),
+                  child: FloatingActionButton(
+                      backgroundColor: kcred,
+                      onPressed: () {
+                        if (index == 2) {
+                          RouteX.sliderRighToLeft(context, const GOALScreen());
+                        } else {
+                          _pageController.animateToPage(index + 1,
+                              duration: const Duration(milliseconds: 500),
+                              curve: Curves.decelerate);
+                        }
+                      },
+                      child: index == 2
+                          ? const Icon(
+                              Icons.done_all,
+                              size: 30,
+                              // color: kcred,
+                            )
+                          : const RotatedBox(
+                              quarterTurns: 2,
+                              child: Icon(
+                                Icons.arrow_back,
+                                size: 30,
+                                // color: kcred,
+                              ),
+                            )),
+                ),
+                radius: 78,
+                backgroundColor: Colors.transparent,
+                animation: true,
+                animateFromLastPercent: true,
+                percent: (.33 * (index + 1)).clamp(0, 1),
+                progressColor: kcred,
+              ),
+            ),
+            ksv30,
             ksv20,
-            const FoodText.ktsAnreg(
-              "Find all restaurent\nin one app",
-              fonsize: 24,
-            ),
-            ksv18,
-            const FoodText("Choose your favourite restaurant",
-                color: kctxtcolor),
-            ksv20,
-            Padding(
-              padding: kpaddinghor20,
-              child: MasterButton(
-                  name: "Sign In",
-                  onTap: () {
-                    RouteX.sliderBottomToTop(context, const MObileNumber());
-                  }),
-            ),
-            ksv16,
-            TextButton(
-                onPressed: () {},
-                child: const Text(
-                  "Skip",
-                  style: TextStyle(color: kcred, fontSize: 16),
-                ))
           ],
         ),
       ),

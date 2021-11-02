@@ -7,20 +7,18 @@ import 'package:provider/provider.dart';
 
 import 'detailsdeliveryaddtocartdialouge.dart';
 
-class DetailDeliveryBottomAppbar extends StatefulWidget {
-  const DetailDeliveryBottomAppbar({
+class DetailDeliveryBottomAppBar extends StatefulWidget {
+  const DetailDeliveryBottomAppBar({
     Key? key,
-    required this.totalItemCount,
   }) : super(key: key);
-  final int totalItemCount;
 
   @override
-  State<DetailDeliveryBottomAppbar> createState() =>
-      _DetailDeliveryBottomAppbarState();
+  State<DetailDeliveryBottomAppBar> createState() =>
+      _DetailDeliveryBottomAppBarState();
 }
 
-class _DetailDeliveryBottomAppbarState
-    extends State<DetailDeliveryBottomAppbar> {
+class _DetailDeliveryBottomAppBarState
+    extends State<DetailDeliveryBottomAppBar> {
   Future<dynamic> _buildDialouge() {
     return Navigator.push(
         context,
@@ -47,51 +45,54 @@ class _DetailDeliveryBottomAppbarState
   int ordercount = 0;
   @override
   Widget build(BuildContext context) {
-    print('Builded this one');
     return Consumer<DetailsModel>(
       builder: (BuildContext context, model, Widget? child) => GestureDetector(
         onTap: () {
           _buildDialouge();
         },
-        child: Container(
-          height: 60,
-          color: kcred,
-          child: Center(
-            child: Padding(
-              padding: kpaddinghor20,
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  Container(
-                    height: 32,
-                    width: 32,
-                    decoration: BoxDecoration(
-                      color: kclightred,
-                      borderRadius: BorderRadius.circular(6),
+        child: AnimatedContainer(
+          duration: const Duration(milliseconds: 300),
+          height: model.getProduct.isNotEmpty ? 60 : 0,
+          child: Container(
+            height: 60,
+            color: kcred,
+            child: Center(
+              child: Padding(
+                padding: kpaddinghor20,
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    Container(
+                      height: 32,
+                      width: 32,
+                      decoration: BoxDecoration(
+                        color: kclightred,
+                        borderRadius: BorderRadius.circular(6),
+                      ),
+                      child: Center(
+                          child: FoodText("${model.totaitem()}",
+                              color: Colors.white)),
                     ),
-                    child: Center(
-                        child: FoodText("${model.totaitem()}",
-                            color: Colors.white)),
-                  ),
-                  Builder(builder: (context) {
-                    return const FoodText.ktsAnsemi(
-                      "View Order",
-                      color: kcwhite,
-                      fonsize: 18,
-                    );
-                  }),
-                  Container(
-                    height: 32,
-                    width: 62,
-                    decoration: BoxDecoration(
-                      border: Border.all(color: kclightred, width: 2),
-                      borderRadius: BorderRadius.circular(6),
+                    Builder(builder: (context) {
+                      return const FoodText.ktsAnsemi(
+                        "View Order",
+                        color: kcwhite,
+                        fonsize: 18,
+                      );
+                    }),
+                    Container(
+                      height: 32,
+                      width: 62,
+                      decoration: BoxDecoration(
+                        border: Border.all(color: kclightred, width: 2),
+                        borderRadius: BorderRadius.circular(6),
+                      ),
+                      child: Center(
+                          child: FoodText("\$${150 * model.totaitem()}",
+                              color: kcwhite)),
                     ),
-                    child: Center(
-                        child: FoodText("\$${150 * model.totaitem()}",
-                            color: kcwhite)),
-                  ),
-                ],
+                  ],
+                ),
               ),
             ),
           ),
