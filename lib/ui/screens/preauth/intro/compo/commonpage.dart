@@ -28,7 +28,8 @@ class CommonIntoPage extends StatelessWidget {
         Text(
           model.data,
           textAlign: TextAlign.center,
-          style: FontStyleUtilities.h3(fontWeight: FWT.bold, fontColor: kcred),
+          style:
+              FontStyleUtilities.h3(fontWeight: FWT.bold, fontColor: kcwhite),
         ),
         ksv30,
       ],

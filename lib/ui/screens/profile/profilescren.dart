@@ -93,7 +93,7 @@ class ProfileScreen extends StatelessWidget {
             },
           ),
           ProfielTiel(
-            name: "Terms and condition",
+            name: "Notifications",
             data: Icons.notifications,
             tap: () {
               RouteX.sliderRighToLeft(context, const NotificationPage());

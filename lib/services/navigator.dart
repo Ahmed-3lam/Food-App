@@ -39,6 +39,17 @@ class RouteX {
     /// ),
   }
 
+  static getToHome(BuildContext context) {
+    Navigator.pushAndRemoveUntil(
+        context,
+        PageRouteBuilder(
+            reverseTransitionDuration: const Duration(milliseconds: 100),
+            transitionDuration: const Duration(milliseconds: 500),
+            pageBuilder: (context, _anim, _anim2) =>
+                FadeTransition(opacity: _anim, child: const MainHome())),
+        (route) => false);
+  }
+
   static sliderLeftToRight(BuildContext context, Widget page) {
     Navigator.of(context).push(
       PageRouteBuilder(

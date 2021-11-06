@@ -32,7 +32,7 @@ class DetailsInformationWidget extends StatelessWidget {
               height: 5,
             ),
             const Text(
-              "S&L fox",
+              "S&L Dinner",
               style: TextStyle(
                 color: Color(0xff0B2E40),
                 fontSize: 20,

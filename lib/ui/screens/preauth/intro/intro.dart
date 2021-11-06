@@ -27,7 +27,7 @@ class _IntroState extends State<Intro> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      // backgroundColor: kcred,
+      backgroundColor: kcred,
       body: SafeArea(
         child: Column(
           children: [
@@ -64,12 +64,18 @@ class _IntroState extends State<Intro> {
             AnimatedBuilder(
               animation: _pageController,
               builder: (context, child) => CircularPercentIndicator(
+                radius: 78,
+                backgroundColor: Colors.transparent,
+                animation: true,
+                animateFromLastPercent: true,
+                percent: (.33 * (index + 1)).clamp(0, 1),
+                progressColor: kcwhite,
                 lineWidth: 6,
                 circularStrokeCap: CircularStrokeCap.round,
                 center: Padding(
                   padding: const EdgeInsets.all(8.0),
                   child: FloatingActionButton(
-                      backgroundColor: kcred,
+                      backgroundColor: kcwhite,
                       onPressed: () {
                         if (index == 2) {
                           RouteX.sliderRighToLeft(context, const GOALScreen());
@@ -83,23 +89,17 @@ class _IntroState extends State<Intro> {
                           ? const Icon(
                               Icons.done_all,
                               size: 30,
-                              // color: kcred,
+                              color: kcred,
                             )
                           : const RotatedBox(
                               quarterTurns: 2,
                               child: Icon(
                                 Icons.arrow_back,
                                 size: 30,
-                                // color: kcred,
+                                color: kcred,
                               ),
                             )),
                 ),
-                radius: 78,
-                backgroundColor: Colors.transparent,
-                animation: true,
-                animateFromLastPercent: true,
-                percent: (.33 * (index + 1)).clamp(0, 1),
-                progressColor: kcred,
               ),
             ),
             ksv30,

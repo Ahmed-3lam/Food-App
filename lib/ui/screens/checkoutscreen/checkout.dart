@@ -1,6 +1,7 @@
 import 'package:frontend/Helpers/mlib.dart';
 import 'package:frontend/ui/screens/payment/addcard/addcard.dart';
 import 'package:frontend/ui/screens/payment/payment/compo.dart/mycard.dart';
+import 'package:frontend/ui/utils/textutlities.dart';
 
 import 'compo/adresstile.dart';
 import 'compo/paymethod.dart';
@@ -55,35 +56,15 @@ class _CheckOutPaymentState extends State<CheckOutPayment> {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: childSpacer([
               const SizedBox(),
-              RadioTile(
-                isselected: x == 1,
-                name: "Home address",
-                homeadress: "152 Custom Road Chattak",
-                num: "(309) 071-9396-939",
-                ontap: () {
-                  x = 1;
-                  setState(() {});
-                },
-              ),
-              RadioTile(
-                isselected: x == 2,
-                name: "Office address",
-                homeadress: "152 Custom Road Chattak",
-                num: "(309) 071-9396-939",
-                ontap: () {
-                  x = 2;
-                  setState(() {});
-                },
-              ),
               Padding(
-                padding: kpadding,
-                child: const Text(
+                padding: kpaddinghor20,
+                child: Text(
                   "Select Payment System",
-                  style: ktsAnsemi,
+                  style: FontStyleUtilities.h5(fontWeight: FWT.semiBold),
                 ),
               ),
               Padding(
-                padding: kpadding,
+                padding: kpaddinghor20,
                 child: Row(children: [
                   Text(
                     "My Cards",

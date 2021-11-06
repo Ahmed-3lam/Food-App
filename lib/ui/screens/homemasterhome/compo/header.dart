@@ -6,6 +6,7 @@ import 'package:frontend/ui/constants/colors.dart';
 import 'package:frontend/ui/constants/textstyles.dart';
 import 'package:frontend/ui/screens/Location-choose_city/locationchoosecity.dart';
 import 'package:frontend/ui/screens/hometabbar/hometabar.dart';
+import 'package:frontend/ui/screens/notification/notification.dart';
 import 'package:frontend/ui/screens/searchCopy/searchcopy.dart';
 import 'package:frontend/ui/widgets/texfield.dart';
 
@@ -25,11 +26,20 @@ class HomeHeader extends StatelessWidget {
             height: 10,
           ),
           Row(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
               const FoodText.ktsAnsemi(
-                "Delivery Adrees",
+                "Delivery Adders",
                 color: kcwhite,
+              ),
+              const Spacer(),
+              GestureDetector(
+                onTap: () {
+                  RouteX.sliderRighToLeft(context, const NotificationPage());
+                },
+                child: const Icon(
+                  Icons.notifications,
+                  color: Colors.white,
+                ),
               ),
               GestureDetector(
                   onTap: () {
