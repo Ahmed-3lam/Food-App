@@ -1,13 +1,15 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:frontend/Helpers/mlib.dart';
-import 'package:frontend/services/my_flutter_app_icons.dart';
+import 'package:frontend/extension/sizingextension.dart';
 import 'package:frontend/ui/constants/colors.dart';
 import 'package:frontend/ui/constants/textstyles.dart';
 import 'package:frontend/ui/screens/Location-choose_city/locationchoosecity.dart';
 import 'package:frontend/ui/screens/hometabbar/hometabar.dart';
 import 'package:frontend/ui/screens/notification/notification.dart';
 import 'package:frontend/ui/screens/searchCopy/searchcopy.dart';
+import 'package:frontend/ui/utils/spaces.dart';
 import 'package:frontend/ui/widgets/texfield.dart';
 
 class HomeHeader extends StatelessWidget {
@@ -23,7 +25,7 @@ class HomeHeader extends StatelessWidget {
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           const SizedBox(
-            height: 10,
+            height: 14,
           ),
           Row(
             children: [
@@ -36,17 +38,19 @@ class HomeHeader extends StatelessWidget {
                 onTap: () {
                   RouteX.sliderRighToLeft(context, const NotificationPage());
                 },
-                child: const Icon(
-                  Icons.notifications,
+                child: SvgPicture.asset(
+                  'asset/LastIcons/Notification.svg',
+                  height: 25,
                   color: Colors.white,
                 ),
               ),
+              SpaceUtils.ks10.width(),
               GestureDetector(
                   onTap: () {
                     RouteX.sliderRighToLeft(context, const CloneHome());
                   },
-                  child: const Icon(Icons.arrow_right_alt_outlined,
-                      color: kcwhite))
+                  child: SvgPicture.asset('asset/LastIcons/106 – controls.svg',
+                      height: 25, color: kcwhite))
             ],
           ),
           const SizedBox(

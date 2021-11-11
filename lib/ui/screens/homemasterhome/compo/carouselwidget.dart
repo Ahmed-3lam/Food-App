@@ -44,13 +44,10 @@ class _HomeCarouselItemState extends State<HomeCarouselItem> {
               ),
               child: ClipRRect(
                 borderRadius: BorderRadius.circular(15),
-                child: Hero(
-                  tag: widget.image,
-                  child: Image.asset(
-                    widget.image,
-                    key: ValueKey(widget.image),
-                    fit: BoxFit.cover,
-                  ),
+                child: Image.asset(
+                  'asset/images/PlaceHolder/placeholder.jpg',
+                  key: ValueKey(widget.image),
+                  fit: BoxFit.cover,
                 ),
               ),
             ),
@@ -120,3 +117,10 @@ class Indicator extends StatelessWidget {
     );
   }
 }
+
+/// String image =
+///     'https://images.unsplash.com/photo-1519077336050-4ca5cac9d64f?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=870&q=80s';
+/// String image2 =
+///     'https://images.unsplash.com/photo-1564671165093-20688ff1fffa?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1898&q=80';
+/// String image3 =
+///     'https://images.unsplash.com/photo-1617474019977-0e105d1b430e?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=362&q=80';

@@ -33,7 +33,8 @@ class _SearchCopyState extends State<SearchCopy> {
           padding: kpadding,
           child:
               Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
-            const SearchCleartile(
+            ///WE CAN MAP THE DATA ON THE BASIS OF RESULTS AND PASS THE CONTROLLER
+            const SearchClearTile(
               name: "Recent history",
             ),
             SearchCopyResultTile(
@@ -186,7 +187,7 @@ class SearchCopyResultTile extends StatelessWidget {
           padding: const EdgeInsets.only(top: 7, bottom: 7),
           onPressed: () {
             controller.text = name;
-
+            FocusScope.of(context).nextFocus();
             tap();
           },
           child: Row(
@@ -205,8 +206,8 @@ class SearchCopyResultTile extends StatelessWidget {
   }
 }
 
-class SearchCleartile extends StatelessWidget {
-  const SearchCleartile({
+class SearchClearTile extends StatelessWidget {
+  const SearchClearTile({
     Key? key,
     required this.name,
   }) : super(key: key);

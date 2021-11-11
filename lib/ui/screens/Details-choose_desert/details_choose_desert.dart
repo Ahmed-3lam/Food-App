@@ -1,5 +1,4 @@
 import 'package:frontend/Helpers/mlib.dart';
-import 'package:frontend/repositary/dishes.dart';
 import 'package:frontend/repositary/resturantrepo.dart';
 import 'package:frontend/ui/screens/details/details.dart';
 

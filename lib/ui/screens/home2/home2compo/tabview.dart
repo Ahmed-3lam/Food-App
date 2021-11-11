@@ -1,7 +1,7 @@
+import 'package:flutter/material.dart';
 import 'package:frontend/Helpers/mlib.dart';
 import 'package:frontend/repositary/resturantrepo.dart';
 import 'package:frontend/ui/widgets/childspacer.dart';
-import 'package:frontend/ui/widgets/foodtile.dart';
 
 class HomeTabBarView extends StatefulWidget {
   const HomeTabBarView({Key? key}) : super(key: key);
@@ -17,7 +17,6 @@ class _HomeTabBarViewState extends State<HomeTabBarView>
   @override
   void initState() {
     _tabController = TabController(length: 4, vsync: this);
-
     super.initState();
   }
 
@@ -27,30 +26,33 @@ class _HomeTabBarViewState extends State<HomeTabBarView>
       children: [
         Column(
           children: [
-            TabBar(
-                indicatorPadding: EdgeInsets.zero,
-                isScrollable: true,
-                padding: const EdgeInsets.symmetric(horizontal: 15),
-                controller: _tabController,
-                indicatorSize: TabBarIndicatorSize.label,
-                indicatorWeight: 03,
-                labelColor: kcred,
-                // indicator: const BoxDecoration(color: Colors.transparent),
-                unselectedLabelColor: kcblack,
-                labelStyle: ktsAvenirDemi.copyWith(fontSize: 14),
-                unselectedLabelStyle: ktsAnreg.copyWith(color: kcgrey5),
-                tabs: const [
-                  Tab(
-                    text: "Near You",
-                  ),
-                  Tab(text: "Newest"),
-                  Tab(
-                    text: "Best Rated",
-                  ),
-                  Tab(
-                    text: "Trending",
-                  )
-                ]),
+            SizedBox(
+              height: 48,
+              child: TabBar(
+                  indicatorPadding: EdgeInsets.zero,
+                  isScrollable: true,
+                  padding: const EdgeInsets.symmetric(horizontal: 15),
+                  controller: _tabController,
+                  indicatorSize: TabBarIndicatorSize.label,
+                  indicatorWeight: 01,
+                  labelColor: kcred,
+                  indicator: const BoxDecoration(color: Colors.transparent),
+                  unselectedLabelColor: kcblack,
+                  labelStyle: ktsAvenirDemi.copyWith(fontSize: 14),
+                  unselectedLabelStyle: ktsAnreg.copyWith(color: kcgrey5),
+                  tabs: const [
+                    Tab(
+                      text: "Near You",
+                    ),
+                    Tab(text: "Newest"),
+                    Tab(
+                      text: "Best Rated",
+                    ),
+                    Tab(
+                      text: "Trending",
+                    )
+                  ]),
+            ),
           ],
         ),
         SizedBox(
@@ -81,11 +83,14 @@ class _FoodTileTabPageState extends State<FoodTileTabPage>
   @override
   Widget build(BuildContext context) {
     return SizedBox(
+      height: 433,
       width: MediaQuery.of(context).size.width,
       child: SingleChildScrollView(
         child: Column(
           children: childSpacer([
-            ksh30,
+            const SizedBox(
+              height: 15,
+            ),
             ...List<FoodTile>.generate(
                 resturant.length,
                 (index) => FoodTile(
@@ -98,9 +103,9 @@ class _FoodTileTabPageState extends State<FoodTileTabPage>
                     distance: resturant[index].distance,
                     revieCount: resturant[index].revieCount)).toList(),
             const SizedBox(
-              height: 50,
+              height: 0,
             )
-          ], 30),
+          ], 0),
         ),
       ),
     );

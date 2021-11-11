@@ -75,13 +75,13 @@ class _SearchITemState extends State<SearchITem>
                   ),
                   tabs: const [
                     Tab(
-                      text: "Delivery",
+                      text: "Near you",
                     ),
                     Tab(
-                      text: "Menu",
+                      text: "Best Rated",
                     ),
                     Tab(
-                      text: "Review",
+                      text: "Top Sales",
                     )
                   ]),
             ),

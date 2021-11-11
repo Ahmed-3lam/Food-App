@@ -1,8 +1,6 @@
 import 'package:flutter_svg/svg.dart';
 import 'package:frontend/Helpers/mlib.dart';
 import 'package:frontend/ui/screens/Location-choose_city/locationchoosecity.dart';
-import 'package:frontend/ui/screens/profile/profilescren.dart';
-import 'package:frontend/ui/utils/icons.dart';
 
 class HomeAdressZone extends StatelessWidget {
   const HomeAdressZone({
@@ -14,8 +12,8 @@ class HomeAdressZone extends StatelessWidget {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        ksv20,
-        Row(children: [
+        ksv10,
+        Row(crossAxisAlignment: CrossAxisAlignment.start, children: [
           MaterialButton(
             splashColor: kcTransparent,
             padding: EdgeInsets.zero,
@@ -50,10 +48,11 @@ class HomeAdressZone extends StatelessWidget {
             child: MaterialButton(
               padding: EdgeInsets.zero,
               onPressed: () {
-                RouteX.sliderRighToLeft(context, const ProfileScreen());
+                Navigator.pop(context);
               },
-              child: const Icon(
-                MyIcons.profile,
+              child: SvgPicture.asset(
+                'asset/LastIcons/105 – controls.svg',
+                height: 25,
               ),
             ),
           ),

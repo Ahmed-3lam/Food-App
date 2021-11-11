@@ -168,8 +168,8 @@ class _DetailsState extends State<Details> with SingleTickerProviderStateMixin {
                                     ),
                                     const Spacer(),
                                     SizedBox(
-                                      height: 36,
-                                      width: 36,
+                                      height: 39,
+                                      width: 39,
                                       child: GestureDetector(
                                         onTap: () {
                                           RouteX.sliderRighToLeft(context,
@@ -190,8 +190,8 @@ class _DetailsState extends State<Details> with SingleTickerProviderStateMixin {
                                     ),
                                     ksh12,
                                     SizedBox(
-                                      height: 40,
-                                      width: 40,
+                                      height: 39,
+                                      width: 39,
                                       child: LikeButton(
                                         size: 36,
                                         likeBuilder: (bool b) => CircleAvatar(

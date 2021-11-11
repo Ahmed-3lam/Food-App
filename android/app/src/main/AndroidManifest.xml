@@ -7,8 +7,8 @@
 
 
    <application
-        android:label="FoodApp"
-        android:icon="@mipmap/ic_launcher">
+        android:label="Food App"
+        android:icon="@mipmap/launcher_icon">
        <meta-data android:name="com.google.android.geo.API_KEY" android:value="AIzaSyAHnMnRdGyN-tZr3rn9ugPJBEfaPgqHGWk"/>  
         <activity
             android:name=".MainActivity"

@@ -12,7 +12,7 @@ class TermsCondition extends StatelessWidget {
           const TermsText(
               titel: "General site usage last revised\nDecember 12-01-2020.",
               desc:
-                  "Welcome to www.saydulmoon.info. Officia irure irure anim nisi exercitation velit cupidatat qui Lorem id ad. Amet quis occaecat quis voluptate cupidatat quis irure irure consequat irure."),
+                  "Officia irure irure anim nisi exercitation velit cupidatat qui Lorem id ad. Amet quis occaecat quis voluptate cupidatat quis irure irure consequat irure."),
           const TermsText(
               titel: "1. Agreement",
               desc:
@@ -60,14 +60,14 @@ class TermsText extends StatelessWidget {
 }
 
 List<Widget> childSpacer(List<Widget> childrens, int size) {
-  List<Widget> spacerlist = <Widget>[];
+  List<Widget> spacerList = <Widget>[];
 
   for (Widget child in childrens) {
-    spacerlist.add(child);
-    spacerlist.add(const SizedBox(
+    spacerList.add(child);
+    spacerList.add(const SizedBox(
       height: 15,
     ));
   }
 
-  return spacerlist;
+  return spacerList;
 }

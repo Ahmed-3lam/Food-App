@@ -3,7 +3,6 @@ import 'package:frontend/ui/screens/payment/addcard/addcard.dart';
 import 'package:frontend/ui/screens/payment/payment/compo.dart/mycard.dart';
 import 'package:frontend/ui/utils/textutlities.dart';
 
-import 'compo/adresstile.dart';
 import 'compo/paymethod.dart';
 
 class CheckOutPayment extends StatefulWidget {

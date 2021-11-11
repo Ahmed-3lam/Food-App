@@ -92,7 +92,6 @@ class _Home2State extends State<Home2> with SingleTickerProviderStateMixin {
             child: Categories(),
           ),
           CarouselOfOffers(image: image),
-          //////////////////////////
           const YourRecentVisits(),
         ])),
         const SliverToBoxAdapter(
@@ -176,82 +175,6 @@ class _Home2State extends State<Home2> with SingleTickerProviderStateMixin {
   }
 }
 
-// class Home2 extends StatefulWidget {
-//   const Home2({
-//     Key? key,
-//   }) : super(key: key);
-
-//   @override
-//   State<Home2> createState() => _Home2State();
-// }
-
-// class _Home2State extends State<Home2> with SingleTickerProviderStateMixin {
-//   @override
-//   Widget build(BuildContext context) {
-//     return Scaffold(
-//       body: SafeArea(
-//         child: SingleChildScrollView(
-//           child: Column(
-//             children: [
-//               Padding(
-//                 padding: kpaddinghor20,
-//                 child: Column(
-//                   crossAxisAlignment: CrossAxisAlignment.start,
-//                   children: [
-//                     const HomeAdressZone(),
-//                     ksv16,
-//                     TxtField(
-//                       hint: "Find your favourite one",
-//                       filledColor: kcgrey2,
-//                       prefix: const Icon(MyFlutterApp.search),
-//                     ),
-//                     const Categories(),
-//                   ],
-//                 ),
-//               ),
-//               SizedBox(
-//                 height: 200,
-//                 child: Center(
-//                   child: SizedBox(
-//                     height: 200,
-//                     child: ListView.builder(
-//                         physics: const PageScrollPhysics(),
-//                         itemCount: 3,
-//                         scrollDirection: Axis.horizontal,
-//                         itemBuilder: (context, i) => const Padding(
-//                               padding: EdgeInsets.symmetric(
-//                                   vertical: 20, horizontal: 20),
-//                               child: HomeServiceBanner(),
-//                             )),
-//                   ),
-//                 ),
-//               ),
-//               const YourRecentVisits(),
-//               const SizedBox(
-//                 height: 8,
-//               ),
-//               const SizedBox(
-//                 height: 18,
-//               ),
-//               Container(
-//                 decoration: BoxDecoration(
-//                     borderRadius:
-//                         const BorderRadius.vertical(top: Radius.circular(22)),
-//                     color: kclightpurpel.withOpacity(.08)),
-//                 height: 483,
-//                 child: const ClipRRect(
-//                     borderRadius:
-//                         BorderRadius.vertical(top: Radius.circular(22)),
-//                     child: HomeTabBarView()),
-//               ),
-//             ],
-//           ),
-//         ),
-//       ),
-//     );
-//   }
-// }
-
 class HomeServiceBanner extends StatelessWidget {
   const HomeServiceBanner({
     Key? key,
@@ -277,115 +200,6 @@ class HomeServiceBanner extends StatelessWidget {
         child: Image.asset(
           image,
           fit: BoxFit.cover,
-        ),
-      ),
-    );
-  }
-}
-
-class HomeTabBarView extends StatefulWidget {
-  const HomeTabBarView({Key? key}) : super(key: key);
-
-  @override
-  _HomeTabBarViewState createState() => _HomeTabBarViewState();
-}
-
-class _HomeTabBarViewState extends State<HomeTabBarView>
-    with SingleTickerProviderStateMixin {
-  late TabController _tabController;
-
-  @override
-  void initState() {
-    _tabController = TabController(length: 4, vsync: this);
-    super.initState();
-  }
-
-  @override
-  Widget build(BuildContext context) {
-    return Column(
-      children: [
-        Column(
-          children: [
-            SizedBox(
-              height: 48,
-              child: TabBar(
-                  indicatorPadding: EdgeInsets.zero,
-                  isScrollable: true,
-                  padding: const EdgeInsets.symmetric(horizontal: 15),
-                  controller: _tabController,
-                  indicatorSize: TabBarIndicatorSize.label,
-                  indicatorWeight: 01,
-                  labelColor: kcred,
-                  indicator: const BoxDecoration(color: Colors.transparent),
-                  unselectedLabelColor: kcblack,
-                  labelStyle: ktsAvenirDemi.copyWith(fontSize: 14),
-                  unselectedLabelStyle: ktsAnreg.copyWith(color: kcgrey5),
-                  tabs: const [
-                    Tab(
-                      text: "Near You",
-                    ),
-                    Tab(text: "Newest"),
-                    Tab(
-                      text: "Best Rated",
-                    ),
-                    Tab(
-                      text: "Trending",
-                    )
-                  ]),
-            ),
-          ],
-        ),
-        SizedBox(
-            height: 433,
-            width: MediaQuery.of(context).size.width,
-            child: TabBarView(controller: _tabController, children: const [
-              FoodTileTabPage(),
-              FoodTileTabPage(),
-              FoodTileTabPage(),
-              FoodTileTabPage(),
-            ]))
-      ],
-    );
-  }
-}
-
-class FoodTileTabPage extends StatefulWidget {
-  const FoodTileTabPage({
-    Key? key,
-  }) : super(key: key);
-
-  @override
-  State<FoodTileTabPage> createState() => _FoodTileTabPageState();
-}
-
-class _FoodTileTabPageState extends State<FoodTileTabPage>
-    with SingleTickerProviderStateMixin {
-  @override
-  Widget build(BuildContext context) {
-    return SizedBox(
-      height: 433,
-      width: MediaQuery.of(context).size.width,
-      child: SingleChildScrollView(
-        child: Column(
-          children: childSpacer([
-            const SizedBox(
-              height: 15,
-            ),
-            ...List<FoodTile>.generate(
-                resturant.length,
-                (index) => FoodTile(
-                    image: resturant[index].image,
-                    name: resturant[index].name,
-                    adress: resturant[index].adress,
-                    startRating: resturant[index].startRating,
-                    discount: resturant[index].discount,
-                    time: resturant[index].time,
-                    distance: resturant[index].distance,
-                    revieCount: resturant[index].revieCount)).toList(),
-            const SizedBox(
-              height: 0,
-            )
-          ], 0),
         ),
       ),
     );

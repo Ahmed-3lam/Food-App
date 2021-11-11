@@ -97,23 +97,23 @@ class NotificationTile extends StatelessWidget {
 List<NotificationModel> notifications = [
   NotificationModel(
     time: '11:30 PM',
-    tittle: 'New customer arrived in table no 10.',
+    tittle: 'Your reorder is successfully placed.',
   ),
   NotificationModel(
     time: '9:30 PM',
-    tittle: 'customer at Table 5 has updated order.',
+    tittle: 'Huge discounts are coming soon.',
   ),
   NotificationModel(
     time: '10:30 PM',
-    tittle: 'New order from the id #123565',
+    tittle: 'Your order is placed successfully.',
   ),
   NotificationModel(
     time: '8:30 PM',
-    tittle: 'Order id #12356 is waiting for receiver',
+    tittle: 'Order placed successfully',
   ),
   NotificationModel(
     time: '7:30 PM',
-    tittle: 'customer at table no 10 have added some items in order',
+    tittle: 'Your refunds are credited to your account with ending **2038.',
   ),
 ];
 

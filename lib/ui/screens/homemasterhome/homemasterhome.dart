@@ -139,25 +139,25 @@ class _HomeMasterHomeState extends State<HomeMasterHome>
             : SliverList(
                 key: const ValueKey('value'),
                 delegate: SliverChildListDelegate(List.generate(
-                        resturant.length,
-                        (index) => GestureDetector(
-                            onTap: () {
-                              RouteX.sliderRighToLeft(
-                                  context,
-                                  Details(
-                                    image: resturant[index].image,
-                                  ));
-                            },
-                            child: FoodTile(
+                    resturant.length,
+                    (index) => GestureDetector(
+                        onTap: () {
+                          RouteX.sliderRighToLeft(
+                              context,
+                              Details(
                                 image: resturant[index].image,
-                                name: resturant[index].name,
-                                adress: resturant[index].adress,
-                                startRating: resturant[index].startRating,
-                                discount: resturant[index].discount,
-                                time: resturant[index].time,
-                                distance: resturant[index].distance,
-                                revieCount: resturant[index].revieCount)))
-                    .toList()))
+                              ));
+                        },
+                        child: FoodTile(
+                            image: "asset/images/PlaceHolder/placeholder.jpg",
+                            name: resturant[index].name,
+                            adress: resturant[index].adress,
+                            startRating: resturant[index].startRating,
+                            discount: resturant[index].discount,
+                            time: resturant[index].time,
+                            distance: resturant[index].distance,
+                            revieCount:
+                                resturant[index].revieCount))).toList()))
       ]),
     );
   }
@@ -247,7 +247,7 @@ class HomeTop extends StatelessWidget {
           Column(
             children: const [
               SizedBox(
-                height: 34,
+                height: 44,
               ),
               HomeHeader(),
               SizedBox(

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 import 'package:frontend/Helpers/mlib.dart';
 import 'package:frontend/ui/screens/Addpromotioncode/addpromotioncode.dart';
 import 'package:frontend/ui/screens/Faqs/faqs.dart';
@@ -8,9 +9,10 @@ import 'package:frontend/ui/screens/payment/payment/payment.dart';
 import 'package:frontend/ui/screens/preauth/intro/intro.dart';
 import 'package:frontend/ui/screens/terms/terms.dart';
 
+Color iconColor = kcblack.withOpacity(.75);
+
 class ProfileScreen extends StatelessWidget {
   const ProfileScreen({Key? key}) : super(key: key);
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -57,16 +59,22 @@ class ProfileScreen extends StatelessWidget {
             ),
           ),
           ksv16,
-          ProfielTiel(
+          ProfileTile(
             name: "My voucher",
-            data: MyFlutterApp.tag,
+            data: Icon(
+              MyFlutterApp.tag,
+              color: iconColor,
+            ),
             tap: () {
               RouteX.sliderRighToLeft(context, const AddPromotionCode());
             },
           ),
-          ProfielTiel(
+          ProfileTile(
             name: "Payment",
-            data: Icons.payment,
+            data: Icon(
+              Icons.payment,
+              color: iconColor,
+            ),
             tap: () {
               RouteX.sliderRighToLeft(context, const Payment());
             },
@@ -78,23 +86,27 @@ class ProfileScreen extends StatelessWidget {
             height: 1,
           ),
           ksv16,
-          ProfielTiel(
+          ProfileTile(
             name: "Faqs",
-            data: Icons.question_answer,
+            data: Icon(
+              Icons.question_answer,
+              color: iconColor,
+            ),
             tap: () {
               RouteX.sliderRighToLeft(context, const Faqs());
             },
           ),
-          ProfielTiel(
+          ProfileTile(
             name: "Terms and condition",
-            data: Icons.padding,
+            data: Icon(Icons.padding, color: iconColor),
             tap: () {
               RouteX.sliderRighToLeft(context, const TermsCondition());
             },
           ),
-          ProfielTiel(
+          ProfileTile(
             name: "Notifications",
-            data: Icons.notifications,
+            data: SvgPicture.asset('asset/LastIcons/Notification.svg',
+                color: iconColor),
             tap: () {
               RouteX.sliderRighToLeft(context, const NotificationPage());
             },
@@ -117,14 +129,14 @@ class ProfileScreen extends StatelessWidget {
   }
 }
 
-class ProfielTiel extends StatelessWidget {
-  const ProfielTiel({
+class ProfileTile extends StatelessWidget {
+  const ProfileTile({
     Key? key,
     required this.data,
     required this.name,
     required this.tap,
   }) : super(key: key);
-  final IconData data;
+  final Widget data;
   final String name;
   final VoidCallback tap;
 
@@ -140,10 +152,7 @@ class ProfielTiel extends StatelessWidget {
             padding: kpaddinghor17,
             child: Row(
               children: [
-                Icon(
-                  data,
-                  color: kcblack.withOpacity(.70),
-                ),
+                data,
                 ksh12,
                 FoodText.ktsAnreg(
                   name,
@@ -155,7 +164,6 @@ class ProfielTiel extends StatelessWidget {
                     child: Icon(
                       Icons.arrow_back_ios_new,
                       size: 18,
-                      // color: kcicon,
                     ))
               ],
             ),

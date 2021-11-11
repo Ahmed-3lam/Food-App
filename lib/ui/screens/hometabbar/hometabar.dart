@@ -21,7 +21,9 @@ class _MainHomeState extends State<MainHome>
     with SingleTickerProviderStateMixin {
   late OverlayEntry _entry;
 
-  OverlayEntry initalLoad() {
+  ///WE ARE CRATING THIS SPINNER FOR THE FUTURE WHEN WE ARE FETCHING THE DATA
+  ///IT MAY INDICATE...
+  OverlayEntry initialSpinner() {
     return OverlayEntry(
         builder: (context) => Positioned(
             height: 60,
@@ -41,6 +43,7 @@ class _MainHomeState extends State<MainHome>
             )));
   }
 
+  ///THIS DATA IS FOR FANCY_BOTTOM_NAVIGATION BAR IN BOTTOM...
   List<TabData> data = [
     TabData(
       iconData: MyIcons.home,
@@ -60,10 +63,11 @@ class _MainHomeState extends State<MainHome>
     ),
   ];
 
+  ///THIS FUNCTION WORKS AS SETTING UP OF SPINNER..
   entrySetter() async {
-    _entry = initalLoad();
+    _entry = initialSpinner();
     Overlay.of(context)?.insert(_entry);
-    await Future.delayed(const Duration(seconds: 2));
+    await Future.delayed(const Duration(seconds: 1));
     _entry.remove();
   }
 
@@ -73,15 +77,6 @@ class _MainHomeState extends State<MainHome>
     WidgetsBinding.instance?.addPostFrameCallback((timeStamp) {
       entrySetter();
     });
-  }
-
-  List<Widget> _buildPages() {
-    return [
-      const HomeMasterHome(),
-      const MyOrderPage(),
-      const SavedPage(),
-      const ProfileScreen(),
-    ];
   }
 
   GlobalKey<FancyBottomNavigationState> key =

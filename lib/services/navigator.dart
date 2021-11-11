@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:frontend/ui/screens/hometabbar/hometabar.dart';
 
 ///WE CAN SHORT THIS CLASS BY THE MAKING A SWITCH CASE FUNCTION BUT
-///LOOKS LIKE WE HAVE REFACTOR THE ALL CODE AND IT IS TIME CONSUMING...
+///LOOKS LIKE WE HAVE TO REFACTOR ALL CODE AND IT IS TIME CONSUMING...
 class RouteX {
   RouteX._();
   static sliderRighToLeft(BuildContext context, Widget page,

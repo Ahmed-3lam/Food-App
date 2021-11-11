@@ -1,5 +1,4 @@
 import 'package:frontend/Helpers/mlib.dart';
-import 'package:frontend/ui/screens/auth/mobilenum/mobilenum.dart';
 import 'package:frontend/ui/screens/preauth/goal/goal.dart';
 import 'package:frontend/ui/screens/preauth/intro/compo/data.dart';
 

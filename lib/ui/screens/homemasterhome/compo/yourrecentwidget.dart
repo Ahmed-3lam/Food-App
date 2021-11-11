@@ -70,7 +70,7 @@ class HomeYourRecentVisiArea extends StatelessWidget {
                                   child: ClipRRect(
                                     borderRadius: BorderRadius.circular(15),
                                     child: Image.asset(
-                                      dishes[index].image,
+                                      'asset/images/PlaceHolder/placeholder.jpg',
                                       fit: BoxFit.cover,
                                     ),
                                   )),

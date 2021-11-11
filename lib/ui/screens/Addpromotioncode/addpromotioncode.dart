@@ -6,78 +6,106 @@ class AddPromotionCode extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: comanAppBar(context, "Add Promotion Code"),
-      body: Padding(
-        padding: kpadding,
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          mainAxisSize: MainAxisSize.min,
-          children: [
-            RegistrationTextField(
-              hint: 'Enter Promo Code',
-              prefix: const Icon(MyFlutterApp.search),
-            ),
-            ksv18,
-            const FoodText.ktsAnreg(
-              "Free Shiping Code",
-              fonsize: 16,
-            ),
-            ksv18,
-            PromotionToggelButton(
-              tap: () {
-                showDialog(
-                    context: context,
-                    builder: (context) => Dialog(
-                          backgroundColor: kcTransparent,
-                          child: CommonDialog(
-                              tittle: 'Applied Successfully',
-                              subTittle:
-                                  'Your code is validated successfully now you can avail to benefits of the offer ',
-                              buttonText: 'Submit',
-                              dialogThemeColor: const Color(0xff22A45D),
-                              avatarChild: const Icon(
-                                Icons.done_all,
-                                color: Colors.white,
-                              ),
-                              onTap: () {
-                                Navigator.pop(context);
-                              }),
-                        ));
-              },
-            ),
-            ksv30,
-            const FoodText.ktsAnreg(
-              "Discount & Cashback",
-              fonsize: 16,
-            ),
-            ksv18,
-            PromotionToggelButton(
-              tap: () {},
-            ),
-          ],
+    return GestureDetector(
+      onTap: () {
+        FocusScope.of(context).nextFocus();
+      },
+      child: Scaffold(
+        appBar: comanAppBar(context, "Add Promotion Code"),
+        body: Padding(
+          padding: kpadding,
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            mainAxisSize: MainAxisSize.min,
+            children: [
+              RegistrationTextField(
+                hint: 'Enter Promo Code',
+                prefix: const Icon(MyFlutterApp.search),
+              ),
+              ksv18,
+              const FoodText.ktsAnreg(
+                "Free Shiping Code",
+                fonsize: 16,
+              ),
+              ksv18,
+              PromotionToggleTile(
+                tap: (tap) {
+                  tap
+                      ? showDialog(
+                          context: context,
+                          builder: (context) => const AppliedDialog())
+                      : () {};
+                },
+              ),
+              ksv30,
+              const FoodText.ktsAnreg(
+                "Discount & Cashback",
+                fonsize: 16,
+              ),
+              ksv18,
+              PromotionToggleTile(
+                tap: (tap) {
+                  tap
+                      ? showDialog(
+                          context: context,
+                          builder: (context) => const AppliedDialog())
+                      : () {};
+                },
+              ),
+            ],
+          ),
         ),
       ),
     );
   }
 }
 
-class PromotionToggelButton extends StatefulWidget {
-  const PromotionToggelButton({Key? key, required this.tap}) : super(key: key);
-  final Function tap;
+class AppliedDialog extends StatelessWidget {
+  const AppliedDialog({
+    Key? key,
+  }) : super(key: key);
 
   @override
-  State<PromotionToggelButton> createState() => _PromotionToggelButtonState();
+  Widget build(BuildContext context) {
+    return Dialog(
+      backgroundColor: kcTransparent,
+      child: CommonDialog(
+          tittle: 'Applied Successfully',
+          subTittle:
+              'Your code is validated successfully now you can avail to benefits of the offer ',
+          buttonText: 'Submit',
+          dialogThemeColor: const Color(0xff22A45D),
+          avatarChild: const Icon(
+            Icons.done_all,
+            color: Colors.white,
+          ),
+          onTap: () {
+            ///FIRST FOR THE DIALOG
+            Navigator.pop(context);
+
+            ///SECOND FOR THE PROMOTION CODE SCREEN..
+            Navigator.pop(context);
+          }),
+    );
+  }
 }
 
-class _PromotionToggelButtonState extends State<PromotionToggelButton> {
+class PromotionToggleTile extends StatefulWidget {
+  const PromotionToggleTile({Key? key, required this.tap}) : super(key: key);
+  final Function(bool b) tap;
+
+  @override
+  State<PromotionToggleTile> createState() => _PromotionToggleTileState();
+}
+
+class _PromotionToggleTileState extends State<PromotionToggleTile> {
   bool isSelected = false;
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
       onTap: () {
         isSelected = !isSelected;
-        widget.tap();
+        widget.tap(isSelected);
         setState(() {});
       },
       child: AnimatedContainer(

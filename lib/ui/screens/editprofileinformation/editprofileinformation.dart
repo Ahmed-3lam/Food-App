@@ -22,39 +22,44 @@ class _EditeprofielInformationState extends State<EditeprofielInformation> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: comanAppBar(context, "Edit Information"),
-      body: Padding(
-        padding: kpaddinghor20,
-        child: SingleChildScrollView(
-          child: Column(
-            children: [
-              ksv30,
-              ksv10,
-              Image.asset(
-                "asset/images/home/oval.png",
-                scale: 3,
-              ),
-              ksv24,
-              ksv24,
-              UserDataEditingTiel(
-                name: "Username",
-                controller: username,
-              ),
-              UserDataEditingTiel(
-                name: "Phone Number",
-                controller: phone,
-                isNumber: true,
-              ),
-              UserDataEditingTiel(
-                name: "Address",
-                controller: address,
-              ),
-              UserDataEditingTiel(
-                name: "Email",
-                controller: email,
-              ),
-            ],
+    return GestureDetector(
+      onTap: () {
+        FocusScope.of(context).nextFocus();
+      },
+      child: Scaffold(
+        appBar: comanAppBar(context, "Edit Information"),
+        body: Padding(
+          padding: kpaddinghor20,
+          child: SingleChildScrollView(
+            child: Column(
+              children: [
+                ksv30,
+                ksv10,
+                Image.asset(
+                  "asset/images/home/oval.png",
+                  scale: 3,
+                ),
+                ksv24,
+                ksv24,
+                UserDataEditingTiel(
+                  name: "Username",
+                  controller: username,
+                ),
+                UserDataEditingTiel(
+                  name: "Phone Number",
+                  controller: phone,
+                  isNumber: true,
+                ),
+                UserDataEditingTiel(
+                  name: "Address",
+                  controller: address,
+                ),
+                UserDataEditingTiel(
+                  name: "Email",
+                  controller: email,
+                ),
+              ],
+            ),
           ),
         ),
       ),
