@@ -83,7 +83,7 @@ class MyCard extends StatelessWidget {
                   right: 0,
                   child: IconButton(
                       onPressed: () {
-                        RouteX.sliderRighToLeft(context, const AddCard());
+                        RouteX.fadeIn(context, const AddCard());
                       },
                       icon: const Icon(
                         Icons.edit,

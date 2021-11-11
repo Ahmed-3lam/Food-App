@@ -28,16 +28,16 @@ class _Home2State extends State<Home2> with SingleTickerProviderStateMixin {
     setState(() {});
   }
 
-  late TabController _tabcontroller;
+  late TabController _tabController;
   @override
   void initState() {
     super.initState();
-    _tabcontroller = TabController(length: 4, vsync: this);
+    _tabController = TabController(length: 4, vsync: this);
   }
 
   List<String> image = [
-    "asset/images/home/banner.png",
-    'asset/images/home/homeoffers.png'
+    'asset/images/PlaceHolder/placeholder.jpg',
+    'asset/images/PlaceHolder/placeholder.jpg'
   ];
 
   @override
@@ -64,7 +64,7 @@ class _Home2State extends State<Home2> with SingleTickerProviderStateMixin {
             padding: const EdgeInsets.symmetric(horizontal: 15),
             child: GestureDetector(
               onTap: () {
-                RouteX.sliderRighToLeft(context, const SearchCopy());
+                RouteX.fadeIn(context, const SearchCopy());
               },
               child: SizedBox(
                 child: AbsorbPointer(
@@ -115,7 +115,7 @@ class _Home2State extends State<Home2> with SingleTickerProviderStateMixin {
                     indicatorPadding: EdgeInsets.zero,
                     isScrollable: true,
                     padding: const EdgeInsets.symmetric(horizontal: 15),
-                    controller: _tabcontroller,
+                    controller: _tabController,
                     indicatorSize: TabBarIndicatorSize.label,
                     indicatorWeight: 03,
                     labelColor: kcred,
@@ -157,11 +157,11 @@ class _Home2State extends State<Home2> with SingleTickerProviderStateMixin {
                     resturant.length,
                     (index) => GestureDetector(
                         onTap: () {
-                          RouteX.sliderRighToLeft(
+                          RouteX.fadeIn(
                               context, Details(image: resturant[index].image));
                         },
                         child: FoodTile(
-                            image: resturant[index].image,
+                            image: 'asset/images/PlaceHolder/placeholder.jpg',
                             name: resturant[index].name,
                             adress: resturant[index].adress,
                             startRating: resturant[index].startRating,

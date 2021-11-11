@@ -66,7 +66,7 @@ class _DetailSearchInResturantState extends State<DetailSearchInResturant> {
                       RouteX.sliderBottomToTop(
                           context,
                           Details(
-                            image: dishes[index].image,
+                            image: 'asset/images/PlaceHolder/placeholder.jpg',
                           ));
                     },
                     child: DetailsSearchResultTile(

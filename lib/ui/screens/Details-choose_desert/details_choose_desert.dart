@@ -24,7 +24,7 @@ class _DetailsChooseDesertState extends State<DetailsChooseDesert>
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: comanAppBar(
+      appBar: commonAppBar(
         context,
         "Desert",
         bottom: PreferredSize(
@@ -89,11 +89,11 @@ class DesertPage extends StatelessWidget {
               itemBuilder: (BuildContext context, int index) {
                 return GestureDetector(
                     onTap: () {
-                      RouteX.sliderRighToLeft(
+                      RouteX.fadeIn(
                           context, Details(image: resturant[index].image));
                     },
                     child: FoodTile(
-                        image: resturant[index].image,
+                        image: 'asset/images/PlaceHolder/placeholder.jpg',
                         name: resturant[index].name,
                         adress: resturant[index].adress,
                         startRating: resturant[index].startRating,

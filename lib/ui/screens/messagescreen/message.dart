@@ -29,7 +29,7 @@ class _MessageScreenState extends State<MessageScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: comanAppBar(context, "Message"),
+      appBar: commonAppBar(context, "Message"),
       body: SizedBox(
         height: MediaQuery.of(context).size.height,
         width: MediaQuery.of(context).size.width,
@@ -42,26 +42,26 @@ class _MessageScreenState extends State<MessageScreen> {
                 child: Column(
                   children: const [
                     MessageWrapper(
-                        isnotcurrentuser: false,
+                        isNotCurrentUser: false,
                         message:
                             "Lorem ipsum dolor, Sed ullam pariatur commodi ut tempora ipsam accusamus iure quidem qui, est cupiditate dignissimos exercitationem autem dolor illo molestiae. Sunt hic nesciunt culpa impedit?"),
                     MessageWrapper(
-                        isnotcurrentuser: true,
+                        isNotCurrentUser: true,
                         message:
                             "Lorem ipsum dolor, est cupiditate dignissimos exercitationem autem dolor illo molestiae. Sunt hic nesciunt culpa impedit?"),
                     MessageWrapper(
-                        isnotcurrentuser: false,
+                        isNotCurrentUser: false,
                         message: "Lorem ipsum dolor impedit?"),
                     MessageWrapper(
-                        isnotcurrentuser: true,
+                        isNotCurrentUser: true,
                         message:
                             "Lorem ipsum hic est cupiditate dignissimos dignissimos exercitationem autem impedit?"),
                     MessageWrapper(
                         // istyping: true,
-                        isnotcurrentuser: false,
+                        isNotCurrentUser: false,
                         message: " Sunt hic impedit?"),
                     MessageWrapper(
-                        istyping: true, isnotcurrentuser: true, message: ""),
+                        istyping: true, isNotCurrentUser: true, message: ""),
                     ksv30,
                     ksv30,
                     ksv30,
@@ -137,24 +137,32 @@ class _MessageScreenState extends State<MessageScreen> {
 class MessageWrapper extends StatelessWidget {
   const MessageWrapper(
       {Key? key,
-      required this.isnotcurrentuser,
+      required this.isNotCurrentUser,
       required this.message,
       this.istyping = false})
       : super(key: key);
-  final bool isnotcurrentuser;
+  final bool isNotCurrentUser;
   final String message;
   final bool? istyping;
 
   @override
   Widget build(BuildContext context) {
-    return isnotcurrentuser
+    return isNotCurrentUser
         ? Container(
             margin: const EdgeInsets.only(top: 35),
             child: Row(
+              crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                Image.asset(
-                  "asset/images/home/oval.png",
-                  scale: 5,
+                SizedBox(
+                  height: 60,
+                  width: 60,
+                  child: ClipRRect(
+                    borderRadius: BorderRadius.circular(60 / 2),
+                    child: Image.asset(
+                      'asset/images/PlaceHolder/placeholder.jpg',
+                      fit: BoxFit.cover,
+                    ),
+                  ),
                 ),
                 ksh12,
                 Expanded(
@@ -204,9 +212,16 @@ class MessageWrapper extends StatelessWidget {
                   ),
                 ),
                 ksh12,
-                Image.asset(
-                  "asset/images/home/oval.png",
-                  scale: 5,
+                SizedBox(
+                  height: 60,
+                  width: 60,
+                  child: ClipRRect(
+                    borderRadius: BorderRadius.circular(60 / 2),
+                    child: Image.asset(
+                      'asset/images/PlaceHolder/placeholder.jpg',
+                      fit: BoxFit.cover,
+                    ),
+                  ),
                 ),
               ],
             ),

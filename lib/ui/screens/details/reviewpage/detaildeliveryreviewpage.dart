@@ -23,7 +23,7 @@ class DetailReviewPage extends StatelessWidget {
             padding: kpadding,
             child: const FoodText(
               "Photos & Videos",
-              fonsize: 22,
+              fontSize: 22,
               color: kcblack,
             ),
           ),
@@ -43,7 +43,8 @@ class DetailReviewPage extends StatelessWidget {
                           width: 101,
                           child: ClipRRect(
                               borderRadius: BorderRadius.circular(7),
-                              child: Image.asset(dishes[i].image,
+                              child: Image.asset(
+                                  'asset/images/PlaceHolder/placeholder.jpg',
                                   fit: BoxFit.cover))),
                     )),
           ),
@@ -57,7 +58,7 @@ class DetailReviewPage extends StatelessWidget {
                 ),
                 FoodText(
                   "Reviews",
-                  fonsize: 22,
+                  fontSize: 22,
                 ),
                 SizedBox(
                   height: 15,
@@ -66,10 +67,10 @@ class DetailReviewPage extends StatelessWidget {
                 SizedBox(
                   height: 25,
                 ),
-                DetailsReviewComent(),
-                DetailsReviewComent(),
-                DetailsReviewComent(),
-                DetailsReviewComent(),
+                DetailsReviewComment(),
+                DetailsReviewComment(),
+                DetailsReviewComment(),
+                DetailsReviewComment(),
               ],
             ),
           )

@@ -17,7 +17,7 @@ class PaymentMethod extends StatelessWidget {
               ksv16,
               const FoodText.ktsAnsemi(
                 "Payment Method",
-                fonsize: 16,
+                fontSize: 16,
               ),
               ksv10,
               Row(

@@ -33,18 +33,18 @@ class OrderDetailsOrderCountTile extends StatelessWidget {
                     children: const [
                       FoodText.ktsAnreg(
                         "Fried Chicken",
-                        fonsize: 16,
+                        fontSize: 16,
                       ),
                       Spacer(),
                       FoodText.ktsAnreg(
                         "\$150",
-                        fonsize: 15,
+                        fontSize: 15,
                       ),
                     ],
                   ),
                   const FoodText.ktsAnreg(
                     "Teriyaki sauces",
-                    fonsize: 14,
+                    fontSize: 14,
                   ),
                 ],
               ),

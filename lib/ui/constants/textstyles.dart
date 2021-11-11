@@ -31,7 +31,7 @@ class FoodText extends StatelessWidget {
     this.weight = FontWeight.w400,
     this.color = kcblack,
     this.style = ktsAvenir,
-    this.fonsize = 14,
+    this.fontSize = 14,
   }) : super(key: key);
   const FoodText.ktsAvenir(
     this.text, {
@@ -39,7 +39,7 @@ class FoodText extends StatelessWidget {
     this.weight = FontWeight.w400,
     this.color = kcblack,
     this.style = ktsAvenir,
-    this.fonsize = 14,
+    this.fontSize = 14,
   }) : super(key: key);
   const FoodText.ktsAvenirDemi(
     this.text, {
@@ -47,7 +47,7 @@ class FoodText extends StatelessWidget {
     this.weight = FontWeight.w400,
     this.color = kcblack,
     this.style = ktsAvenirDemi,
-    this.fonsize = 14,
+    this.fontSize = 14,
   }) : super(key: key);
   const FoodText.ktsAnreg(
     this.text, {
@@ -55,7 +55,7 @@ class FoodText extends StatelessWidget {
     this.weight = FontWeight.w400,
     this.color = kcblack,
     this.style = ktsAnreg,
-    this.fonsize = 14,
+    this.fontSize = 14,
   }) : super(key: key);
   const FoodText.ktsAnsemi(
     this.text, {
@@ -63,12 +63,12 @@ class FoodText extends StatelessWidget {
     this.weight = FontWeight.w400,
     this.color = kcblack,
     this.style = ktsAnsemi,
-    this.fonsize = 14,
+    this.fontSize = 14,
   }) : super(key: key);
 
   final Color? color;
   final TextStyle? style;
-  final double? fonsize;
+  final double? fontSize;
   final String text;
   final FontWeight? weight;
 
@@ -78,7 +78,7 @@ class FoodText extends StatelessWidget {
       text,
       style: style!.copyWith(
         color: color,
-        fontSize: fonsize,
+        fontSize: fontSize,
         fontWeight: weight,
       ),
       textAlign: TextAlign.center,

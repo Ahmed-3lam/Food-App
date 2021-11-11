@@ -1,6 +1,6 @@
 import 'package:frontend/Helpers/mlib.dart';
 import 'package:frontend/ui/screens/driverreviewdialouge/driverreviewdialouge.dart';
-import 'package:frontend/ui/screens/hometabbar/hometabar.dart';
+import 'package:frontend/ui/screens/Home_main/home_main.dart';
 
 class OrdeDetailBottomBar extends StatelessWidget {
   const OrdeDetailBottomBar({
@@ -23,7 +23,7 @@ class OrdeDetailBottomBar extends StatelessWidget {
                       context: context,
                       builder: (context) => DriverReviewDialogue());
                   if (result == true) {
-                    RouteX.sliderRighToLeft(context, const MainHome());
+                    RouteX.fadeIn(context, const MainHome());
                   }
                 },
                 isOutlined: true,

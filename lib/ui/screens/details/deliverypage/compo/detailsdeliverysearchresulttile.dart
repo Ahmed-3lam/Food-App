@@ -53,11 +53,11 @@ class _DetailsSearchResultTileState extends State<DetailsSearchResultTile> {
               children: [
                 FoodText.ktsAnsemi(
                   widget.name,
-                  fonsize: 16,
+                  fontSize: 16,
                 ),
                 const FoodText.ktsAnsemi(
                   "Always a picnic favourite",
-                  fonsize: 12,
+                  fontSize: 12,
                   color: kctxtcolor,
                 ),
                 FoodText.ktsAnsemi(
@@ -101,7 +101,7 @@ class _DetailsSearchResultTileState extends State<DetailsSearchResultTile> {
             ),
             FoodText(
               "$i",
-              fonsize: 16,
+              fontSize: 16,
             ),
             MaterialButton(
               splashColor: kcred.withOpacity(.3),

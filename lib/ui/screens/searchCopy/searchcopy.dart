@@ -67,8 +67,7 @@ class _SearchCopyState extends State<SearchCopy> {
                       selctone: selctone == 0,
                       tap: () {
                         _controller.text = "Bubble Tea";
-                        RouteX.sliderRighToLeft(
-                            context, const SearchFilterCopy());
+                        RouteX.fadeIn(context, const SearchFilterCopy());
                         selctone = 0;
                         setState(() {});
                       },
@@ -80,8 +79,7 @@ class _SearchCopyState extends State<SearchCopy> {
                       selctone: selctone == 1,
                       tap: () {
                         _controller.text = "Bubble Tea";
-                        RouteX.sliderRighToLeft(
-                            context, const SearchFilterCopy());
+                        RouteX.fadeIn(context, const SearchFilterCopy());
                         selctone = 1;
                         setState(() {});
                       },
@@ -96,8 +94,7 @@ class _SearchCopyState extends State<SearchCopy> {
                     selctone: selctone == 2,
                     tap: () {
                       _controller.text = "Bubble Tea";
-                      RouteX.sliderRighToLeft(
-                          context, const SearchFilterCopy());
+                      RouteX.fadeIn(context, const SearchFilterCopy());
                       selctone = 2;
                       setState(() {});
                     },
@@ -109,8 +106,7 @@ class _SearchCopyState extends State<SearchCopy> {
                     selctone: selctone == 3,
                     tap: () {
                       _controller.text = "Bubble Tea";
-                      RouteX.sliderRighToLeft(
-                          context, const SearchFilterCopy());
+                      RouteX.fadeIn(context, const SearchFilterCopy());
                       selctone = 3;
                       setState(() {});
                     },
@@ -125,8 +121,7 @@ class _SearchCopyState extends State<SearchCopy> {
                     selctone: selctone == 4,
                     tap: () {
                       _controller.text = "Bubble Tea";
-                      RouteX.sliderRighToLeft(
-                          context, const SearchFilterCopy());
+                      RouteX.fadeIn(context, const SearchFilterCopy());
                       selctone = 4;
                       setState(() {});
                     },
@@ -138,8 +133,7 @@ class _SearchCopyState extends State<SearchCopy> {
                     selctone: selctone == 5,
                     tap: () {
                       _controller.text = "Bubble Tea";
-                      RouteX.sliderRighToLeft(
-                          context, const SearchFilterCopy());
+                      RouteX.fadeIn(context, const SearchFilterCopy());
                       selctone = 5;
                       setState(() {});
                     },
@@ -151,8 +145,7 @@ class _SearchCopyState extends State<SearchCopy> {
                     selctone: selctone == 6,
                     tap: () {
                       _controller.text = "Bubble Tea";
-                      RouteX.sliderRighToLeft(
-                          context, const SearchFilterCopy());
+                      RouteX.fadeIn(context, const SearchFilterCopy());
                       selctone = 6;
                       setState(() {});
                     },

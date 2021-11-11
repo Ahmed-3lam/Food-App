@@ -11,7 +11,7 @@ class ResetPassWord extends StatelessWidget {
     return ComanContaineraziedPag(children: [
       const FoodText.ktsAnsemi(
         "Add New Password",
-        fonsize: 18,
+        fontSize: 18,
       ),
       ksv20,
       const MyTextField(

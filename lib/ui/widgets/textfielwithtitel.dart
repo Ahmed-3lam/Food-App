@@ -49,7 +49,7 @@ class MyTextField extends StatelessWidget {
                         titel!,
                         weight: FontWeight.w500,
                         color: Colors.black,
-                        fonsize: 13,
+                        fontSize: 13,
                       ),
                       const SizedBox(
                         height: 9,

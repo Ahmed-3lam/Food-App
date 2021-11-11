@@ -92,7 +92,7 @@ class _SearchITemState extends State<SearchITem>
               padding: const EdgeInsets.only(top: 10),
               child: GestureDetector(
                 onTap: () {
-                  RouteX.sliderRighToLeft(context, const SearchFilterCopy());
+                  RouteX.fadeIn(context, const SearchFilterCopy());
                 },
                 child: const Icon(
                   MyFlutterApp.lines3,

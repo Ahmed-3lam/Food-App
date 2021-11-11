@@ -1,6 +1,6 @@
 import 'package:frontend/Helpers/mlib.dart';
 
-comanAppBar(BuildContext context, String name, {PreferredSize? bottom}) {
+commonAppBar(BuildContext context, String name, {PreferredSize? bottom}) {
   return AppBar(
     toolbarHeight: 50,
     backgroundColor: kcwhite,
@@ -10,7 +10,7 @@ comanAppBar(BuildContext context, String name, {PreferredSize? bottom}) {
       padding: const EdgeInsets.only(top: 10),
       child: FoodText(name,
           color: kcblack,
-          fonsize: 20,
+          fontSize: 20,
           style: const TextStyle(fontWeight: FontWeight.w400)),
     ),
     centerTitle: false,

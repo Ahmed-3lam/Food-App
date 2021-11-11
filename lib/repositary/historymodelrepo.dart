@@ -1,6 +1,6 @@
 import 'package:frontend/models/historymodel.dart';
 
-List<History> histrory = <History>[
+List<History> history = <History>[
   History(
       paidAmount: 125,
       isCancelled: false,

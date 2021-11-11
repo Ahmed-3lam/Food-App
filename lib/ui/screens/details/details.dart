@@ -132,15 +132,12 @@ class _DetailsState extends State<Details> with SingleTickerProviderStateMixin {
                             SizedBox(
                               height: 360,
                               width: MediaQuery.of(context).size.width,
-                              child: Hero(
-                                tag: widget.image,
-                                child: ClipRRect(
-                                  borderRadius: const BorderRadius.vertical(
-                                      bottom: Radius.circular(35)),
-                                  child: Image.asset(
-                                    widget.image,
-                                    fit: BoxFit.cover,
-                                  ),
+                              child: ClipRRect(
+                                borderRadius: const BorderRadius.vertical(
+                                    bottom: Radius.circular(35)),
+                                child: Image.asset(
+                                  widget.image,
+                                  fit: BoxFit.cover,
                                 ),
                               ),
                             ),
@@ -172,7 +169,7 @@ class _DetailsState extends State<Details> with SingleTickerProviderStateMixin {
                                       width: 39,
                                       child: GestureDetector(
                                         onTap: () {
-                                          RouteX.sliderRighToLeft(context,
+                                          RouteX.fadeIn(context,
                                               const SearchFilterCopy());
                                         },
                                         child: CircleAvatar(
@@ -250,7 +247,7 @@ class _DetailsState extends State<Details> with SingleTickerProviderStateMixin {
                         height: index == 2 ? 395 : null,
                         child: LazyIndexedStack(
                           children: const [
-                            DetailsDeliveyPage(),
+                            DetailsDeliveryPage(),
                             DetailReviewPage(),
                             DetailsInfoPage()
                           ],

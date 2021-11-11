@@ -11,7 +11,7 @@ class AddPromotionCode extends StatelessWidget {
         FocusScope.of(context).nextFocus();
       },
       child: Scaffold(
-        appBar: comanAppBar(context, "Add Promotion Code"),
+        appBar: commonAppBar(context, "Add Promotion Code"),
         body: Padding(
           padding: kpadding,
           child: Column(
@@ -25,7 +25,7 @@ class AddPromotionCode extends StatelessWidget {
               ksv18,
               const FoodText.ktsAnreg(
                 "Free Shiping Code",
-                fonsize: 16,
+                fontSize: 16,
               ),
               ksv18,
               PromotionToggleTile(
@@ -40,7 +40,7 @@ class AddPromotionCode extends StatelessWidget {
               ksv30,
               const FoodText.ktsAnreg(
                 "Discount & Cashback",
-                fonsize: 16,
+                fontSize: 16,
               ),
               ksv18,
               PromotionToggleTile(
@@ -126,12 +126,12 @@ class _PromotionToggleTileState extends State<PromotionToggleTile> {
               FoodText.ktsAnreg(
                 "Code \$10 off on shipping fee",
                 color: isSelected ? kcwhite : kcblack,
-                fonsize: 16,
+                fontSize: 16,
               ),
               FoodText(
                 "Expiring in 2 days",
                 color: isSelected ? kcwhite : kcblack,
-                fonsize: 14,
+                fontSize: 14,
               ),
             ])
           ],

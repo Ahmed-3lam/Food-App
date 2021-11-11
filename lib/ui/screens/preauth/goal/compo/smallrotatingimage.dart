@@ -60,7 +60,7 @@ class _SmallRotatingImageState extends State<SmallRotatingImage>
                 child: ClipRRect(
                   borderRadius: BorderRadius.circular(73),
                   child: Image.asset(
-                    widget.image,
+                    'asset/images/PlaceHolder/placeholder.jpg',
                     fit: BoxFit.cover,
                   ),
                 ),

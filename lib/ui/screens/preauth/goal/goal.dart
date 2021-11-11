@@ -161,7 +161,7 @@ class _GOALScreenState extends State<GOALScreen>
                               child: ClipRRect(
                                 borderRadius: BorderRadius.circular(73),
                                 child: Image.asset(
-                                  'asset/images/dishes/dish5.jpg',
+                                  'asset/images/PlaceHolder/placeholder.jpg',
                                   fit: BoxFit.cover,
                                 ),
                               ),
@@ -185,7 +185,7 @@ class _GOALScreenState extends State<GOALScreen>
                           _controller.reverse();
                           await Future.delayed(
                               const Duration(milliseconds: 1200));
-                          RouteX.sliderRighToLeft(context, const MObileNumber(),
+                          RouteX.fadeIn(context, const MObileNumber(),
                               shouldMaintain: false);
                         },
                         child: AnimatedBuilder(

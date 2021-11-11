@@ -15,25 +15,34 @@ class DetailsInfoPage extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             const SizedBox(height: 24),
-            Image.asset("asset/images/home/clipped.png"),
+            SizedBox(
+                height: 200,
+                width: double.infinity,
+                child: ClipRRect(
+                  borderRadius: BorderRadius.circular(14),
+                  child: Image.asset(
+                    'asset/images/PlaceHolder/placeholder.jpg',
+                    fit: BoxFit.cover,
+                  ),
+                )),
             const SizedBox(
               height: 24,
             ),
             const FoodText.ktsAnreg(
               "American Restaurant - Dinner",
-              fonsize: 16,
+              fontSize: 16,
             ),
             const FoodText.ktsAnreg(
               "Address: 189 Avenue street",
-              fonsize: 16,
+              fontSize: 16,
             ),
             const FoodText.ktsAnreg(
               "Phone: 012 15685646",
-              fonsize: 16,
+              fontSize: 16,
             ),
             const FoodText.ktsAnreg(
               "Daily from 10AM - 10.30PM",
-              fonsize: 16,
+              fontSize: 16,
             ),
           ],
         ),

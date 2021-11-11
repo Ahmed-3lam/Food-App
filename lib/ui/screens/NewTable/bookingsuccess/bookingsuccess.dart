@@ -1,5 +1,5 @@
 import 'package:frontend/Helpers/mlib.dart';
-import 'package:frontend/ui/screens/hometabbar/hometabar.dart';
+import 'package:frontend/ui/screens/Home_main/home_main.dart';
 
 class BookingSuccess extends StatelessWidget {
   const BookingSuccess({Key? key}) : super(key: key);
@@ -18,7 +18,7 @@ class BookingSuccess extends StatelessWidget {
         child: MasterButton(
             name: 'OKAY',
             onTap: () {
-              RouteX.sliderRighToLeft(context, const MainHome());
+              RouteX.fadeIn(context, const MainHome());
             }),
       ),
       body: Column(

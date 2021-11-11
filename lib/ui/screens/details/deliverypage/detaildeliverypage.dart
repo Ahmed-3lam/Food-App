@@ -6,18 +6,18 @@ import 'package:frontend/ui/screens/details/deliverypage/compo/detailsdeliveryse
 import 'package:frontend/ui/screens/details/detailmodel.dart';
 import 'package:provider/provider.dart';
 
-import 'compo/detailsdeliveryaddtocartdialouge.dart';
+import 'compo/details_delivery_add_to_cart_dialog.dart';
 
-class DetailsDeliveyPage extends StatefulWidget {
-  const DetailsDeliveyPage({
+class DetailsDeliveryPage extends StatefulWidget {
+  const DetailsDeliveryPage({
     Key? key,
   }) : super(key: key);
 
   @override
-  State<DetailsDeliveyPage> createState() => _DetailsDeliveyPageState();
+  State<DetailsDeliveryPage> createState() => _DetailsDeliveryPageState();
 }
 
-class _DetailsDeliveyPageState extends State<DetailsDeliveyPage> {
+class _DetailsDeliveryPageState extends State<DetailsDeliveryPage> {
   List<String> items = ['Re-Order', 'Cancel'];
   Future<dynamic> _buildDialouge() {
     return Navigator.push(
@@ -35,9 +35,7 @@ class _DetailsDeliveyPageState extends State<DetailsDeliveyPage> {
                     begin: const Offset(0, .5), end: const Offset(0, 0))
                 .animate(
                     CurvedAnimation(parent: _ami1, curve: Curves.decelerate)),
-            child: const DetailsDeliveryAddToCartDialouge(
-              totalitemcount: 1,
-            ),
+            child: const DetailsDeliveryAddToCartDialog(totalitemcount: 1),
           ),
         ));
   }
@@ -59,7 +57,7 @@ class _DetailsDeliveyPageState extends State<DetailsDeliveyPage> {
                     textcolor: kcred,
                     name: "Book a Table",
                     onTap: () {
-                      RouteX.sliderRighToLeft(context, const ReserveTable());
+                      RouteX.fadeIn(context, const ReserveTable());
                     },
                     isOutlined: true,
                   ),
@@ -144,7 +142,8 @@ class _DetailsDeliveyPageState extends State<DetailsDeliveyPage> {
                                     dishes[index],
                                   );
                                 },
-                                image: dishes[index].image,
+                                image:
+                                    'asset/images/PlaceHolder/placeholder.jpg',
                                 name: dishes[index].name,
                               ),
                             ),

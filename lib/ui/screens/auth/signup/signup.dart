@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:frontend/Helpers/mlib.dart';
-import 'package:frontend/ui/screens/hometabbar/hometabar.dart';
+import 'package:frontend/ui/screens/Home_main/home_main.dart';
 import 'package:frontend/ui/widgets/button.dart';
 
 class SignUp extends StatefulWidget {
@@ -29,7 +29,7 @@ class _SignUpState extends State<SignUp> {
                     ),
                     const FoodText.ktsAnreg(
                       "Sign Up",
-                      fonsize: 30,
+                      fontSize: 30,
                       weight: FontWeight.w400,
                     ),
                     const SizedBox(
@@ -62,7 +62,7 @@ class _SignUpState extends State<SignUp> {
                     MasterButton(
                         name: "Confirm",
                         onTap: () {
-                          RouteX.sliderRighToLeft(context, const MainHome());
+                          RouteX.fadeIn(context, const MainHome());
                         })
                   ]),
             ),

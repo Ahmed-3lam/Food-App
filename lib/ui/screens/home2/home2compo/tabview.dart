@@ -94,7 +94,7 @@ class _FoodTileTabPageState extends State<FoodTileTabPage>
             ...List<FoodTile>.generate(
                 resturant.length,
                 (index) => FoodTile(
-                    image: resturant[index].image,
+                    image: 'asset/images/PlaceHolder/placeholder.jpg',
                     name: resturant[index].name,
                     adress: resturant[index].adress,
                     startRating: resturant[index].startRating,

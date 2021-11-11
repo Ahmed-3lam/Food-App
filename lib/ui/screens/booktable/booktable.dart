@@ -24,7 +24,7 @@ class _BookTableState extends State<BookTable> {
   //     ksh16,
   //     FoodText.ktsAnreg(
   //       "On The Border Of Cantina",
-  //       fonsize: 14.5,
+  //       fontSize: 14.5,
   //       color: kcOrange,
   //     )
   //   ]);
@@ -34,11 +34,11 @@ class _BookTableState extends State<BookTable> {
     return Row(children: [
       const Icon(Icons.accessibility),
       ksh12,
-      FoodText(i == 0 ? "1" : "${i + 1}", fonsize: 30),
+      FoodText(i == 0 ? "1" : "${i + 1}", fontSize: 30),
       ksh12,
       const FoodText.ktsAnsemi(
         "Adult",
-        fonsize: 18,
+        fontSize: 18,
       ),
       const Spacer(),
       MaterialButton(
@@ -112,7 +112,7 @@ class _BookTableState extends State<BookTable> {
       children: [
         const FoodText.ktsAnsemi(
           "Sat,22 Sep",
-          fonsize: 22,
+          fontSize: 22,
         ),
         const Spacer(),
         SizedBox(
@@ -152,7 +152,7 @@ class _BookTableState extends State<BookTable> {
       centerTitle: true,
       title: const FoodText(
         "Book Table",
-        fonsize: 19.5,
+        fontSize: 19.5,
       ),
     );
   }
@@ -239,7 +239,7 @@ class _ConfirmTableState extends State<ConfirmTable> {
   //     ksh16,
   //     FoodText.ktsAnreg(
   //       "On The Border Of Cantina",
-  //       fonsize: 14.5,
+  //       fontSize: 14.5,
   //       color: kcOrange,
   //     )
   //   ]);
@@ -257,11 +257,11 @@ class _ConfirmTableState extends State<ConfirmTable> {
               children: const [
                 Icon(Icons.accessibility),
                 ksh12,
-                FoodText("6", fonsize: 30),
+                FoodText("6", fontSize: 30),
                 ksh12,
                 FoodText.ktsAnsemi(
                   "Adult",
-                  fonsize: 18,
+                  fontSize: 18,
                 ),
               ],
             )
@@ -277,11 +277,11 @@ class _ConfirmTableState extends State<ConfirmTable> {
             ksv6,
             Row(
               children: const [
-                FoodText("6:30", fonsize: 30),
+                FoodText("6:30", fontSize: 30),
                 ksh12,
                 FoodText.ktsAnsemi(
                   "AM",
-                  fonsize: 18,
+                  fontSize: 18,
                 ),
               ],
             )
@@ -294,7 +294,7 @@ class _ConfirmTableState extends State<ConfirmTable> {
   _buildBooking() {
     return const FoodText.ktsAnsemi(
       "Sat,22 Sep",
-      fonsize: 22,
+      fontSize: 22,
     );
   }
 
@@ -317,7 +317,7 @@ class _ConfirmTableState extends State<ConfirmTable> {
       centerTitle: true,
       title: const FoodText(
         "Book Table",
-        fonsize: 19.5,
+        fontSize: 19.5,
       ),
     );
   }

@@ -12,7 +12,7 @@ class Categories extends StatelessWidget {
       ksv16,
       const FoodText.ktsAnsemi(
         "Eat what makes you happy",
-        fonsize: 16,
+        fontSize: 16,
       ),
       ksv16,
       Row(
@@ -80,7 +80,7 @@ class HomeImageCategories extends StatelessWidget {
   Widget build(BuildContext context) {
     return GestureDetector(
         onTap: () {
-          RouteX.sliderRighToLeft(context, const DetailsChooseDesert());
+          RouteX.fadeIn(context, const DetailsChooseDesert());
         },
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.center,
@@ -100,7 +100,10 @@ class HomeImageCategories extends StatelessWidget {
                   ]),
               child: ClipRRect(
                   borderRadius: BorderRadius.circular(32.5),
-                  child: Image.asset(path)),
+                  child: Image.asset(
+                    'asset/images/PlaceHolder/placeholder.jpg',
+                    fit: BoxFit.cover,
+                  )),
             ),
             ksv6,
             FoodText.ktsAnreg(

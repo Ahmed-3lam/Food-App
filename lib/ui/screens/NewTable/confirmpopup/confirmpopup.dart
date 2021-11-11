@@ -49,7 +49,7 @@ class ConfirmPopUp extends StatelessWidget {
                         'Confirm Your Details',
                         weight: FontWeight.w500,
                         color: Colors.black,
-                        fonsize: 20,
+                        fontSize: 20,
                       ),
                       ksv20,
                       const MyTextField(
@@ -64,8 +64,7 @@ class ConfirmPopUp extends StatelessWidget {
                       MasterButton(
                           name: "Confirm",
                           onTap: () {
-                            RouteX.sliderRighToLeft(
-                                context, const BookingSuccess());
+                            RouteX.fadeIn(context, const BookingSuccess());
                           }),
                       ksv30,
                     ],

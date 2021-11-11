@@ -88,8 +88,7 @@ class _CalanderScreenState extends State<CalanderScreen> {
                     child: MasterButton(
                         name: "Next",
                         onTap: () {
-                          RouteX.sliderRighToLeft(
-                              context, const ConfirmTable());
+                          RouteX.fadeIn(context, const ConfirmTable());
                         })),
                 ksv18,
               ],

@@ -34,7 +34,7 @@ class ForgotPassWord extends StatelessWidget {
                     ksv24,
                     const FoodText(
                       "Forgot Password",
-                      fonsize: 28,
+                      fontSize: 28,
                       weight: FontWeight.w400,
                     ),
                     ksv24,
@@ -49,8 +49,7 @@ class ForgotPassWord extends StatelessWidget {
                     MasterButton(
                         name: "Send",
                         onTap: () {
-                          RouteX.sliderRighToLeft(
-                              context, const ResetPassWord());
+                          RouteX.fadeIn(context, const ResetPassWord());
                         })
                   ]),
             ),

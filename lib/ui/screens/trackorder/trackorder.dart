@@ -17,7 +17,7 @@ class _TrackOrderState extends State<TrackOrder> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: comanAppBar(context, "Track your Order"),
+      appBar: commonAppBar(context, "Track your Order"),
       body: Padding(
         padding: kpadding,
         child: Column(
@@ -74,7 +74,7 @@ class TrackerWidgetText extends StatelessWidget {
       children: [
         FoodText.ktsAnreg(
           titel,
-          fonsize: 16,
+          fontSize: 16,
         ),
         FoodText(
           sutite,

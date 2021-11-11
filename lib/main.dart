@@ -27,17 +27,3 @@ class MyApp extends StatelessWidget {
     );
   }
 }
-
-class RevealScreen extends StatelessWidget {
-  const RevealScreen({Key? key}) : super(key: key);
-
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      body: Column(
-        children: [Image.asset('asset/images/illustration/1.png')],
-      ),
-    );
-  }
-}
-

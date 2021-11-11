@@ -14,7 +14,7 @@ class HomeSelctCategorytile extends StatelessWidget {
   Widget build(BuildContext context) {
     return GestureDetector(
       onTap: () {
-        RouteX.sliderRighToLeft(context, const DetailsChooseDesert());
+        RouteX.fadeIn(context, const DetailsChooseDesert());
       },
       child: Column(
         children: [

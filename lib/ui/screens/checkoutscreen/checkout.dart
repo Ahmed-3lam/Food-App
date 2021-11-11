@@ -45,7 +45,7 @@ class _CheckOutPaymentState extends State<CheckOutPayment> {
           ),
         ),
       ),
-      appBar: comanAppBar(
+      appBar: commonAppBar(
         context,
         "Checkout",
       ),
@@ -72,7 +72,7 @@ class _CheckOutPaymentState extends State<CheckOutPayment> {
                   const Spacer(),
                   GestureDetector(
                     onTap: () {
-                      RouteX.sliderRighToLeft(context, const AddCard());
+                      RouteX.fadeIn(context, const AddCard());
                     },
                     child: Container(
                         height: 32 * .90,

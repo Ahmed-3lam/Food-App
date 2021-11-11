@@ -34,13 +34,13 @@ class OrdeDetailsTotalSubtotal extends StatelessWidget {
               children: const [
                 FoodText.ktsAnsemi(
                   "Total",
-                  fonsize: 22,
+                  fontSize: 22,
                 ),
                 Spacer(),
                 FoodText(
                   "\$150",
                   color: kcred,
-                  fonsize: 22,
+                  fontSize: 22,
                 )
               ],
             ),

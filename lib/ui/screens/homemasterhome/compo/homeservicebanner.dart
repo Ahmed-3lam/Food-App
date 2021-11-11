@@ -11,7 +11,7 @@ class HomeServiceBanner extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       decoration:
-          BoxDecoration(borderRadius: BorderRadius.circular(15), boxShadow: [
+          BoxDecoration(borderRadius: BorderRadius.circular(8), boxShadow: [
         BoxShadow(
             offset: const Offset(0, 5),
             color: kcTransparent.withOpacity(.25),
@@ -21,7 +21,7 @@ class HomeServiceBanner extends StatelessWidget {
       height: 165,
       width: MediaQuery.of(context).size.width - 40,
       child: ClipRRect(
-        borderRadius: BorderRadius.circular(15),
+        borderRadius: BorderRadius.circular(8),
         child: Image.asset(
           image,
           fit: BoxFit.cover,

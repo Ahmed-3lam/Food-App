@@ -52,16 +52,16 @@ class _HomeCarouselState extends State<HomeCarousel> {
                 }),
             itemBuilder: (context, int index, i) => GestureDetector(
                 onTap: () {
-                  RouteX.sliderRighToLeft(
+                  RouteX.fadeIn(
                       context,
-                      Details(
-                        image: dishes[index].image,
+                      const Details(
+                        image: 'asset/images/PlaceHolder/placeholder.jpg',
                       ));
                 },
                 child: HomeCarouselItem(
                   key: ValueKey(dishes[index].image),
                   pageChanged: index == curentIndex,
-                  image: dishes[index].image,
+                  image: 'asset/images/PlaceHolder/placeholder.jpg',
                 )),
           ),
         ),

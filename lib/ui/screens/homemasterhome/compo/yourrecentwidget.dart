@@ -23,10 +23,10 @@ class HomeYourRecentVisiArea extends StatelessWidget {
         itemBuilder: (BuildContext context, int index) {
           return GestureDetector(
             onTap: () {
-              RouteX.sliderRighToLeft(
+              RouteX.fadeIn(
                   context,
                   Details(
-                    image: dishes[index].image,
+                    image: 'asset/images/PlaceHolder/placeholder.jpg',
                   ));
             },
             child: Padding(
@@ -81,7 +81,7 @@ class HomeYourRecentVisiArea extends StatelessWidget {
                               FoodText(
                                 dishes[index].resturantName,
                                 color: kctxtcolor,
-                                fonsize: 12,
+                                fontSize: 12,
                               ),
                               const SizedBox(
                                 height: 3,

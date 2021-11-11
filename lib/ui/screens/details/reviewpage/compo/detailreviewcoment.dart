@@ -4,8 +4,8 @@ import 'package:frontend/services/my_flutter_app_icons.dart';
 import 'package:frontend/ui/constants/colors.dart';
 import 'package:frontend/ui/constants/textstyles.dart';
 
-class DetailsReviewComent extends StatelessWidget {
-  const DetailsReviewComent({
+class DetailsReviewComment extends StatelessWidget {
+  const DetailsReviewComment({
     Key? key,
   }) : super(key: key);
 
@@ -19,7 +19,13 @@ class DetailsReviewComent extends StatelessWidget {
           SizedBox(
             height: 60,
             width: 60,
-            child: Image.asset("asset/images/home/comentuser.png"),
+            child: ClipRRect(
+              borderRadius: BorderRadius.circular(4),
+              child: Image.asset(
+                "asset/images/PlaceHolder/placeholder.jpg",
+                fit: BoxFit.cover,
+              ),
+            ),
           ),
           const SizedBox(
             width: 18,
@@ -33,7 +39,7 @@ class DetailsReviewComent extends StatelessWidget {
                   const FoodText(
                     "MaryJane Cook",
                     color: Colors.black,
-                    fonsize: 16,
+                    fontSize: 16,
                   ),
                   const Spacer(),
                   RatingBar.builder(

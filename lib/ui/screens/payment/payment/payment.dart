@@ -27,7 +27,7 @@ class _PaymentState extends State<Payment> {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: kcwhite,
-      appBar: comanAppBar(
+      appBar: commonAppBar(
         context,
         "Payment Options",
       ),
@@ -48,7 +48,7 @@ class _PaymentState extends State<Payment> {
                 const Spacer(),
                 GestureDetector(
                   onTap: () {
-                    RouteX.sliderRighToLeft(context, const AddCard());
+                    RouteX.fadeIn(context, const AddCard());
                   },
                   child: Container(
                       height: 32 * .90,

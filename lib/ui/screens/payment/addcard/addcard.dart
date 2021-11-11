@@ -89,7 +89,7 @@ class _AddCardState extends State<AddCard> {
           ),
           MasterButton(
               onTap: () {
-                RouteX.sliderRighToLeft(context, const CheckOutPayment());
+                RouteX.fadeIn(context, const CheckOutPayment());
               },
               name: "Add Card")
         ], 15),

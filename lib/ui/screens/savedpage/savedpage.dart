@@ -21,7 +21,7 @@ class SavedPage extends StatelessWidget {
                   padding: kpadding,
                   child: const FoodText.ktsAnreg(
                     "Recent",
-                    fonsize: 22,
+                    fontSize: 22,
                   ),
                 ),
                 ksv16,
@@ -29,11 +29,11 @@ class SavedPage extends StatelessWidget {
                     3,
                     (index) => GestureDetector(
                           onTap: () {
-                            RouteX.sliderRighToLeft(context,
+                            RouteX.fadeIn(context,
                                 Details(image: resturant[index].image));
                           },
                           child: FoodTile(
-                              image: resturant[index].image,
+                              image: 'asset/images/PlaceHolder/placeholder.jpg',
                               name: resturant[index].name,
                               adress: resturant[index].adress,
                               startRating: resturant[index].startRating,
@@ -48,7 +48,7 @@ class SavedPage extends StatelessWidget {
                     children: [
                       const FoodText.ktsAnreg(
                         "You often order...",
-                        fonsize: 22,
+                        fontSize: 22,
                       ),
                       const Spacer(),
                       TextButton(

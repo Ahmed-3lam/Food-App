@@ -14,7 +14,7 @@ class OrderDetailsAdressTile extends StatelessWidget {
           children: [
             const FoodText.ktsAnreg(
               "Deliver to",
-              fonsize: 20,
+              fontSize: 20,
             ),
             const Spacer(),
             SizedBox(
@@ -48,13 +48,13 @@ class OrderDetailsAdressTile extends StatelessWidget {
                 children: const [
                   FoodText.ktsAnreg(
                     "Michel Clerk - 035264564",
-                    fonsize: 16,
+                    fontSize: 16,
                   ),
                   FoodText.ktsAnreg(
                     "123 Avenue street",
-                    fonsize: 14,
+                    fontSize: 14,
                   ),
-                  FoodText.ktsAnreg("Add details", fonsize: 12),
+                  FoodText.ktsAnreg("Add details", fontSize: 12),
                 ],
               )
             ],

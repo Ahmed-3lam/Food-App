@@ -142,7 +142,7 @@ class _MObileNumberState extends State<MObileNumber> {
                         child: MasterButton(
                             name: 'GET OTP',
                             onTap: () {
-                              RouteX.sliderRighToLeft(context, const OTP());
+                              RouteX.fadeIn(context, const OTP());
                             })))
               ],
             ),

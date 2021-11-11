@@ -1,7 +1,7 @@
 import 'package:frontend/Helpers/mlib.dart';
 import 'package:frontend/ui/screens/auth/ForgotPassword/forgetpassword.dart';
 import 'package:frontend/ui/screens/auth/signup/signup.dart';
-import 'package:frontend/ui/screens/hometabbar/hometabar.dart';
+import 'package:frontend/ui/screens/Home_main/home_main.dart';
 
 class SignInPage extends StatefulWidget {
   const SignInPage({Key? key}) : super(key: key);
@@ -31,7 +31,7 @@ class _SignInPageState extends State<SignInPage> {
                     ks30,
                     const FoodText.ktsAnreg(
                       "Sign In",
-                      fonsize: 30,
+                      fontSize: 30,
                       color: Colors.black,
                     ),
                     ks30,
@@ -49,8 +49,7 @@ class _SignInPageState extends State<SignInPage> {
                         const Spacer(),
                         TextButton(
                             onPressed: () {
-                              RouteX.sliderRighToLeft(
-                                  context, const ForgotPassWord());
+                              RouteX.fadeIn(context, const ForgotPassWord());
                             },
                             child: const FoodText("Forgot Password?"))
                       ],
@@ -106,7 +105,7 @@ class _SignInPageState extends State<SignInPage> {
                         const Text("Don't have an account? "),
                         TextButton(
                             onPressed: () {
-                              RouteX.sliderRighToLeft(context, const SignUp());
+                              RouteX.fadeIn(context, const SignUp());
                             },
                             child: const Text(
                               "Sign up Now!",

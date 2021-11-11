@@ -61,19 +61,19 @@ class FoodTile extends StatelessWidget {
                           ),
                           FoodText.ktsAvenir(
                             adress,
-                            fonsize: 12,
+                            fontSize: 12,
                             color: kcgrey5,
                           ),
                           Row(
                             children: [
                               FoodText.ktsAvenir(
                                 "$time mins ",
-                                fonsize: 12,
+                                fontSize: 12,
                               ),
                               FoodText.ktsAvenir(
                                 "| $distance kms ",
                                 color: kcgrey5,
-                                fonsize: 12,
+                                fontSize: 12,
                               )
                             ],
                           ),
@@ -143,7 +143,7 @@ class FoodTile extends StatelessWidget {
                               "$discount% OFF",
                               style:
                                   const TextStyle(fontWeight: FontWeight.bold),
-                              fonsize: 11,
+                              fontSize: 11,
                               color: kcwhite,
                             ),
                           ),
@@ -169,7 +169,7 @@ class FoodTileCategoryChip extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      child: const FoodText("Breakfast", fonsize: 12),
+      child: const FoodText("Breakfast", fontSize: 12),
       height: 16,
       margin: const EdgeInsets.only(right: 4),
       padding: const EdgeInsets.symmetric(horizontal: 8),

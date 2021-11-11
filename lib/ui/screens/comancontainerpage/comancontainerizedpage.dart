@@ -56,7 +56,7 @@ class ComanContaineraziedPag extends StatelessWidget {
       backgroundColor: kcwhite,
       title: FoodText.ktsAnreg(
         appbarTitel,
-        fonsize: 18,
+        fontSize: 18,
       ),
     );
   }

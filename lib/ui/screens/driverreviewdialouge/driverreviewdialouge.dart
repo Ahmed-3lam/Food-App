@@ -28,16 +28,23 @@ class DriverReviewDialogue extends StatelessWidget {
             children: [
               const FoodText.ktsAnsemi(
                 "Rate Driver",
-                fonsize: 16,
+                fontSize: 16,
                 weight: FontWeight.w300,
               ),
               ksv8,
-              Image.asset(
-                "asset/images/home/x.png",
-                scale: 3,
+              SizedBox(
+                height: 78,
+                width: 78,
+                child: ClipRRect(
+                  borderRadius: BorderRadius.circular(39),
+                  child: Image.asset(
+                    'asset/images/PlaceHolder/placeholder.jpg',
+                    fit: BoxFit.cover,
+                  ),
+                ),
               ),
               ksv6,
-              const FoodText("Michel Clerk", fonsize: 14),
+              const FoodText("Michel Clerk", fontSize: 14),
               ksv16,
               RatingBar.builder(
                   unratedColor: kcdivider,

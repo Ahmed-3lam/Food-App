@@ -1,9 +1,10 @@
 import 'package:frontend/Helpers/mlib.dart';
 import 'package:frontend/services/my_flutter_app_icons.dart';
-import 'package:frontend/ui/screens/EditAdress/editadress.dart';
-import 'package:frontend/ui/screens/locationadress/locationadress.dart';
 
 import 'package:frontend/ui/widgets/appbar.dart';
+
+import 'EditAdress/editadress.dart';
+import 'locationadress/locationadress.dart';
 
 class MainAdress extends StatefulWidget {
   const MainAdress({Key? key}) : super(key: key);
@@ -16,7 +17,7 @@ class _MainAdressState extends State<MainAdress> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: comanAppBar(context, "Edit Address"),
+      appBar: commonAppBar(context, "Edit Address"),
       body: SingleChildScrollView(
         child: Padding(
           padding: kpadding,
@@ -39,8 +40,7 @@ class _MainAdressState extends State<MainAdress> {
                   children: [
                     GestureDetector(
                       onTap: () {
-                        RouteX.sliderRighToLeft(
-                            context, const LocationAddress());
+                        RouteX.fadeIn(context, const LocationAddress());
                       },
                       child: SizedBox(
                           height: 88,
@@ -73,7 +73,7 @@ class _MainAdressState extends State<MainAdress> {
                                 child: MaterialButton(
                                     padding: EdgeInsets.zero,
                                     onPressed: () {
-                                      RouteX.sliderRighToLeft(
+                                      RouteX.fadeIn(
                                           context, const EditAddress());
                                     },
                                     child: const FoodText(
@@ -103,14 +103,14 @@ class _MainAdressState extends State<MainAdress> {
               MasterAdressTile(
                 name: "Add Home Address",
                 tap: () {
-                  RouteX.sliderRighToLeft(context, const EditAddress());
+                  RouteX.fadeIn(context, const EditAddress());
                 },
                 data: MyFlutterApp.home,
               ),
               MasterAdressTile(
                 name: "Add Work Address",
                 tap: () {
-                  RouteX.sliderRighToLeft(context, const EditAddress());
+                  RouteX.fadeIn(context, const EditAddress());
                 },
                 data: MyFlutterApp.account,
               ),

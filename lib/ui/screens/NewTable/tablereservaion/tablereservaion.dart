@@ -62,7 +62,7 @@ class _ReserveTableState extends State<ReserveTable>
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: comanAppBar(context, 'Reserve Table'),
+      appBar: commonAppBar(context, 'Reserve Table'),
       body: SingleChildScrollView(
         child: SizedBox(
             height: MediaQuery.of(context).size.height -

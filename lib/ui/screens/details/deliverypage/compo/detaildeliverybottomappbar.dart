@@ -5,7 +5,7 @@ import 'package:frontend/ui/constants/textstyles.dart';
 import 'package:frontend/ui/screens/details/detailmodel.dart';
 import 'package:provider/provider.dart';
 
-import 'detailsdeliveryaddtocartdialouge.dart';
+import 'details_delivery_add_to_cart_dialog.dart';
 
 class DetailDeliveryBottomAppBar extends StatefulWidget {
   const DetailDeliveryBottomAppBar({
@@ -35,7 +35,7 @@ class _DetailDeliveryBottomAppBarState
                     begin: const Offset(0, .5), end: const Offset(0, 0))
                 .animate(
                     CurvedAnimation(parent: _ami1, curve: Curves.decelerate)),
-            child: const DetailsDeliveryAddToCartDialouge(
+            child: const DetailsDeliveryAddToCartDialog(
               totalitemcount: 1,
             ),
           ),
@@ -77,7 +77,7 @@ class _DetailDeliveryBottomAppBarState
                       return const FoodText.ktsAnsemi(
                         "View Order",
                         color: kcwhite,
-                        fonsize: 18,
+                        fontSize: 18,
                       );
                     }),
                     Container(

@@ -77,7 +77,7 @@ class _IntroState extends State<Intro> {
                       backgroundColor: kcwhite,
                       onPressed: () {
                         if (index == 2) {
-                          RouteX.sliderRighToLeft(context, const GOALScreen());
+                          RouteX.fadeIn(context, const GOALScreen());
                         } else {
                           _pageController.animateToPage(index + 1,
                               duration: const Duration(milliseconds: 500),

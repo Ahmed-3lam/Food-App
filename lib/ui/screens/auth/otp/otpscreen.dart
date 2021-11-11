@@ -12,7 +12,7 @@ import 'package:frontend/ui/utils/textutlities.dart';
 import 'package:pin_code_fields/pin_code_fields.dart';
 
 ///
-import 'package:frontend/ui/screens/hometabbar/hometabar.dart';
+import 'package:frontend/ui/screens/Home_main/home_main.dart';
 
 ///
 import 'package:frontend/ui/screens/auth/otp/timer.dart';
@@ -112,7 +112,7 @@ class _OTPState extends State<OTP> {
                       setter(true);
                       await Future.delayed(const Duration(milliseconds: 800));
                       setter(false);
-                      RouteX.sliderRighToLeft(context, const MainHome());
+                      RouteX.fadeIn(context, const MainHome());
                     },
                     name: 'VERIFY & PROCEED',
                   ),

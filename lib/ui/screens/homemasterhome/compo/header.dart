@@ -5,9 +5,9 @@ import 'package:frontend/Helpers/mlib.dart';
 import 'package:frontend/extension/sizingextension.dart';
 import 'package:frontend/ui/constants/colors.dart';
 import 'package:frontend/ui/constants/textstyles.dart';
-import 'package:frontend/ui/screens/Location-choose_city/locationchoosecity.dart';
-import 'package:frontend/ui/screens/hometabbar/hometabar.dart';
-import 'package:frontend/ui/screens/notification/notification.dart';
+import 'package:frontend/ui/screens/Home_main/home_main.dart';
+import 'package:frontend/ui/screens/MainAdress/Location-choose_city/locationchoosecity.dart';
+import 'package:frontend/ui/screens/User_controll/notification/notification.dart';
 import 'package:frontend/ui/screens/searchCopy/searchcopy.dart';
 import 'package:frontend/ui/utils/spaces.dart';
 import 'package:frontend/ui/widgets/texfield.dart';
@@ -36,7 +36,7 @@ class HomeHeader extends StatelessWidget {
               const Spacer(),
               GestureDetector(
                 onTap: () {
-                  RouteX.sliderRighToLeft(context, const NotificationPage());
+                  RouteX.fadeIn(context, const NotificationPage());
                 },
                 child: SvgPicture.asset(
                   'asset/LastIcons/Notification.svg',
@@ -47,7 +47,7 @@ class HomeHeader extends StatelessWidget {
               SpaceUtils.ks10.width(),
               GestureDetector(
                   onTap: () {
-                    RouteX.sliderRighToLeft(context, const CloneHome());
+                    RouteX.fadeIn(context, const CloneHome());
                   },
                   child: SvgPicture.asset('asset/LastIcons/106 – controls.svg',
                       height: 25, color: kcwhite))
@@ -61,7 +61,7 @@ class HomeHeader extends StatelessWidget {
             child: MaterialButton(
               padding: EdgeInsets.zero,
               onPressed: () {
-                RouteX.sliderRighToLeft(context, const LocationChooseCity());
+                RouteX.fadeIn(context, const LocationChooseCity());
               },
               child: Row(
                 children: [
@@ -73,7 +73,7 @@ class HomeHeader extends StatelessWidget {
                   const FoodText.ktsAnsemi(
                     " Avenue street",
                     color: kcwhite,
-                    fonsize: 16,
+                    fontSize: 16,
                   ),
                   const SizedBox(
                     width: 20,
@@ -92,7 +92,7 @@ class HomeHeader extends StatelessWidget {
           ),
           GestureDetector(
             onTap: () {
-              RouteX.sliderRighToLeft(context, const SearchCopy());
+              RouteX.fadeIn(context, const SearchCopy());
             },
             child: SizedBox(
               child: AbsorbPointer(

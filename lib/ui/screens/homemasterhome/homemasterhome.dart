@@ -1,15 +1,16 @@
 import 'dart:async';
 
+///
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:frontend/Helpers/mlib.dart';
 import 'package:frontend/repositary/resturantrepo.dart';
 
+///
 import 'package:frontend/ui/screens/details/details.dart';
 import 'package:frontend/ui/screens/homemasterhome/compo/yourrecentwidget.dart';
-import 'compo/header.dart';
-import 'compo/homecarousel.dart';
+import 'compo/carouseloffer.dart';
 import 'compo/homecategorytile.dart';
-import 'compo/homeservicebanner.dart';
+import 'compo/hometop.dart';
 
 class HomeMasterHome extends StatefulWidget {
   const HomeMasterHome({
@@ -22,26 +23,26 @@ class HomeMasterHome extends StatefulWidget {
 
 class _HomeMasterHomeState extends State<HomeMasterHome>
     with SingleTickerProviderStateMixin {
-  late TabController _tabcontroller;
+  late TabController _tabController;
   @override
   void initState() {
     super.initState();
-    _tabcontroller = TabController(length: 4, vsync: this);
+    _tabController = TabController(length: 4, vsync: this);
   }
 
   List<String> image = [
-    "asset/images/home/banner.png",
-    'asset/images/home/homeoffers.png'
+    'asset/images/PlaceHolder/placeholder.jpg',
+    'asset/images/PlaceHolder/placeholder.jpg'
   ];
 
-  Widget _recentsearch() {
+  Widget _recentSearch() {
     return Padding(
       padding: kpaddinghor20,
       child: Row(
         children: [
           const FoodText.ktsAnreg(
             "Your recent visits",
-            fonsize: 22,
+            fontSize: 22,
           ),
           const Spacer(),
           TextButton(
@@ -57,7 +58,7 @@ class _HomeMasterHomeState extends State<HomeMasterHome>
 
   bool isLoading = false;
 
-  _loadingHandeler() {
+  _loadingHandler() {
     isLoading = false;
     setState(() {});
   }
@@ -73,7 +74,7 @@ class _HomeMasterHomeState extends State<HomeMasterHome>
             const HomeTop(),
             const BuildCategories(),
             CarouselOfOffers(image: image),
-            _recentsearch(),
+            _recentSearch(),
             ksv8,
             const HomeYourRecentVisiArea(),
           ],
@@ -93,13 +94,12 @@ class _HomeMasterHomeState extends State<HomeMasterHome>
                     onTap: (i) async {
                       isLoading = true;
                       setState(() {});
-                      Timer(
-                          const Duration(milliseconds: 700), _loadingHandeler);
+                      Timer(const Duration(milliseconds: 700), _loadingHandler);
                     },
                     indicatorPadding: EdgeInsets.zero,
                     isScrollable: true,
                     padding: const EdgeInsets.symmetric(horizontal: 15),
-                    controller: _tabcontroller,
+                    controller: _tabController,
                     indicatorSize: TabBarIndicatorSize.label,
                     indicatorWeight: 03,
                     labelColor: kcred,
@@ -142,10 +142,11 @@ class _HomeMasterHomeState extends State<HomeMasterHome>
                     resturant.length,
                     (index) => GestureDetector(
                         onTap: () {
-                          RouteX.sliderRighToLeft(
+                          RouteX.fadeIn(
                               context,
                               Details(
-                                image: resturant[index].image,
+                                image:
+                                    'asset/images/PlaceHolder/placeholder.jpg',
                               ));
                         },
                         child: FoodTile(
@@ -159,33 +160,6 @@ class _HomeMasterHomeState extends State<HomeMasterHome>
                             revieCount:
                                 resturant[index].revieCount))).toList()))
       ]),
-    );
-  }
-}
-
-class CarouselOfOffers extends StatelessWidget {
-  const CarouselOfOffers({
-    Key? key,
-    required this.image,
-  }) : super(key: key);
-
-  final List<String> image;
-
-  @override
-  Widget build(BuildContext context) {
-    return SizedBox(
-      height: 200,
-      child: CarouselSlider.builder(
-        itemCount: image.length,
-        options:
-            CarouselOptions(height: 200, autoPlay: true, viewportFraction: 1),
-        itemBuilder: (context, i, i2) => Padding(
-          padding: const EdgeInsets.all(20),
-          child: HomeServiceBanner(
-            image: image[i],
-          ),
-        ),
-      ),
     );
   }
 }
@@ -220,45 +194,5 @@ class BuildCategories extends StatelessWidget {
         ),
       ],
     );
-  }
-}
-
-class HomeTop extends StatelessWidget {
-  const HomeTop({Key? key}) : super(key: key);
-
-  @override
-  Widget build(BuildContext context) {
-    return Container(
-      width: MediaQuery.of(context).size.width,
-      decoration: const BoxDecoration(),
-      child: Stack(
-        children: [
-          Container(
-            height: 427,
-            decoration: const BoxDecoration(
-              color: kcred,
-              borderRadius: BorderRadius.vertical(
-                bottom: Radius.circular(
-                  65,
-                ),
-              ),
-            ),
-          ),
-          Column(
-            children: const [
-              SizedBox(
-                height: 44,
-              ),
-              HomeHeader(),
-              SizedBox(
-                height: 20,
-              ),
-              HomeCarousel(),
-            ],
-          )
-        ],
-      ),
-    );
-    ;
   }
 }

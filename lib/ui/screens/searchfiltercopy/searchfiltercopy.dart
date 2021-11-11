@@ -91,7 +91,7 @@ class _SearchFilterCopyState extends State<SearchFilterCopy> {
               child: MasterButton(
                 name: "Confirm",
                 onTap: () {
-                  RouteX.sliderRighToLeft(context, const SearchITem());
+                  RouteX.fadeIn(context, const SearchITem());
                 },
                 height: 48,
               ),
@@ -111,7 +111,7 @@ class _SearchFilterCopyState extends State<SearchFilterCopy> {
                     children: [
                       const FoodText.ktsAnreg(
                         "District",
-                        fonsize: 16,
+                        fontSize: 16,
                         weight: FontWeight.w500,
                       ),
                       ksv16,
@@ -179,7 +179,7 @@ class _SearchFilterCopyState extends State<SearchFilterCopy> {
                       ksv30,
                       const FoodText.ktsAnreg(
                         "Sory by",
-                        fonsize: 16,
+                        fontSize: 16,
                         weight: FontWeight.w500,
                       ),
                       ksv16,
@@ -209,7 +209,7 @@ class _SearchFilterCopyState extends State<SearchFilterCopy> {
                       ksv30,
                       const FoodText.ktsAnreg(
                         "More Filter",
-                        fonsize: 16,
+                        fontSize: 16,
                         weight: FontWeight.w500,
                       ),
                       ksv16,

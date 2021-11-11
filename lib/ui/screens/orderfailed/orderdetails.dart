@@ -14,7 +14,7 @@ class OrderFailed extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       bottomNavigationBar: const OrdeDetailBottomBar(),
-      appBar: comanAppBar(context, "Order Details"),
+      appBar: commonAppBar(context, "Order Details"),
       body: SingleChildScrollView(
         child: Column(
           children: [
@@ -25,13 +25,13 @@ class OrderFailed extends StatelessWidget {
                 children: const [
                   FoodText.ktsAnsemi(
                     "Order Failed",
-                    fonsize: 16,
+                    fontSize: 16,
                     color: kcred,
                   ),
                   Spacer(),
                   FoodText(
                     "Reason: The driver canceled this",
-                    fonsize: 13,
+                    fontSize: 13,
                   )
                 ],
               ),

@@ -1,6 +1,6 @@
 import 'package:flutter_svg/svg.dart';
 import 'package:frontend/Helpers/mlib.dart';
-import 'package:frontend/ui/screens/Location-choose_city/locationchoosecity.dart';
+import 'package:frontend/ui/screens/MainAdress/Location-choose_city/locationchoosecity.dart';
 
 class HomeAdressZone extends StatelessWidget {
   const HomeAdressZone({
@@ -18,7 +18,7 @@ class HomeAdressZone extends StatelessWidget {
             splashColor: kcTransparent,
             padding: EdgeInsets.zero,
             onPressed: () {
-              RouteX.sliderRighToLeft(context, const LocationChooseCity());
+              RouteX.fadeIn(context, const LocationChooseCity());
             },
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
@@ -31,7 +31,7 @@ class HomeAdressZone extends StatelessWidget {
                       ksh12,
                       const FoodText.ktsAvenir(
                         "Zone II",
-                        fonsize: 18,
+                        fontSize: 18,
                         weight: FontWeight.w700,
                       ),
                     ],

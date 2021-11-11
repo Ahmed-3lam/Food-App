@@ -18,7 +18,7 @@ class YourRecentVisits extends StatelessWidget {
             children: [
               const FoodText.ktsAnreg(
                 "Your recent visits",
-                fonsize: 22,
+                fontSize: 22,
               ),
               const Spacer(),
               SizedBox(
@@ -49,10 +49,10 @@ class YourRecentVisits extends StatelessWidget {
             itemBuilder: (BuildContext context, int index) {
               return GestureDetector(
                 onTap: () {
-                  RouteX.sliderRighToLeft(
+                  RouteX.fadeIn(
                       context,
-                      Details(
-                        image: dishes[index].image,
+                      const Details(
+                        image: 'asset/images/PlaceHolder/placeholder.jpg',
                       ));
                 },
                 child: Padding(
@@ -97,7 +97,7 @@ class YourRecentVisits extends StatelessWidget {
                                       child: ClipRRect(
                                         borderRadius: BorderRadius.circular(15),
                                         child: Image.asset(
-                                          dishes[index].image,
+                                          'asset/images/PlaceHolder/placeholder.jpg',
                                           fit: BoxFit.cover,
                                         ),
                                       )),
@@ -108,7 +108,7 @@ class YourRecentVisits extends StatelessWidget {
                                   FoodText(
                                     dishes[index].resturantName,
                                     color: kctxtcolor,
-                                    fonsize: 12,
+                                    fontSize: 12,
                                   ),
                                   const SizedBox(
                                     height: 3,
